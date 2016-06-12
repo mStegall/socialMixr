@@ -40,9 +40,13 @@ module.exports.drink = function (req, res) {
 };
 
 module.exports.deleteDrink = function (req, res) {
-    drink.findByIdAndRemove(req.body.id, function () {
-       res.send("Success!");
-    });
+    if (req.isAuthenticated()) {
+        drink.findByIdAndRemove(req.body.id, function () {
+            res.send("Success!");
+        });
+    } else {
+        res.status(401).send();
+    }
 };
 
 module.exports.mixedDrink = function (req, res) {

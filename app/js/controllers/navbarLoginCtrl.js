@@ -1,4 +1,4 @@
-socialmixr.controller('navbarLoginCtrl',  function ($scope, login, $uibModal, userInfo, $location) {
+socialmixr.controller('navbarLoginCtrl',  function ($scope, login, $uibModal, userInfo, $location, $rootScope) {
 
     $scope.updateLoginState = function () {
         login.updateLoginState().then( function () {
@@ -23,7 +23,7 @@ socialmixr.controller('navbarLoginCtrl',  function ($scope, login, $uibModal, us
 
     $scope.logOut = function () {
         login.logOut().then(function () {
-            $scope.updateLoginState()
+            $scope.updateLoginState();
             $location.url('/');
         });
     };

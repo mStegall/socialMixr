@@ -1,4 +1,4 @@
-socialmixr.factory('login', function ($http, $q, userInfo) {
+socialmixr.factory('login', function ($http, $q, userInfo, $rootScope) {
     var loginState = false;
 
     return {
@@ -22,6 +22,7 @@ socialmixr.factory('login', function ($http, $q, userInfo) {
             $http.post('/login', {username: username, password: password}).then(function (response) {
                 loginState = true;
                 user = response.data;
+                $rootScope.$broadcast('loginStateChanged');
                 deferred.resolve(response);
             },function (response) {
                 loginState = false;
@@ -36,6 +37,7 @@ socialmixr.factory('login', function ($http, $q, userInfo) {
             $http.post('/logout').then(function (response) {
                 loginState = false;
                 user = {};
+                $rootScope.$broadcast('loginStateChanged');
                 deferred.resolve(response);
             });
 
@@ -43,6 +45,7 @@ socialmixr.factory('login', function ($http, $q, userInfo) {
         },
         logInState: function () {
             return loginState;
-        }
+        },
+        loggedIn: false
     }
 });

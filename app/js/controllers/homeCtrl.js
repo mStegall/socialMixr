@@ -1,7 +1,13 @@
-socialmixr.controller('homeCtrl', function ($scope, drinkData) {
+socialmixr.controller('homeCtrl', function ($scope, drinkData, login) {
     $scope.sortOrder = 'name';
 
     $scope.drinks = drinkData.getDrinks();
+
+    $scope.login = login.logInState();
+
+    $scope.$on('loginStateChanged', function () {
+        $scope.login = login.logInState();
+    });
 
     $scope.toggleLiquorFavorite = function (drink) {
         drink.fav = !drink.fav;

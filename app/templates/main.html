@@ -7,6 +7,7 @@
             <input class="form-control" type="text" ng-model="name" placeholder="Name">
             <input type="text" class="form-control" ng-model="type" placeholder="Type">
         </form>
+        {{login}}
     </div>
 </div>
 <div class="row">
@@ -19,7 +20,7 @@
                     {{value}} <span ng-class="sortArrows(key)" ng-style="setArrowColor(key)"></span>
                 </th>
                 <th></th>
-                <th></th>
+                <th ng-show="login"></th>
             </tr>
             </thead>
             <tbody>
@@ -32,7 +33,7 @@
                 <td><button class="btn btn-default btn-sm" ng-click="toggleLiquorFavorite(drink)">
                     {{drink.fav ? "Unfavorite" : "Favorite"}}
                 </button></td>
-                <td><button class="btn btn-default btn-sm btn-danger" data-toggle="modal" ng-click="openDeleteModal(drink)">Delete</button></td>
+                <td ng-show="login"><button class="btn btn-default btn-sm btn-danger" data-toggle="modal" ng-click="openDeleteModal(drink)">Delete</button></td>
             </tr>
             </tbody>
         </table>

@@ -3,6 +3,8 @@ var mongoose = require('mongoose');
 var User = require('./server/config/mongooseModels').user;
 var drink = require('./server/config/mongooseModels').drink;
 
+var port = process.env.PORT || 3000;
+
 // Init express app
 var app = express();
 
@@ -17,9 +19,9 @@ db.open('mongodb://mstegall:9t5eV#zFn%bBYoj6%*hL@ds021671.mlab.com:21671/socialm
 db.once('open', function () {
     console.log("Connected to Database");
     User.find({}).exec(function (err, results) {
-        if (results.length == 0) {
+        if (results.length == 1) {
             var salt = User.createSalt();
-            User.create({username: "Matt", salt: salt, password: User.hashPassword(salt, "Brad")});
+            User.create({username: "Temp123", salt: salt, password: User.hashPassword(salt, "13853211")});
         }
     })
 });
@@ -35,7 +37,6 @@ require('./server/config/passport')();
 require('./server/config/routes')(app, config);
 
 // Start server
-var port = 3000;
 app.listen(port, function() {
   console.log("Starting the magic box!");
 });
