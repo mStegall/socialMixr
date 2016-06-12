@@ -3,11 +3,14 @@ var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var passport = require('passport');
 var session = require('express-session');
+var compression = require('compression');
 
 
 module.exports = function (app, config) {
     // Logging
-    app.use(morgan('dev'));
+    // app.use(morgan('dev'));
+
+    app.use(compression());
 
     // Middleware
     app.use(session({secret: 'keyboard cat', resave: false, saveUninitialized: false}));
