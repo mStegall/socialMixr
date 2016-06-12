@@ -1,0 +1,30 @@
+.navbar a.navbar-brand {
+    padding: 5px;
+    margin: 0;
+}
+
+.navbar-brand {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.navbar img {
+    height: 50px;
+}
+
+#smallBrand{
+    padding-top: 5px;
+    height: 40px;
+}
+
+.navbar .form-group {
+    padding-left: 10px;
+}
+
+body {
+    padding-top: 70px;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+}

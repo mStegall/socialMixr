@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>socialMixr</title>
+    <base href="/">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="lib/bootswatch-dist/css/bootstrap.min.css" type="text/css">
+</head>
+<body ng-app="socialMixr">
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand collapser">
+                <img class="hidden-xs" src="images/Logo-dark.png" alt="socialMixr">
+                <img class="visible-xs" id="smallBrand" src="images/Logo-dark.png" alt="socialMixr">
+            </a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/addComponent" class="collapser">Add Drink</a></li>
+                <!--<li><a href="/login" class="collapser">Login</a></li>-->
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right" ng-controller="navbarLoginCtrl">
+                <li ng-hide="loggedIn"><a href="#" ng-click="logInModal()">Log In</a></li>
+                <li ng-show="loggedIn" class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">{{user.username}}<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/profile" class="collapser">User Profile</a></li>
+                        <li><a href="#" class="collapser">Something Else</a></li>
+                        <li><a href="#" class="collapser" ng-click="logOut()">Log Out</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container" ng-view>
+
+</div>
+
+
+<script src="lib/jquery/dist/jquery.min.js"></script>
+<script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<script src="lib/angular/angular.js"></script>
+<script src="lib/angular-route/angular-route.min.js"></script>
+<script src="lib/angular-resource/angular-resource.min.js"></script>
+<script src="lib/angular-bootstrap/ui-bootstrap.min.js"></script>
+<script src="lib/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+
+<script src="js/app.js"></script>
+
+<script src="js/controllers/homeCtrl.js"></script>
+<script src="js/controllers/addComponentCtrl.js"></script>
+<script src="js/controllers/drinkDetailsCtrl.js"></script>
+<script src="js/controllers/snoopCtrl.js"></script>
+<script src="js/controllers/mixedDrinkDetailsCtrl.js"></script>
+<script src="js/controllers/logInCtrl.js"></script>
+<script src="js/controllers/navbarLoginCtrl.js"></script>
+<script src="js/controllers/loginModalCtrl.js"></script>
+<script src="js/controllers/userProfileCtrl.js"></script>
+
+<script src="js/filters/percentage.js"></script>
+
+<script src="js/services/drinkData.js"></script>
+<script src="js/services/login.js"></script>
+<script src="js/services/userInfo.js"></script>
+
+<script src="js/directives/snoop.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $(".collapser").click(function (){
+            $(".collapse").collapse("hide");
+        });
+    });
+</script>
+</body>
+</html>

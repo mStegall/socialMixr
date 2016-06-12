@@ -1,0 +1,19 @@
+{
+  "name": "socialmixr",
+  "description": "Social Network for Drunks",
+  "main": "server.js",
+  "authors": [
+    "Matthew Stegall"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "private": true,
+  "dependencies": {
+    "angular": "^1.5.6",
+    "bootstrap": "^3.3.6",
+    "bootswatch-dist": "sandstone",
+    "angular-route": "^1.5.6",
+    "angular-resource": "^1.5.6",
+    "angular-bootstrap": "^1.3.3"
+  }
+}

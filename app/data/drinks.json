@@ -1,0 +1,58 @@
+[
+  {
+    "name": "Ketel One",
+    "type": "Vodka",
+    "manufacturer": "Ketel One",
+    "countryOfOrigin": "Netherlands",
+    "abv": ".4",
+    "fav": false
+  },
+  {
+    "name": "Fris",
+    "type": "Vodka",
+    "manufacturer": "Fris",
+    "countryOfOrigin": "Scandinavian",
+    "abv": ".4",
+    "fav": false
+  },
+  {
+    "name": "Hibiscus Gose",
+    "type": "Ale",
+    "manufacturer": "Boulevard",
+    "countryOfOrigin": "United States",
+    "abv": ".048",
+    "fav": false
+  },
+  {
+    "name": "Not Your Father's Root Beer",
+    "type": "Spiced Beer",
+    "manufacturer": "Small Town",
+    "countryOfOrigin": "United States",
+    "abv": ".059",
+    "fav": false
+  },
+  {
+    "name": "Belvedere",
+    "type": "Vodka",
+    "manufacturer": "Belvedere",
+    "countryOfOrigin": "Poland",
+    "abv": ".4",
+    "fav": false
+  },
+  {
+    "name": "Sweetwater 420 Extra Pale Ale",
+    "type": "Ale",
+    "manufacturer": "Sweetwater",
+    "countryOfOrigin": "United States",
+    "abv": ".057",
+    "fav": false
+  },
+  {
+    "name": "tn",
+    "type": "tt",
+    "manufacturer": "tm",
+    "countryOfOrigin": "tc",
+    "abv": ".2",
+    "fav": false
+  }
+]

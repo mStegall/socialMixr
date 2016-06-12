@@ -1,0 +1,24 @@
+{
+  "name": "socialmixr",
+  "version": "0.0.1",
+  "description": "Social Network for Drunks",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Matthew Stegall",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "express": "^4.13.4",
+    "express-session": "^1.13.0",
+    "mongoose": "^4.4.19",
+    "morgan": "^1.7.0",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0"
+  },
+  "devDependencies": {
+    "bower": "^1.7.9",
+    "nodemon": "^1.9.2"
+  }
+}
