@@ -13,8 +13,16 @@
     <div class="col-xs-12" ng-cloak>
         <table class="table table-striped" >
             <thead>
-            <tr>
+            <tr class="hidden-xs">
                 <th ng-repeat="(key, value) in {name:'Name', type: 'Type', manufacturer: 'Manufacturer', countryOfOrigin: 'Country of Origin', abv: 'ABV'}"
+                    ng-click="sortOrderSet(key)">
+                    {{value}} <span ng-class="sortArrows(key)" ng-style="setArrowColor(key)"></span>
+                </th>
+                <th></th>
+                <th ng-show="login"></th>
+            </tr>
+            <tr class="visible-xs">
+                <th ng-repeat="(key, value) in {name:'Name', type: 'Type', abv: 'ABV'}"
                     ng-click="sortOrderSet(key)">
                     {{value}} <span ng-class="sortArrows(key)" ng-style="setArrowColor(key)"></span>
                 </th>
@@ -26,8 +34,8 @@
             <tr ng-repeat="drink in drinks  | filter: {name: name, type: type} | orderBy: sortOrder" ng-class="{success : drink.fav}">
                 <td><a href="/drinkDetails/{{drink._id}}">{{drink.name}}</a></td>
                 <td>{{drink.type}}</td>
-                <td>{{drink.manufacturer}}</td>
-                <td>{{drink.countryOfOrigin}}</td>
+                <td class="hidden-xs">{{drink.manufacturer}}</td>
+                <td class="hidden-xs">{{drink.countryOfOrigin}}</td>
                 <td>{{drink.abv | percentage}}</td>
                 <td><button class="btn btn-default btn-sm" ng-click="toggleLiquorFavorite(drink)">
                     {{drink.fav ? "Unfavorite" : "Favorite"}}
