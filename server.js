@@ -2,6 +2,22 @@ var express = require('express');
 var mongoose = require('mongoose');
 var User = require('./server/config/mongooseModels').user;
 var drink = require('./server/config/mongooseModels').drink;
+var mysql = require('mysql');
+
+var db = mysql.createPool({
+    connectionLimit: 10,
+    host: 'q3vtafztappqbpzn.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
+    user: 'lxjqj4t240cxhp7m',
+    password: 'i4snadyoevl8ua9w',
+    database: 'x8k6dw8a2ee8w3j1'
+});
+
+db.getConnection(function (err, connection) {
+   connection.query('SELECT * FROM simpleDrinks', function (err, results) {
+       console.log(results);
+       connection.release();
+   });
+});
 
 var port = process.env.PORT || 3000;
 
