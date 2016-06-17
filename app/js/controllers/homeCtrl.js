@@ -1,4 +1,4 @@
-socialmixr.controller('homeCtrl', function ($scope, drinkData, login) {
+angular.module('app').controller('homeCtrl', function ($scope, drinkData, login) {
     $scope.sortOrder = 'name';
 
     $scope.drinks = drinkData.getDrinks();

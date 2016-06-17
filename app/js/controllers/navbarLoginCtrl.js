@@ -1,4 +1,4 @@
-socialmixr.controller('navbarLoginCtrl',  function ($scope, login, $uibModal, userInfo, $location, $rootScope) {
+angular.module('app').controller('navbarLoginCtrl',  function ($scope, login, $uibModal, userInfo, $location, $rootScope) {
 
     $scope.updateLoginState = function () {
         login.updateLoginState().then( function () {

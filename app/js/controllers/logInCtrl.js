@@ -1,4 +1,4 @@
-socialmixr.controller('logInCtrl', function ($scope, login) {
+angular.module('app').controller('logInCtrl', function ($scope, login) {
     $scope.loggedIn = false;
 
     $scope.updateLoginState = function () {

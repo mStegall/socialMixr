@@ -1,4 +1,4 @@
-var socialmixr = angular.module('socialMixr', ['ngResource', 'ngRoute', 'ui.bootstrap'])
+angular.module('app', ['ngResource', 'ngRoute', 'ui.bootstrap'])
     .config(function ($routeProvider, $locationProvider) {
         $locationProvider.html5Mode(true);
         $routeProvider.when('/', {

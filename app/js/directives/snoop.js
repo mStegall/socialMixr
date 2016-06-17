@@ -1,4 +1,4 @@
-socialmixr.directive('mySnooper', function ($window, $compile) {
+angular.module('app').directive('mySnooper', function ($window, $compile) {
     return {
         link: function (scope, element, attrs, controller) {
             scope.width = $window.innerWidth;

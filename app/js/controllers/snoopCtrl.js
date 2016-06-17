@@ -1,3 +1,3 @@
-socialmixr.controller('snoopCtrl', function ($scope, $window) {
+angular.module('app').controller('snoopCtrl', function ($scope, $window) {
 
 });
