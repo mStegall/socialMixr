@@ -1,36 +1,30 @@
-var socialmixr = angular.module('socialMixr', ['ngResource', 'ngRoute', 'ui.bootstrap'])
+angular.module('app', ['ngResource', 'ngRoute', 'ui.bootstrap'])
     .config(function ($routeProvider, $locationProvider) {
         $locationProvider.html5Mode(true);
         $routeProvider.when('/', {
-            templateUrl: 'templates/main.html',
+            templateUrl: 'home/home.html',
             controller: 'homeCtrl'
         });
         $routeProvider.when('/addComponent', {
-            templateUrl: 'templates/addComponent.html',
+            templateUrl: 'addItem/addComponent.html',
             controller: 'addComponentCtrl'
         });
         $routeProvider.when('/drinkDetails/:drinkNum', {
-            templateUrl: 'templates/drinkDetails.html',
+            templateUrl: 'viewDrinks/drinkDetails.html',
             controller: 'drinkDetailsCtrl'
         });
 
         $routeProvider.when('/snoop', {
-            templateUrl: 'templates/snoop.html',
-            controller: 'snoopCtrl'
+            templateUrl: 'snoop/snoop.html'
         });
         
         $routeProvider.when('/mixedDrink/:drinkId', {
-            templateUrl: 'templates/mixedDrinkDetails.html',
+            templateUrl: 'viewDrinks/mixedDrinkDetails.html',
             controller: 'mixedDrinkDetails'
         });
 
-        $routeProvider.when('/login', {
-            templateUrl: 'templates/logIn.html',
-            controller: 'logInCtrl'
-        });
-
         $routeProvider.when('/profile', {
-           templateUrl: 'templates/userProfile.html',
+           templateUrl: 'profile/userProfile.html',
             controller: 'userProfileCtrl',
             resolve: {
                 

@@ -1,4 +1,4 @@
-socialmixr.controller('navbarLoginCtrl',  function ($scope, login, $uibModal, userInfo, $location, $rootScope) {
+angular.module('app').controller('navbarLoginCtrl',  function ($scope, login, $uibModal, userInfo, $location, $rootScope) {
 
     $scope.updateLoginState = function () {
         login.updateLoginState().then( function () {
@@ -12,7 +12,7 @@ socialmixr.controller('navbarLoginCtrl',  function ($scope, login, $uibModal, us
     
     $scope.logInModal = function () {
         var modal = $uibModal.open({
-            templateUrl:"templates/modals/logInModal.html",
+            templateUrl:"login/logInModal.html",
             controller: "loginModalCtrl"
         });
 

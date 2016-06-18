@@ -1,4 +1,4 @@
-socialmixr.factory('userInfo', function () {
+angular.module('app').factory('userInfo', function () {
     var user = undefined;
 
     return {

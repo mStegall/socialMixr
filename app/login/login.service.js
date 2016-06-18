@@ -1,4 +1,4 @@
-socialmixr.factory('login', function ($http, $q, userInfo, $rootScope) {
+angular.module('app').factory('login', function ($http, $q, userInfo, $rootScope) {
     var loginState = false;
 
     return {

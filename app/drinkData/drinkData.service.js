@@ -1,4 +1,4 @@
-socialmixr.factory('drinkData', function ($resource) {
+angular.module('app').factory('drinkData', function ($resource) {
     return {
         getDrinks: function () {
             return $resource('/data/drinks').query();

@@ -1,4 +1,4 @@
-socialmixr.controller('loginModalCtrl', function ($scope, login, $uibModalInstance) {
+angular.module('app').controller('loginModalCtrl', function ($scope, login, $uibModalInstance) {
     $scope.alerts = [];
 
     $scope.closeAlert = function(index) {

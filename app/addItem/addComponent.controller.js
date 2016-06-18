@@ -1,4 +1,4 @@
-socialmixr.controller('addComponentCtrl', function ($scope, drinkData, $log) {
+angular.module('app').controller('addComponentCtrl', function ($scope, drinkData, $log) {
     $scope.regex = '0?\\.\\d+';
 
     var formBlank = angular.copy($scope.drink);
