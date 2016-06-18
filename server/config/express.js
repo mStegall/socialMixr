@@ -8,7 +8,7 @@ var compression = require('compression');
 
 module.exports = function (app, config) {
     // Logging
-    // app.use(morgan('dev'));
+    app.use(morgan('dev'));
 
     app.use(compression());
 

@@ -12,7 +12,7 @@ angular.module('app').controller('navbarLoginCtrl',  function ($scope, login, $u
     
     $scope.logInModal = function () {
         var modal = $uibModal.open({
-            templateUrl:"templates/modals/logInModal.html",
+            templateUrl:"login/logInModal.html",
             controller: "loginModalCtrl"
         });
 

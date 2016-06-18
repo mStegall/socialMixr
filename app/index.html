@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>socialMixr</title>
     <base href="/">
-    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="common/style.css" type="text/css">
     <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="lib/bootswatch-dist/css/bootstrap.min.css" type="text/css">
 </head>
@@ -21,8 +21,8 @@
                 <span class="icon-bar"></span>
             </button>
             <a href="/" class="navbar-brand collapser">
-                <img class="hidden-xs" src="images/Logo-dark-small.png" alt="socialMixr">
-                <img class="visible-xs" id="smallBrand" src="images/Logo-dark-small.png" alt="socialMixr">
+                <img class="hidden-xs" src="common/images/Logo-dark-small.png" alt="socialMixr">
+                <img class="visible-xs" id="smallBrand" src="common/images/Logo-dark-small.png" alt="socialMixr">
             </a>
         </div>
         <div class="collapse navbar-collapse">
@@ -60,25 +60,27 @@
 <script src="lib/angular-bootstrap/ui-bootstrap.min.js"></script>
 <script src="lib/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
 
-<script src="js/app.js"></script>
+<script src="app.js"></script>
 
-<script src="js/controllers/homeCtrl.js"></script>
-<script src="js/controllers/addComponentCtrl.js"></script>
-<script src="js/controllers/drinkDetailsCtrl.js"></script>
-<script src="js/controllers/snoopCtrl.js"></script>
-<script src="js/controllers/mixedDrinkDetailsCtrl.js"></script>
-<script src="js/controllers/logInCtrl.js"></script>
-<script src="js/controllers/navbarLoginCtrl.js"></script>
-<script src="js/controllers/loginModalCtrl.js"></script>
-<script src="js/controllers/userProfileCtrl.js"></script>
+<script src="home/homeCtrl.js"></script>
+<script src="addItem/addComponentCtrl.js"></script>
+<script src="viewDrinks/drinkDetailsCtrl.js"></script>
+<script src="viewDrinks/mixedDrinkDetailsCtrl.js"></script>
+<script src="login/navbarLoginCtrl.js"></script>
+<script src="login/loginModalCtrl.js"></script>
+<script src="profile/userProfile.controller.js"></script>
 
-<script src="js/filters/percentage.js"></script>
 
-<script src="js/services/drinkData.js"></script>
-<script src="js/services/login.js"></script>
-<script src="js/services/userInfo.js"></script>
+<script src="common/percentage.filter.js"></script>
 
-<script src="js/directives/snoop.js"></script>
+
+<script src="drinkData/drinkData.service.js"></script>
+<script src="login/login.service.js"></script>
+<script src="profile/userInfo.service.js"></script>
+
+
+<script src="snoop/snoop.directive.js"></script>
+
 
 <script>
     $(document).ready(function () {
