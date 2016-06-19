@@ -11,26 +11,33 @@
   "author": "Matthew Stegall",
   "license": "ISC",
   "dependencies": {
-    "angular": "^1.5.7",
-    "angular-resource": "^1.5.7",
-    "angular-route": "^1.5.7",
-    "angular-ui-bootstrap": "^1.3.3",
     "body-parser": "^1.15.1",
-    "bootstrap": "^3.3.6",
     "bower": "^1.7.9",
     "compression": "^1.6.2",
     "express": "^4.13.4",
     "express-session": "^1.13.0",
-    "jquery": "^2.0.0",
     "mongoose": "^4.4.19",
     "morgan": "^1.7.0",
-    "ng-annotate-webpack-plugin": "^0.1.3",
     "passport": "^0.3.2",
-    "passport-local": "^1.0.0",
-    "webpack": "^1.13.1"
+    "passport-local": "^1.0.0"
   },
   "devDependencies": {
+    "jquery": "^2.0.0",
+    "angular": "^1.5.7",
+    "angular-resource": "^1.5.7",
+    "angular-route": "^1.5.7",
+    "angular-ui-bootstrap": "^1.3.3",
+    "ng-annotate-webpack-plugin": "^0.1.3",
+    "webpack": "^1.13.1",
+    "bootstrap": "^3.3.6",
     "bower": "^1.7.9",
-    "nodemon": "^1.9.2"
+    "css-loader": "^0.23.1",
+    "nodemon": "^1.9.2",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.5",
+    "file-loader": "^0.8.1",
+    "imports-loader": "^0.6.3",
+    "exports-loader": "^0.6.2",
+    "extract-text-webpack-plugin": "^0.3.8"
   }
 }
