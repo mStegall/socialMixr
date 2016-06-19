@@ -1,3 +1,5 @@
+var angular = require('angular');
+
 angular.module('app').controller('addComponentCtrl', function ($scope, drinkData, $log) {
     $scope.regex = '0?\\.\\d+';
 

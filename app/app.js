@@ -1,4 +1,8 @@
-angular.module('app', ['ngResource', 'ngRoute', 'ui.bootstrap'])
+var angular = require('angular');
+require('bootstrap/dist/js/bootstrap.js');
+require('./common/site.js');
+
+angular.module('app', [require('angular-resource'), require('angular-route'), require('angular-ui-bootstrap')])
     .config(function ($routeProvider, $locationProvider) {
         $locationProvider.html5Mode(true);
         $routeProvider.when('/', {
@@ -35,3 +39,11 @@ angular.module('app', ['ngResource', 'ngRoute', 'ui.bootstrap'])
         
     });
 
+require('./drinkData/drinkData.service.js');
+require('./addItem/addComponent.controller.js');
+require('./common/percentage.filter.js');
+require('./home/home.controller.js');
+require('./login');
+require('./profile');
+require('./snoop');
+require('./viewDrinks');

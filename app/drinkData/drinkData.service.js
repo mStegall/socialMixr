@@ -1,3 +1,5 @@
+var angular = require('angular');
+
 angular.module('app').factory('drinkData', function ($resource) {
     return {
         getDrinks: function () {
