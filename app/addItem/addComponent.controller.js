@@ -1,4 +1,5 @@
 angular.module('app').controller('addComponentCtrl', function ($scope, drinkData, $log) {
+    "ngInclude";
     $scope.regex = '0?\\.\\d+';
 
     var formBlank = angular.copy($scope.drink);

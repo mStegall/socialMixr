@@ -1,4 +1,5 @@
 angular.module('app').controller('homeCtrl', function ($scope, drinkData, login) {
+    "ngInclude";
     $scope.sortOrder = 'name';
 
     $scope.drinks = drinkData.getDrinks();

@@ -1,4 +1,5 @@
 angular.module('app').factory('drinkData', function ($resource) {
+    "ngInclude";
     return {
         getDrinks: function () {
             return $resource('/data/drinks').query();

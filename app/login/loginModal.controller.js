@@ -1,4 +1,5 @@
 angular.module('app').controller('loginModalCtrl', function ($scope, login, $uibModalInstance) {
+    "ngInclude";
     $scope.alerts = [];
 
     $scope.closeAlert = function(index) {

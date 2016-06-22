@@ -1,4 +1,5 @@
 module.exports = function ($routeProvider, $locationProvider) {
+        "ngInclude"
         $locationProvider.html5Mode(true);
         $routeProvider.when('/', {
             templateUrl: 'home/home.html',

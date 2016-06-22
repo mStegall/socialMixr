@@ -33,19 +33,19 @@ var config = {
         new webpack.ProvidePlugin({
             $: 'jquery',
             jQuery: 'jquery'
-        })
-        , new ngAnnotate({
+        }),
+        new ngAnnotate({
             add: true,
             // other ng-annotate options here
-        })
-        , new ExtractTextPlugin('style.css',{
+        }),
+        new ExtractTextPlugin('style.css',{
             allChunks: true
-        })
+        })        
     ]
 }
 
 if (process.env.NODE_ENV != "developement") {
-    config.plugins.push(new webpack.optimize.UglifyJsPlugin())
+    config.plugins.push(new webpack.optimize.UglifyJsPlugin());
 }
 
 module.exports = config;
