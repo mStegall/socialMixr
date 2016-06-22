@@ -1,4 +1,4 @@
-module.exports = function ($routeProvider, $locationProvider) {
+angular.module('app').config(function ($routeProvider, $locationProvider) {
         "ngInclude"
         $locationProvider.html5Mode(true);
         $routeProvider.when('/', {
@@ -33,4 +33,4 @@ module.exports = function ($routeProvider, $locationProvider) {
 
         $routeProvider.otherwise({redirectTo: '/'});
         
-    }
+    });
