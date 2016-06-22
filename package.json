@@ -5,8 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "webpack"
+    "test": "echo \"Error: no test specified\" && exit 1"
+    // "postinstall": "webpack"
   },
   "author": "Matthew Stegall",
   "license": "ISC",
