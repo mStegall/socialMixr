@@ -44,7 +44,7 @@ var config = {
     ]
 }
 
-if (process.env.NODE_ENV == "production") {
+if (process.env.NODE_ENV != "developement") {
     config.plugins.push(new webpack.optimize.UglifyJsPlugin())
 }
 
