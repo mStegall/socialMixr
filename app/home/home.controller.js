@@ -1,5 +1,3 @@
-var angular = require('angular');
-
 angular.module('app').controller('homeCtrl', function ($scope, drinkData, login) {
     $scope.sortOrder = 'name';
 

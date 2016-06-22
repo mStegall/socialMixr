@@ -1,5 +1,3 @@
-var angular = require('angular');
-
 angular.module('app').controller('loginModalCtrl', function ($scope, login, $uibModalInstance) {
     $scope.alerts = [];
 

@@ -1,5 +1,3 @@
-var angular = require('angular');
-
 angular.module('app').controller('navbarLoginCtrl',  function ($scope, login, $uibModal, userInfo, $location, $rootScope) {
 
     $scope.updateLoginState = function () {
