@@ -1,4 +1,5 @@
 angular.module('app').factory('userInfo', function () {
+    "ngInclude";
     var user = undefined;
 
     return {

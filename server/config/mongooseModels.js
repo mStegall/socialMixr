@@ -6,6 +6,7 @@ var crypto = require('crypto');
 
 var drinkSchema = new Schema({
     name: String,
+    category: String,
     type: String,
     subTypes: [String],
     description: String,

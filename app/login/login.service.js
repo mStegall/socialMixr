@@ -1,4 +1,6 @@
 angular.module('app').factory('login', function ($http, $q, userInfo, $rootScope) {
+    "ngInclude";
+    
     var loginState = false;
 
     return {

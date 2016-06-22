@@ -1,21 +1,25 @@
+require('jquery');
+var angular = require('angular');
+
 angular.module('app').directive('mySnooper', function ($window, $compile) {
+    "ngInclude";
     return {
         link: function (scope, element, attrs, controller) {
             scope.width = $window.innerWidth;
             scope.height = $window.innerHeight;
 
-            angular.element($window).resize(function () {
+            angular.element($window).on('resize', function () {
                 console.log("hello");
                 scope.width = $window.innerWidth;
                 scope.height = $window.innerHeight;
-                scope.$digest();
+                scope.$apply();
             });
 
-            var markup = "<p><strong>Viewport width: </strong>{{width}}</p>" +
-                "<br>" +
-                "<p><strong>Viewport Height: </strong>{{height}}</p>";
+            // var markup = "<p><strong>Viewport width: </strong>{{width}}</p>" +
+            //     "<br>" +
+            //     "<p><strong>Viewport Height: </strong>{{height}}</p>";
 
-            angular.element(element).html($compile(markup)(scope));
+            // angular.element(element).html($compile(markup)(scope));
         }
     };
 
@@ -31,8 +35,8 @@ angular.module('app').directive('mySnooper', function ($window, $compile) {
     //             scope.windowHeight = newValue.h;
     //             scope.windowWidth = newValue.w;
     //         }, true);
-    //
-    //         angular.element($window).resize(function () {
+    
+    //         angular.element($window).on('resize', function () {
     //             scope.$apply();
     //         })
     //     }

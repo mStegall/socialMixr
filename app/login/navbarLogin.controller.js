@@ -1,5 +1,5 @@
 angular.module('app').controller('navbarLoginCtrl',  function ($scope, login, $uibModal, userInfo, $location, $rootScope) {
-
+    "ngInclude";
     $scope.updateLoginState = function () {
         login.updateLoginState().then( function () {
             $scope.loggedIn = Boolean(login.logInState());
