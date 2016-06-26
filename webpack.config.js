@@ -26,6 +26,9 @@ var config = {
             }, {
                 test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, 
                 loader: 'url?limit=10000&mimetype=image/svg+xml'
+            }, { 
+                test: /\.jpg$/,    
+                loader: "url-loader?limit=10000&minetype=image/jpg" 
             }
         ]
     },

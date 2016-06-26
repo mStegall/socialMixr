@@ -1,3 +1,4 @@
+
 .navbar a.navbar-brand {
     padding: 5px;
     margin: 0;
@@ -29,3 +30,17 @@ body {
     display: none !important;
 }
 
+.mainJumbo {
+    color: white;
+    background-image: url("./images/barcounter-crop.jpg");
+    background-size: 1140px; 
+    height: 600px;
+    background-position: bottom left;
+    position: relative;
+}
+
+.mainJumbo h1 {
+    position: absolute;
+    bottom: 0px;
+    padding-bottom: 20px;
+}

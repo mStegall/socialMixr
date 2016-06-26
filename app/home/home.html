@@ -1,63 +1,20 @@
-<div class="row" style="padding-top: 10px">
-    <div class="col-xs-6">
-        <h1>Drink List</h1>
-    </div>
-    <div class="col-xs-6">
-        <form class="form-inline">
-            <input class="form-control" type="text" ng-model="name" placeholder="Name">
-            <input type="text" class="form-control" ng-model="type" placeholder="Type">
-        </form>
-    </div>
+<div class="jumbotron mainJumbo">
+    <h1>Welcome to socialMixr!</h1>
 </div>
 <div class="row">
-    <div class="col-xs-12" ng-cloak>
-        <table class="table table-striped" >
-            <thead>
-            <tr class="hidden-xs">
-                <th ng-repeat="(key, value) in {name:'Name', type: 'Type', manufacturer: 'Manufacturer', countryOfOrigin: 'Country of Origin', abv: 'ABV'}"
-                    ng-click="sortOrderSet(key)">
-                    {{value}} <span ng-class="sortArrows(key)" ng-style="setArrowColor(key)"></span>
-                </th>
-                <th></th>
-                <th ng-show="login"></th>
-            </tr>
-            <tr class="visible-xs">
-                <th ng-repeat="(key, value) in {name:'Name', type: 'Type', abv: 'ABV'}"
-                    ng-click="sortOrderSet(key)">
-                    {{value}} <span ng-class="sortArrows(key)" ng-style="setArrowColor(key)"></span>
-                </th>
-                <th></th>
-                <th ng-show="login"></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr ng-repeat="drink in drinks  | filter: {name: name, type: type} | orderBy: sortOrder" ng-class="{success : drink.fav}">
-                <td><a href="/drinkDetails/{{drink._id}}">{{drink.name}}</a></td>
-                <td>{{drink.type}}</td>
-                <td class="hidden-xs">{{drink.manufacturer}}</td>
-                <td class="hidden-xs">{{drink.countryOfOrigin}}</td>
-                <td>{{drink.abv | percentage}}</td>
-                <td><button class="btn btn-default btn-sm" ng-click="toggleLiquorFavorite(drink)">
-                    {{drink.fav ? "Unfavorite" : "Favorite"}}
-                </button></td>
-                <td ng-show="login"><button class="btn btn-default btn-sm btn-danger" data-toggle="modal" ng-click="openDeleteModal(drink)">Delete</button></td>
-            </tr>
-            </tbody>
-        </table>
+    <div class="col-sm-4">
+        <div class="well">
+            <h3>Test1</h3>
+        </div>
     </div>
-</div>
-
-<div class="modal fade" id="deleteDrinkModal" tabindex="-1">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1>Delete {{modalDrinkName}}</h1>
-            </div>
-            <div class="modal-body">Are you sure you want to delete {{modalDrinkName}}?</div>
-            <div class="modal-footer">
-                <button class="btn btn-sm btn-danger" ng-click="deleteDrink(modalDrinkId)">Delete</button>
-                <button class="btn btn-sm btn-default" data-dismiss="modal">Cancel</button>
-            </div>
+    <div class="col-sm-4">
+        <div class="well">
+            <h3>Test2</h3>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="well">
+            <h3>Test3</h3>
         </div>
     </div>
 </div>

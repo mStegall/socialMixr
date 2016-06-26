@@ -2,18 +2,20 @@ angular.module('app').config(function ($routeProvider, $locationProvider) {
         "ngInclude"
         $locationProvider.html5Mode(true);
         $routeProvider.when('/', {
-            templateUrl: 'home/home.html',
-            controller: 'homeCtrl'
+            templateUrl: 'home/home.html'
         });
         $routeProvider.when('/addComponent', {
             templateUrl: 'addItem/addComponent.html',
             controller: 'addComponentCtrl'
         });
+        $routeProvider.when('/drinkList', {
+            templateUrl: 'viewDrinks/drinkList.html',
+            controller: 'drinkListCtrl'
+        })
         $routeProvider.when('/drinkDetails/:drinkNum', {
             templateUrl: 'viewDrinks/drinkDetails.html',
             controller: 'drinkDetailsCtrl'
         });
-
         $routeProvider.when('/snoop', {
             templateUrl: 'snoop/snoop.html'
         });
@@ -22,7 +24,6 @@ angular.module('app').config(function ($routeProvider, $locationProvider) {
             templateUrl: 'viewDrinks/mixedDrinkDetails.html',
             controller: 'mixedDrinkDetails'
         });
-
         $routeProvider.when('/profile', {
            templateUrl: 'profile/userProfile.html',
             controller: 'userProfileCtrl',

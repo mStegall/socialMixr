@@ -25,7 +25,10 @@
         </div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li><a href="/addComponent" class="collapser">Add Drink</a></li>
+                <li><a href="/addComponent" class="collapser">Beer</a></li>
+                <li><a href="/drinkList" class="collapser">Wine</a></li>
+                <li><a href="/spirits" class="collapser">Spirits</a></li>
+                <li><a href="/mixedDrinks" class="collapser">Mixed Drinks</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right" ng-controller="navbarLoginCtrl">
@@ -45,6 +48,10 @@
 
 <div class="container" ng-view>
 
+</div>
+
+<div class="container" ng-if="false">
+    <h1>Hello</h1>
 </div>
 
 <script src="dist/app.bundle.js"></script>
