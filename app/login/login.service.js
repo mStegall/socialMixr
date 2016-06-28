@@ -45,9 +45,11 @@ angular.module('app').factory('login', function ($http, $q, userInfo, $rootScope
 
             return deferred.promise;
         },
+        
         logInState: function () {
             return loginState;
         },
+
         loggedIn: false
     }
 });

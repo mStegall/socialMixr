@@ -1,8 +1,20 @@
 angular.module('app').config(function ($routeProvider, $locationProvider) {
-        "ngInclude"
+        "ngInclude";
         $locationProvider.html5Mode(true);
         $routeProvider.when('/', {
             templateUrl: 'home/home.html'
+        });
+        $routeProvider.when('/beer', {
+            templateUrl: 'infoPages/beer.html'
+        });
+        $routeProvider.when('/wine', {
+            templateUrl: 'infoPages/wine.html'
+        });
+        $routeProvider.when('/spirits', {
+            templateUrl: 'infoPages/spirits.html'
+        });
+        $routeProvider.when('/mixedDrinks', {
+            templateUrl: 'infoPages/mixedDrinks.html'
         });
         $routeProvider.when('/addComponent', {
             templateUrl: 'addItem/addComponent.html',
@@ -11,7 +23,7 @@ angular.module('app').config(function ($routeProvider, $locationProvider) {
         $routeProvider.when('/drinkList', {
             templateUrl: 'viewDrinks/drinkList.html',
             controller: 'drinkListCtrl'
-        })
+        });
         $routeProvider.when('/drinkDetails/:drinkNum', {
             templateUrl: 'viewDrinks/drinkDetails.html',
             controller: 'drinkDetailsCtrl'
@@ -24,12 +36,16 @@ angular.module('app').config(function ($routeProvider, $locationProvider) {
             templateUrl: 'viewDrinks/mixedDrinkDetails.html',
             controller: 'mixedDrinkDetails'
         });
+        $routeProvider.when('/admin', {
+            templateUrl: 'admin/adminPanel.html',
+            controller: 'adminPanelCtrl',
+            resolve: {
+
+            }
+        });
         $routeProvider.when('/profile', {
            templateUrl: 'profile/userProfile.html',
-            controller: 'userProfileCtrl',
-            resolve: {
-                
-            }
+            controller: 'userProfileCtrl'
         });
 
         $routeProvider.otherwise({redirectTo: '/'});

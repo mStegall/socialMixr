@@ -7,8 +7,6 @@ require('bootswatch/sandstone/bootstrap.css');
 require('./common/style.css');
 
 angular.module('app', [require('angular-resource'), require('angular-route'), require('angular-ui-bootstrap')]);
-    
-require('./app.route.js');
 
 require('./drinkData/drinkData.service.js');
 require('./addItem/addComponent.controller.js');
@@ -17,3 +15,7 @@ require('./login');
 require('./profile');
 require('./snoop');
 require('./viewDrinks');
+require('./admin');
+require('./auth');
+
+require('./app.route.js');
