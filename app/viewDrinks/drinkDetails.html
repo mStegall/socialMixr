@@ -1,7 +1,9 @@
-<h1>{{drink.name}}</h1>
+<h1 style="display: inline">{{drink.name}}</h1>
+<a class="btn btn-info pull-right" style="display: inline" href="/editSimple/{{drink._id}}">Edit this drink</a>
 <ul>
     <li><strong>Type: </strong>{{drink.type}}</li>
     <li><strong>Manufacturer: </strong>{{drink.manufacturer}}</li>
     <li><strong>Country of Origin:</strong>{{drink.countryOfOrigin}}</li>
     <li><strong>ABV: </strong>{{drink.abv | percentage}}</li>
+    <li><strong>Blob: </strong>{{drink}}</li>
 </ul>

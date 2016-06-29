@@ -1,8 +1,14 @@
-angular.module('app').controller('drinkListCtrl', function ($scope, drinkData, login) {
+angular.module('app').controller('drinkListCtrl', function ($scope, drinkData, login, $routeParams) {
     "ngInclude";
     $scope.sortOrder = 'name';
+    $scope.filterCollapse = true;
+    $scope.isCollapsed = false;
 
-    $scope.drinks = drinkData.getDrinks();
+    if ($routeParams.category){
+        $scope.drinks = drinkData.getDrinksByCategory($routeParams.category);
+    } else {
+        $scope.drinks = drinkData.getDrinks();
+    }
 
     $scope.login = login.logInState();
 

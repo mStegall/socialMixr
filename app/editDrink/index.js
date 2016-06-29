@@ -1,0 +1,1 @@
+require('./editSimple.controller.js');

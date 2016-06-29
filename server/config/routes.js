@@ -4,10 +4,12 @@ var passport = require('passport');
 module.exports = function (app, config) {
     // Drink API
     app.get('/data/drinks', drinkData.drinks);
+    app.get('/data/drinks/:category', drinkData.drinksByCategory);
     app.post('/data/addDrink', drinkData.addDrink);
     app.get('/data/drink/:id', drinkData.drink);
     app.post('/data/deleteDrink', drinkData.deleteDrink);
     app.get('/data/mixedDrink/:id', drinkData.mixedDrink);
+    app.post('/data/updateDrink', drinkData.updateDrink);
 
     // Login Controls
     app.post('/login', function (req, res, next) {

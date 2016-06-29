@@ -20,7 +20,15 @@ angular.module('app').config(function ($routeProvider, $locationProvider) {
             templateUrl: 'addItem/addComponent.html',
             controller: 'addComponentCtrl'
         });
+        $routeProvider.when('/editSimple/:drinkId', {
+           templateUrl: 'editDrink/editSimple.html',
+            controller: 'editSimpleCtrl'
+        });
         $routeProvider.when('/drinkList', {
+            templateUrl: 'viewDrinks/drinkList.html',
+            controller: 'drinkListCtrl'
+        });
+        $routeProvider.when('/drinkList/:category', {
             templateUrl: 'viewDrinks/drinkList.html',
             controller: 'drinkListCtrl'
         });

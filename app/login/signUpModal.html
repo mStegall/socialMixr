@@ -6,19 +6,19 @@
     <uib-alert ng-repeat="alert in alerts" type="danger" close="closeAlert($index)">{{alert.msg}}</uib-alert>
     <form name="signUpForm">
         <div class="form-group" ng-class="checkValid(signUpForm.username)">
-            <label for="#Username">Username: </label>
-            <input type="text" id="Username" class="form-control" placeholder="Username" ng-model="username" name="username" required>
+            <label for="username">Username: </label>
+            <input type="text" id="username" class="form-control" placeholder="Username" ng-model="username" name="username" required>
         </div>
         <div class="form-group" ng-class="checkValid(signUpForm.email)">
-            <label for="#email">Email:</label>
+            <label for="email">Email:</label>
             <input type="email" class="form-control" id="email" ng-model="email" placeholder="Email" name="email" required>
         </div>
         <div class="form-group">
-            <label for="#Password">Password: </label>
-            <input type="password" id="Password" class="form-control" ng-model="password" placeholder="Password" required>
+            <label for="password">Password: </label>
+            <input type="password" id="password" class="form-control" ng-model="password" placeholder="Password" required>
         </div>
         <div class="form-group" ng-class="checkValid(signUpForm.confirmPassword)">
-            <label for="#passwordConfirm">Confirm Password</label>
+            <label for="passwordConfirm">Confirm Password</label>
             <input type="password" id="passwordConfirm" class="form-control" ng-model="passwordConfirm" placeholder="Confirm Password" ng-pattern="{{password}}" required>
         </div>
         <button class="btn btn-success pull-right" ng-click="submit()">Submit</button>
