@@ -30,15 +30,15 @@ $large: 992px;
 
 .navbar {
     .navbar-brand {
-        padding: 5px;
-        margin: 0;
+        padding: 5px 0;
+        margin: 0 !important;
         img {
             height: 50px;
         }
     }
 
     .navbar-header {
-        margin-left: 0 !important;
+        margin: 0 !important;
     }
 
     #smallBrand{
@@ -47,14 +47,8 @@ $large: 992px;
     }
 }
 
-@include medium{
-    .navbar-header {
-        margin-left: 10px !important;
-    }
-}
-
 body {
-    padding-top: 70px;
+    padding-top: 80px;
 }
 
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
