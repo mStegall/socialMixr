@@ -1,8 +1,9 @@
 var angular = require('angular');
+var _ = require('lodash');
 
 require('bootstrap/dist/js/bootstrap.js');
 require('./common/site.js');
-require('lodash');
+
 
 require('bootswatch/sandstone/bootstrap.css');
 require('./common/style.css');
