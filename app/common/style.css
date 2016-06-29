@@ -9,6 +9,10 @@
     vertical-align: middle;
 }
 
+.navbar-header {
+    margin-left: 0 !important;
+}
+
 @media screen and (min-width: 768px) {
     .navbar-header {
         margin-left: 10px !important;
