@@ -6,39 +6,39 @@
   "scripts": {
     "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall" : "./node_modules/.bin/webpack"
+    "postinstall": "./node_modules/.bin/webpack"
   },
   "author": "Matthew Stegall",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.15.1",
-    "compression": "^1.6.2",
-    "express": "^4.13.4",
-    "express-session": "^1.13.0",
-    "mongoose": "^4.4.19",
-    "morgan": "^1.7.0",
-    "passport": "^0.3.2",
-    "passport-local": "^1.0.0",
     "angular": "^1.5.7",
     "angular-resource": "^1.5.7",
     "angular-route": "^1.5.7",
     "angular-ui-bootstrap": "^1.3.3",
+    "body-parser": "^1.15.1",
     "bootstrap": "^3.3.6",
     "bootswatch": "^3.3.6",
+    "compression": "^1.6.2",
     "css-loader": "^0.23.1",
     "exports-loader": "^0.6.2",
+    "express": "^4.13.4",
+    "express-session": "^1.13.0",
     "extract-text-webpack-plugin": "^0.3.8",
     "file-loader": "^0.8.1",
     "imports-loader": "^0.6.3",
     "jquery": "^2.0.0",
+    "lodash": "^4.13.1",
+    "mongoose": "^4.4.19",
+    "morgan": "^1.7.0",
     "ng-annotate-webpack-plugin": "^0.1.3",
+    "node-sass": "^3.8.0",
     "nodemon": "^1.9.2",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "sass-loader": "^4.0.0",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.5",
-    "webpack": "^1.13.1",
-    "lodash": "^4.13.1"
+    "webpack": "^1.13.1"
   },
-  "devDependencies": {
-    
-  }
+  "devDependencies": {}
 }
