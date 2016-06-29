@@ -4,8 +4,10 @@ angular.module('app').factory('drinkData', function ($resource) {
         getDrinks: function () {
             return $resource('/data/drinks').query();
         },
+        getDrinksByCategory: function (category) {
+            return $resource('/data/drinks/:category', {category: category}).query();
+        },
         saveDrink: function (drink) {
-            drink.fav = false;
             return $resource('/data/addDrink').save(drink);
         },
         getDrink: function (drinkNum) {
@@ -16,6 +18,9 @@ angular.module('app').factory('drinkData', function ($resource) {
         },
         getMixedDrink: function (drinkId) {
             return $resource('/data/mixedDrink/:id', {id: drinkId}).get();
+        },
+        updateDrink: function (drink) {
+            return $resource('/data/updateDrink').save(drink);
         }
     };
 });

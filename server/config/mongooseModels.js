@@ -52,7 +52,8 @@ var userSchema = new Schema({
     firstName: String,
     lastName: String,
     salt: String,
-    password: String
+    password: String,
+    roles: [String]
 });
 
 var autoPop = function (next) {

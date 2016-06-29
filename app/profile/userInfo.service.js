@@ -1,10 +1,11 @@
-angular.module('app').factory('userInfo', function () {
+angular.module('app').factory('userInfo', function (authService) {
     "ngInclude";
     var user = undefined;
-
+    
     return {
         setUser: function (userInfo) {
             user = userInfo;
+            authService.setRoles(user.roles);
         },
         getUser: function () {
             return user;

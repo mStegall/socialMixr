@@ -1,3 +1,4 @@
+
 .navbar a.navbar-brand {
     padding: 5px;
     margin: 0;
@@ -6,6 +7,12 @@
 .navbar-brand {
     display: table-cell;
     vertical-align: middle;
+}
+
+@media screen and (min-width: 768px) {
+    .navbar-header {
+        margin-left: 10px !important;
+    }
 }
 
 .navbar img {
@@ -29,3 +36,89 @@ body {
     display: none !important;
 }
 
+.mainJumbo {
+    color: white;
+    height: 229px;
+    background: url("./images/barcounter-wide.jpg") bottom center;
+    background-size: auto 100%;
+    position: relative;
+}
+
+.jumboText {
+    width: 80%;
+    position: absolute;
+    bottom: 0;
+
+}
+
+.mainJumbo h1 {
+    font-size: 40px;
+    position: absolute;
+    bottom: 30px;
+}
+
+.mainJumbo h2 {
+    font-size: 4vw;
+    position: absolute;
+    bottom: 0;
+    padding-bottom: 5px;
+}
+
+@media screen and (min-width: 350px){
+    .mainJumbo h1{
+        font-size: 50px;
+    }
+}
+
+@media screen and (min-width: 544px){
+    .mainJumbo {
+        height: 275px;
+    }
+
+    .mainJumbo h1 {
+        bottom: 35px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .mainJumbo {
+        background-size: 1140px;
+        height: 459px;
+    }
+
+    .jumboText {
+        width: 50%;
+    }
+
+    .mainJumbo h2 {
+        font-size: 2.75vw;
+        padding-bottom: 20px;
+    }
+    .mainJumbo h1 {
+        font-size: 100px;
+        bottom: 70px;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .mainJumbo h2 {
+        font-size: 30px;
+    }
+}
+
+.btn-group-vertical{
+    width: 100%;
+    padding: 0 5%;
+}
+
+@media screen and (min-width: 768px){
+    .homeWell {
+        height: 300px;
+    }
+}
+
+.form-control:focus {
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 4px rgba(0, 0, 0, 0.3);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 4px rgba(0, 0, 0, 0.3);
+}

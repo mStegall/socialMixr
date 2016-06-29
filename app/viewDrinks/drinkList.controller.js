@@ -1,8 +1,28 @@
-angular.module('app').controller('homeCtrl', function ($scope, drinkData, login) {
+angular.module('app').controller('drinkListCtrl', function ($scope, drinkData, login, $routeParams) {
     "ngInclude";
     $scope.sortOrder = 'name';
+    $scope.filterCollapsed = true;
 
-    $scope.drinks = drinkData.getDrinks();
+    if ($routeParams.opt == 'type') {
+        $scope.filterCollapsed = false;
+        $('#type').focus().click();
+    }
+
+    if ($routeParams.category){
+        $scope.drinks = drinkData.getDrinksByCategory($routeParams.category);
+    } else {
+        $scope.drinks = drinkData.getDrinks();
+    }
+
+    $scope.drinks.$promise.then(function () {
+        var types = $scope.drinks.map(function(drink){
+            return drink.type;
+        });
+
+        types = _.uniq(types);
+
+        $scope.types = types;
+    });
 
     $scope.login = login.logInState();
 

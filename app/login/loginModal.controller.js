@@ -1,4 +1,4 @@
-angular.module('app').controller('loginModalCtrl', function ($scope, login, $uibModalInstance) {
+angular.module('app').controller('loginModalCtrl', function ($scope, login, $uibModalInstance, $uibModal) {
     "ngInclude";
     $scope.alerts = [];
 
@@ -15,6 +15,12 @@ angular.module('app').controller('loginModalCtrl', function ($scope, login, $uib
                 $scope.alerts = [{msg: response}]
             }
         );
+    };
+
+    $scope.signUp = function () {
+      var modal = $uibModal.open({
+          templateUrl: "login/signUpModal.html",
+          controller: "signUpModalCtrl"
+      })
     }
-    
 });

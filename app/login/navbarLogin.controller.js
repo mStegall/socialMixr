@@ -1,9 +1,10 @@
-angular.module('app').controller('navbarLoginCtrl',  function ($scope, login, $uibModal, userInfo, $location, $rootScope) {
+angular.module('app').controller('navbarLoginCtrl',  function ($scope, login, $uibModal, userInfo, $location, authService) {
     "ngInclude";
     $scope.updateLoginState = function () {
         login.updateLoginState().then( function () {
             $scope.loggedIn = Boolean(login.logInState());
-            $scope.user = userInfo.getUser()
+            $scope.user = userInfo.getUser();
+            $scope.isAdmin = authService.hasRole('admin');
         }, function () {
             $scope.loggedIn = Boolean(login.logInState());
         });

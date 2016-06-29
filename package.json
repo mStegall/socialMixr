@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "heroku-postbuild": "./node_modules/.bin/webpack"
+    "postinstall" : "./node_modules/.bin/webpack"
   },
   "author": "Matthew Stegall",
   "license": "ISC",
@@ -35,7 +35,8 @@
     "nodemon": "^1.9.2",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.5",
-    "webpack": "^1.13.1"
+    "webpack": "^1.13.1",
+    "lodash": "^4.13.1"
   },
   "devDependencies": {
     
