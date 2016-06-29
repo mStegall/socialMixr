@@ -40,7 +40,7 @@ angular.module('app').config(function ($routeProvider, $locationProvider) {
             templateUrl: 'viewDrinks/mixedDrinkDetails.html',
             controller: 'mixedDrinkDetails'
         });
-        $routeProvider.when('/admin', {
+        $routeProvider.when('/admin/:page?', {
             templateUrl: 'admin/adminPanel.html',
             controller: 'adminPanelCtrl',
             resolve: {

@@ -1,0 +1,41 @@
+<div ng-controller="adminSimpleDrinksCtrl">
+    <h1>Simple Drinks</h1>
+
+    <div class="row">
+        <div class="col-xs-12" ng-cloak>
+            <table class="table table-striped">
+                <thead>
+                <tr class="hidden-xs">
+                    <th ng-repeat="(key, value) in {name:'Name', type: 'Type', manufacturer: 'Manufacturer', countryOfOrigin: 'Country of Origin', abv: 'ABV'}"
+                        ng-click="sortOrderSet(key)">
+                        {{value}} <span ng-class="sortArrows(key)" ng-style="setArrowColor(key)"></span>
+                    </th>
+                    <th></th>
+                </tr>
+                <tr class="visible-xs">
+                    <th ng-repeat="(key, value) in {name:'Name', type: 'Type', abv: 'ABV'}"
+                        ng-click="sortOrderSet(key)">
+                        {{value}} <span ng-class="sortArrows(key)" ng-style="setArrowColor(key)"></span>
+                    </th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="drink in drinks  | filter: {name: search.name, type: search.type} | orderBy: sortOrder"
+                    ng-class="{success : drink.fav}">
+                    <td><a href="/drinkDetails/{{drink._id}}">{{drink.name}}</a></td>
+                    <td>{{drink.type}}</td>
+                    <td class="hidden-xs">{{drink.manufacturer}}</td>
+                    <td class="hidden-xs">{{drink.countryOfOrigin}}</td>
+                    <td>{{drink.abv | percentage}}</td>
+                    <td>
+                        <button class="btn btn-default btn-sm btn-success" data-toggle="modal"
+                                ng-click="approveDrink(drink._id)">Approve
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

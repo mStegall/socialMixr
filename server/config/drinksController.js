@@ -7,7 +7,7 @@ var mixedDrink = models.mixedDrink;
 // Deliver all simple drinks in database
 module.exports.drinks = function (req, res) {
     res.setHeader('Content-Type', 'application/json');
-    drink.find(function (err, results) {
+    drink.find({approved: true}, function (err, results) {
         if (err) {
             console.log(err);
         }
@@ -17,7 +17,7 @@ module.exports.drinks = function (req, res) {
 
 // Retrieve all drinks in in a category
 module.exports.drinksByCategory = function (req, res) {
-    drink.find({category: req.params.category}, function (err, results) {
+    drink.find({approved: true, category: req.params.category}, function (err, results) {
         if (err) {
             console.log(err);
         }

@@ -1,6 +1,8 @@
 var drinkData = require('./drinksController');
 var passport = require('passport');
 var User = require('./mongooseModels').user;
+var auth = require('./auth');
+var drink = require('./mongooseModels').drink;
 
 module.exports = function (app, config) {
     // Drink API
@@ -11,6 +13,27 @@ module.exports = function (app, config) {
     app.post('/data/deleteDrink', drinkData.deleteDrink);
     app.get('/data/mixedDrink/:id', drinkData.mixedDrink);
     app.post('/data/updateDrink', drinkData.updateDrink);
+
+    // Admin API
+    app.get('/data/users',auth.requiresRole('admin'), function (req, res) {
+        User.find(function (err, results) {
+            res.json(results);
+        })
+    });
+
+    app.get('/data/drinksUnapproved', auth.requiresRole('admin'), function (req, res) {
+        drink.find({approved: {$ne: true}}, function (err, results) {
+            console.log(results);
+            res.json(results);
+
+        })
+    });
+
+    app.post('/data/approveDrink/:id', auth.requiresRole('admin'), function (req, res) {
+       drink.update({_id: req.params.id}, {approved: true}, function () {
+           res.send('done');
+       })
+    });
 
     // Login Controls
     app.post('/login', function (req, res, next) {

@@ -1,5 +1,19 @@
-<div ng-cloak>
-    <h1>Admin Panel</h1>
-    <h3><strong>Roles: </strong>{{roles}}</h3>
-    <h3><strong>Admin: </strong>{{isAdmin}}</h3>
+<div class="row">
+    <div class="col-sm-3">
+        <ul class="list-group">
+            <li class="list-group-item"><a href="/admin/users">Users</a></li>
+            <li class="list-group-item"><a href="/admin/simpleDrinks">Simple Drinks</a></li>
+            <li class="list-group-item"><a href="/admin/mixedDrinks">Mixed Drinks</a></li>
+            <li class="list-group-item"><a href=""></a></li>
+            <li class="list-group-item"><a href=""></a></li>
+            <li class="list-group-item"><a href=""></a></li>
+            <li class="list-group-item"><a href=""></a></li>
+            <li class="list-group-item"><a href=""></a></li>
+            <li class="list-group-item"><a href=""></a></li>
+            <li class="list-group-item"><a href=""></a></li>
+        </ul>
+    </div>
+    <div class="col-sm-9">
+        <div ng-include="template"></div>
+    </div>
 </div>
