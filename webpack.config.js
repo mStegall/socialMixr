@@ -13,7 +13,7 @@ var config = {
         loaders: [
             {
                 test: /\.s?css$/,
-                loader: ExtractTextPlugin.extract('style-loader', 'css-loader', 'sass-loader')
+                loader: ExtractTextPlugin.extract('style', 'css!sass')
             }, {
                 test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/, 
                 loader: 'url?limit=10000&mimetype=application/font-woff'
