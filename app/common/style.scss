@@ -1,0 +1,150 @@
+$extraSmall: 350px;
+$small: 554px;
+$medium: 768px;
+$large: 992px;
+
+@mixin extraSmall {
+    @media screen and (min-width: #{$extraSmall}) {
+        @content
+    }
+}
+
+@mixin small {
+    @media screen and (min-width: #{$small}) {
+        @content
+    }
+}
+
+@mixin medium {
+    @media screen and (min-width: #{$medium}) {
+        @content
+    }
+}
+
+@mixin large {
+    @media screen and (min-width: #{$large}) {
+        @content
+    }
+}
+
+
+.navbar {
+    .navbar-brand {
+        padding: 5px;
+        margin: 0;
+        img {
+            height: 50px;
+        }
+    }
+
+    .navbar-header {
+        margin-left: 0 !important;
+    }
+
+    #smallBrand{
+        padding-top: 5px;
+        height: 40px;
+    }
+}
+
+@include medium{
+    .navbar-header {
+        margin-left: 10px !important;
+    }
+}
+
+body {
+    padding-top: 70px;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+}
+
+.mainJumbo {
+    color: white;
+    height: 229px;
+    background: url("./images/barcounter-wide.jpg") bottom center;
+    background-size: auto 100%;
+    position: relative;
+
+    h1 {
+        font-size: 40px;
+        position: absolute;
+        bottom: 30px;
+    }
+
+    h2 {
+        font-size: 4vw;
+        position: absolute;
+        bottom: 0;
+        padding-bottom: 5px;
+    }
+
+    .jumboText {
+        width: 80%;
+        position: absolute;
+        bottom: 0;
+
+    }
+}
+
+@include extraSmall{
+    .mainJumbo h1{
+        font-size: 50px;
+    }
+}
+
+@include small{
+    .mainJumbo {
+        height: 275px;
+
+        h1{
+            bottom: 35px;
+        }
+    }
+}
+
+@include medium{
+    .mainJumbo {
+        background-size: 1140px;
+        height: 459px;
+
+        h1 {
+            font-size: 100px;
+            bottom: 70px;
+        }
+
+        h2 {
+            font-size: 2.75vw;
+            padding-bottom: 20px;
+        }
+    }
+
+    .jumboText {
+        width: 50%;
+    }
+}
+
+@include  large{
+    .mainJumbo h2 {
+        font-size: 30px;
+    }
+}
+
+.btn-group-vertical{
+    width: 100%;
+    padding: 0 5%;
+}
+
+@include medium{
+    .homeWell {
+        height: 300px;
+    }
+}
+
+.form-control:focus {
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 4px rgba(0, 0, 0, 0.3);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 4px rgba(0, 0, 0, 0.3);
+}

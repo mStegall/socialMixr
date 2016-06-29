@@ -12,8 +12,8 @@ var config = {
     module: {
         loaders: [
             {
-                test: /\.css$/,
-                loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
+                test: /\.s?css$/,
+                loader: ExtractTextPlugin.extract('style', 'css!sass')
             }, {
                 test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/, 
                 loader: 'url?limit=10000&mimetype=application/font-woff'
@@ -28,7 +28,7 @@ var config = {
                 loader: 'url?limit=10000&mimetype=image/svg+xml'
             }, { 
                 test: /\.jpg$/,    
-                loader: "url-loader?limit=10000&minetype=image/jpg" 
+                loader: "url-loader?limit=10000&mimetype=image/jpg"
             }
         ]
     },
@@ -38,14 +38,14 @@ var config = {
             jQuery: 'jquery'
         }),
         new ngAnnotate({
-            add: true,
+            add: true
             // other ng-annotate options here
         }),
         new ExtractTextPlugin('style.css',{
             allChunks: true
         })        
     ]
-}
+};
 
 if (process.env.NODE_ENV != "developement") {
     config.plugins.push(new webpack.optimize.UglifyJsPlugin());
