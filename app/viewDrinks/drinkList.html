@@ -1,14 +1,19 @@
-<div class="row" style="padding-top: 10px">
-    <div class="col-xs-12 clearfix">
+<div class="row" style="padding-top: 10px; padding-bottom: 10px">
+    <div class="col-xs-12">
         <h1 style="display: inline">Drink List</h1>
-        <button class="btn btn-default pull-right" ng-click="filterCollapse = !filterCollapse">Filter</button>
+        <button class="btn btn-default pull-right" ng-click="filterCollapsed = !filterCollapsed">Filter</button>
     </div>
-
-    <div uib-collapse="filterCollapse">
-        <div class="col-sm-12 well" style="margin-top: 10px">
+</div>
+<div class="row">
+    <div uib-collapse="filterCollapsed" class="col-xs-12">
+        <div class="well" style="margin-top: 10px">
             <form class="form-inline">
-                <input class="form-control" type="text" ng-model="name" placeholder="Name">
-                <input type="text" class="form-control" ng-model="type" placeholder="Type">
+                <label for="name">Name</label>
+                <input id="name" class="form-control" type="text" ng-model="search.name" placeholder="Name">
+                <label for="type">Type</label>
+                <select name="type" id="type" ng-model="search.type" class="form-control">
+                    <option value="{{type}}" ng-repeat="type in types">{{type}}</option>
+                </select>
             </form>
         </div>
     </div>
@@ -36,7 +41,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="drink in drinks  | filter: {name: name, type: type} | orderBy: sortOrder" ng-class="{success : drink.fav}">
+            <tr ng-repeat="drink in drinks  | filter: {name: search.name, type: search.type} | orderBy: sortOrder" ng-class="{success : drink.fav}">
                 <td><a href="/drinkDetails/{{drink._id}}">{{drink.name}}</a></td>
                 <td>{{drink.type}}</td>
                 <td class="hidden-xs">{{drink.manufacturer}}</td>
@@ -54,9 +59,13 @@
 
 <div class="row">
     <div class="col-xs-12">
-        <div class="well">
-            <h3>Don't see something?<a href="/addComponent" style="margin-left: 10px" class="btn btn-default">Add it
-                here!</a></h3>
+        <div class="well hidden-xs">
+            <h3>Don't see something?<a href="/addComponent" style="margin-left: 10px" class="btn btn-default">Add it here!</a></h3>
+        </div>
+        <div class="well visible-xs">
+            <h3 class="text-center">Don't see something?</h3>
+            <br>
+            <a href="/addComponent" class="btn btn-default btn-block">Add it here!</a>
         </div>
     </div>
 </div>

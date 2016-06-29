@@ -24,11 +24,7 @@ angular.module('app').config(function ($routeProvider, $locationProvider) {
            templateUrl: 'editDrink/editSimple.html',
             controller: 'editSimpleCtrl'
         });
-        $routeProvider.when('/drinkList', {
-            templateUrl: 'viewDrinks/drinkList.html',
-            controller: 'drinkListCtrl'
-        });
-        $routeProvider.when('/drinkList/:category', {
+        $routeProvider.when('/drinkList/:category?/:opt?', {
             templateUrl: 'viewDrinks/drinkList.html',
             controller: 'drinkListCtrl'
         });

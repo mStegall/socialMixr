@@ -1,5 +1,6 @@
 var drinkData = require('./drinksController');
 var passport = require('passport');
+var User = require('./mongooseModels').user;
 
 module.exports = function (app, config) {
     // Drink API
@@ -42,6 +43,25 @@ module.exports = function (app, config) {
     app.post('/logout', function (req, res) {
         req.logOut();
         res.send("logged out");
+    });
+
+    // Sign up new user
+    app.post('/signUp', function (req, res) {
+        var salt = User.createSalt();
+        var user = {
+            username: req.body.username,
+            salt: salt,
+            password: User.hashPassword(salt, req.body.password),
+            email: req.body.email
+        };
+
+        User.create(user, function (err) {
+            if (err) {
+                console.log(err);
+            } else {
+                res.send('success');
+            }
+        })
     });
 
     // Route all others to Angular app

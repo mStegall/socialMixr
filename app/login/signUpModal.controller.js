@@ -1,4 +1,4 @@
-angular.module('app').controller('signUpModalCtrl', function ($scope, login, $uibModalInstance) {
+angular.module('app').controller('signUpModalCtrl', function ($scope, login, $uibModalInstance, $resource) {
     "ngInclude";
     $scope.alerts = [];
 
@@ -7,8 +7,9 @@ angular.module('app').controller('signUpModalCtrl', function ($scope, login, $ui
     };
     
     $scope.submit = function () {
-        
-    }
+        var req = $resource('/signUp').save($scope.user);
+        req.$promise.then($uibModalInstance.close("Signed Up"))
+    };
 
     $scope.checkValid = function (comp) {
         return {
@@ -16,5 +17,4 @@ angular.module('app').controller('signUpModalCtrl', function ($scope, login, $ui
             'has-error': comp.$invalid
         };
     };
-    
 });
