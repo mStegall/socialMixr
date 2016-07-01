@@ -22,7 +22,8 @@ var drinkSchema = new Schema({
         text: String
     }],
     creator: {type: String, ref: 'users'},
-    approved: Boolean
+    approved: {type: Boolean, default: false},
+    review: {type: Boolean, default: true}
 });
 
 var mixerSchema = new Schema({

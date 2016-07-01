@@ -35,5 +35,12 @@ angular.module('app').controller('adminSimpleDrinksCtrl', function ($scope, admi
             $scope.drinks = adminData.getUnapprovedDrinks();
         })
     };
+
+    $scope.rejectDrink = function (id) {
+        var del = adminData.rejectDrink(id);
+        del.$promise.then(function () {
+            $scope.drinks = adminData.getUnapprovedDrinks();
+        })
+    }
 });
  

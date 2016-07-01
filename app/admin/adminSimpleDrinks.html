@@ -29,9 +29,8 @@
                     <td class="hidden-xs">{{drink.countryOfOrigin}}</td>
                     <td>{{drink.abv | percentage}}</td>
                     <td>
-                        <button class="btn btn-default btn-sm btn-success" data-toggle="modal"
-                                ng-click="approveDrink(drink._id)">Approve
-                        </button>
+                        <button class="btn btn-sm btn-success" ng-click="approveDrink(drink._id)">Approve</button>
+                        <button class="btn btn-sm btn-danger" ng-click="rejectDrink(drink._id)">Reject</button>
                     </td>
                 </tr>
                 </tbody>

@@ -22,17 +22,23 @@ module.exports = function (app, config) {
     });
 
     app.get('/data/drinksUnapproved', auth.requiresRole('admin'), function (req, res) {
-        drink.find({approved: {$ne: true}}, function (err, results) {
-            console.log(results);
+        drink.find({review: true}, function (err, results) {
             res.json(results);
 
         })
     });
 
     app.post('/data/approveDrink/:id', auth.requiresRole('admin'), function (req, res) {
-       drink.update({_id: req.params.id}, {approved: true}, function () {
+       drink.update({_id: req.params.id}, {approved: true, review: false}, function () {
            res.send('done');
        })
+    });
+
+    app.post('/data/rejectDrink', auth.requiresRole('admin'), function (req, res) {
+        console.log(req.body);
+        drink.update({_id: req.body.id}, {review: false}, function () {
+            res.send('done');
+        })
     });
 
     // Login Controls
