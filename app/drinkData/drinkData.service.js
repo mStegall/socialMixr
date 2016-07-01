@@ -7,7 +7,7 @@ angular.module('app').factory('drinkData', function ($resource) {
         getDrinksByCategory: function (category) {
             return $resource('/data/drinks/:category', {category: category}).query();
         },
-        saveDrink: function (drink) {
+        addDrink: function (drink) {
             return $resource('/data/addDrink').save(drink);
         },
         getDrink: function (drinkNum) {

@@ -19,6 +19,5 @@ require('./snoop');
 require('./viewDrinks');
 require('./admin');
 require('./auth');
-require('./editDrink');
 
 require('./app.route.js');

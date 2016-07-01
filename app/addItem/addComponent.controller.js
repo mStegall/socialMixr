@@ -5,12 +5,6 @@ angular.module('app').controller('addComponentCtrl', function ($scope, drinkData
         $scope.edit = true;
         $scope.drink = drinkData.getDrink($routeParams.id);
     }
-    
-    
-    
-    $scope.regex = '0?\\.\\d+';
-
-    var formBlank = angular.copy($scope.drink);
 
     $scope.checkValid = function (comp) {
         return {
@@ -21,9 +15,10 @@ angular.module('app').controller('addComponentCtrl', function ($scope, drinkData
     
     $scope.saveDrink = function () {
         if ($scope.edit) {
-            drinkData.saveDrink(drink);
+            drinkData.saveDrink($scope.drink);
         } else {
-            drinkData.addDrink(drink);
+            drinkData.addDrink($scope.drink);
         }
+        $window.history.back();
     }
 });
