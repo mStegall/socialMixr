@@ -16,7 +16,7 @@ angular.module('app').config(function ($routeProvider, $locationProvider) {
         $routeProvider.when('/mixedDrinks', {
             templateUrl: 'infoPages/mixedDrinks.html'
         });
-        $routeProvider.when('/addComponent', {
+        $routeProvider.when('/addComponent/:id?', {
             templateUrl: 'addItem/addComponent.html',
             controller: 'addComponentCtrl'
         });

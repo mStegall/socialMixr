@@ -21,6 +21,7 @@ var drinkSchema = new Schema({
         rating: Number,
         text: String
     }],
+    creator: {type: String, ref: 'users'},
     approved: Boolean
 });
 

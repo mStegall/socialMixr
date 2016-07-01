@@ -1,5 +1,13 @@
-angular.module('app').controller('addComponentCtrl', function ($scope, drinkData, $log) {
+angular.module('app').controller('addComponentCtrl', function ($scope, drinkData, $log, $window, $routeParams) {
     "ngInclude";
+    
+    if ($routeParams.id) {
+        $scope.edit = true;
+        $scope.drink = drinkData.getDrink($routeParams.id);
+    }
+    
+    
+    
     $scope.regex = '0?\\.\\d+';
 
     var formBlank = angular.copy($scope.drink);
@@ -11,9 +19,11 @@ angular.module('app').controller('addComponentCtrl', function ($scope, drinkData
         };
     };
     
-    $scope.addDrink = function (drink) {
-        drinkData.saveDrink(drink);
-        $scope.drink = formBlank;
-        $scope.componentInput.$setPristine();
+    $scope.saveDrink = function () {
+        if ($scope.edit) {
+            drinkData.saveDrink(drink);
+        } else {
+            drinkData.addDrink(drink);
+        }
     }
 });
