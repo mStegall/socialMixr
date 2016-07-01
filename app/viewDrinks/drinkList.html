@@ -29,7 +29,7 @@
                     {{value}} <span ng-class="sortArrows(key)" ng-style="setArrowColor(key)"></span>
                 </th>
                 <th></th>
-                <th ng-show="login"></th>
+
             </tr>
             <tr class="visible-xs">
                 <th ng-repeat="(key, value) in {name:'Name', type: 'Type', abv: 'ABV'}"
@@ -37,7 +37,6 @@
                     {{value}} <span ng-class="sortArrows(key)" ng-style="setArrowColor(key)"></span>
                 </th>
                 <th></th>
-                <th ng-show="login"></th>
             </tr>
             </thead>
             <tbody>
@@ -50,7 +49,6 @@
                 <td><button class="btn btn-default btn-sm" ng-click="toggleLiquorFavorite(drink)">
                     {{drink.fav ? "Unfavorite" : "Favorite"}}
                 </button></td>
-                <td ng-show="login"><button class="btn btn-default btn-sm btn-danger" data-toggle="modal" ng-click="openDeleteModal(drink)">Delete</button></td>
             </tr>
             </tbody>
         </table>
@@ -70,17 +68,3 @@
     </div>
 </div>
 
-<div class="modal fade" id="deleteDrinkModal" tabindex="-1">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1>Delete {{modalDrinkName}}</h1>
-            </div>
-            <div class="modal-body">Are you sure you want to delete {{modalDrinkName}}?</div>
-            <div class="modal-footer">
-                <button class="btn btn-sm btn-danger" ng-click="deleteDrink(modalDrinkId)">Delete</button>
-                <button class="btn btn-sm btn-default" data-dismiss="modal">Cancel</button>
-            </div>
-        </div>
-    </div>
-</div>
