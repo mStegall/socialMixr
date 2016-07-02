@@ -4,14 +4,17 @@ angular.module('app').factory('adminData', function ($resource) {
         getUsers: function () {
             return $resource('/data/users').query()
         },
-        getUnapprovedDrinks: function () {
-            return $resource('/data/drinksUnapproved').query();
+        getReviewDrinks: function () {
+            return $resource('/data/drinksReview').query();
         },
         approveDrink: function (id) {
-            return $resource('/data/approveDrink/:id', {id: id}).save();
+            return $resource('/data/approveDrink/:id').save({id: id});
         },
         rejectDrink: function (id) {
             return $resource('/data/rejectDrink').save({id: id});
+        },
+        getUnapprovedDrinks: function () {
+            return $resource('/data/drinksUnapproved').query();
         }
     }
 });

@@ -1,5 +1,5 @@
-angular.module('app').component('adminSimpleDrinks', {
-    templateUrl: '/admin/adminSimpleDrinks.html',
+angular.module('app').component('adminUnapprovedDrinks', {
+    templateUrl: '/admin/adminUnapprovedDrinks.html',
     controller: adminSimpleDrinksCtrl
 });
 
@@ -11,7 +11,7 @@ function adminSimpleDrinksCtrl(adminData) {
     mv.$onInit = function () {
         mv.sortOrder = 'name';
         mv.toggle = true;
-        mv.drinks = adminData.getReviewDrinks();
+        mv.drinks = adminData.getUnapprovedDrinks();
     };
 
     mv.sortOrderSet = function (field) {
@@ -36,18 +36,6 @@ function adminSimpleDrinksCtrl(adminData) {
         } else {
             return {color: '#ccc'};
         }
-    };
-
-    mv.approveDrink = function (id) {
-        var drink = adminData.approveDrink(id);
-
-        drink.$promise.then(removeDrink(id))
-
-    };
-
-    mv.rejectDrink = function (id) {
-        var del = adminData.rejectDrink(id);
-        del.$promise.then(removeDrink(id))
     };
 
     function removeDrink(id) {

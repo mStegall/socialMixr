@@ -1,0 +1,18 @@
+<div class="row">
+    <div class="clearfix col-xs-12"><h1 style="display: inline">{{$ctrl.label}}</h1>
+        <button class="btn btn-default pull-right" ng-click="$ctrl.toggle = !$ctrl.toggle">Filter</button>
+    </div>
+</div>
+
+<div class="row">
+    <div uib-collapse="$ctrl.toggle" class="col-xs-12">
+        <div class="well" style="margin-top: 10px">
+            <form class="form-inline">
+                <my-text  ng-repeat="text in $ctrl.texts" label="{{text.label}}" value="text.value"></my-text>
+                {{$ctrl.texts}}
+                <my-text label="text" value="text"></my-text>
+                <ng-transclude></ng-transclude>
+            </form>
+        </div>
+    </div>
+</div>

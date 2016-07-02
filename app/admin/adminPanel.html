@@ -3,8 +3,9 @@
         <ul class="list-group">
             <li class="list-group-item"><a href="/admin/users">Users</a></li>
             <li class="list-group-item"><a href="/admin/simpleDrinks">Approve Simple Drinks</a></li>
+            <li class="list-group-item"><a href="/admin/unapprovedDrinks">Unapproved Drinks</a></li>
             <li class="list-group-item"><a href="/admin/mixedDrinks">Mixed Drinks</a></li>
-            <li class="list-group-item"><a href=""></a></li>
+
             <li class="list-group-item"><a href=""></a></li>
             <li class="list-group-item"><a href=""></a></li>
             <li class="list-group-item"><a href=""></a></li>
@@ -13,7 +14,9 @@
             <li class="list-group-item"><a href=""></a></li>
         </ul>
     </div>
-    <div class="col-sm-9">
-        <div ng-include="template"></div>
+    <div class="col-sm-9" ng-switch="page">
+        <admin-users ng-switch-when="users"></admin-users>
+        <admin-simple-drinks ng-switch-when="simpleDrinks"></admin-simple-drinks>
+        <admin-unapproved-drinks ng-switch-when="unapprovedDrinks"></admin-unapproved-drinks>
     </div>
 </div>

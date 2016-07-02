@@ -1,10 +1,13 @@
 var drinkData = require('./drinksController');
 var passport = require('passport');
-var User = require('./mongooseModels').user;
+var models = require('./mongooseModels')
 var auth = require('./auth');
-var drink = require('./mongooseModels').drink;
+var adminController = require('./adminController');
+var User = models.user;
+var drink = models.drink;
 
 module.exports = function (app, config) {
+    
     // Drink API
     app.get('/data/drinks', drinkData.drinks);
     app.get('/data/drinks/:category', drinkData.drinksByCategory);
@@ -15,31 +18,11 @@ module.exports = function (app, config) {
     app.post('/data/updateDrink', drinkData.updateDrink);
 
     // Admin API
-    app.get('/data/users',auth.requiresRole('admin'), function (req, res) {
-        User.find(function (err, results) {
-            res.json(results);
-        })
-    });
-
-    app.get('/data/drinksUnapproved', auth.requiresRole('admin'), function (req, res) {
-        drink.find({review: true}, function (err, results) {
-            res.json(results);
-
-        })
-    });
-
-    app.post('/data/approveDrink/:id', auth.requiresRole('admin'), function (req, res) {
-       drink.update({_id: req.params.id}, {approved: true, review: false}, function () {
-           res.send('done');
-       })
-    });
-
-    app.post('/data/rejectDrink', auth.requiresRole('admin'), function (req, res) {
-        console.log(req.body);
-        drink.update({_id: req.body.id}, {review: false}, function () {
-            res.send('done');
-        })
-    });
+    app.get('/data/users',auth.requiresRole('admin'), adminController.getUsers);
+    app.get('/data/drinksReview', auth.requiresRole('admin'), adminController.getReviewDrinks);
+    app.post('/data/approveDrink', auth.requiresRole('admin'), adminController.approveDrink);
+    app.post('/data/rejectDrink', auth.requiresRole('admin'), adminController.rejectDrink);
+    app.get('/data/drinksUnapproved', auth.requiresRole('admin'), adminController.getUnapprovedDrinks);
 
     // Login Controls
     app.post('/login', function (req, res, next) {
@@ -62,6 +45,7 @@ module.exports = function (app, config) {
         })(req,res,next);
         // res.send(req.user);
     });
+
     app.get('/loggedin', function (req, res) {
         if (req.isAuthenticated()) {
             res.status(200).send(req.user);
@@ -69,6 +53,7 @@ module.exports = function (app, config) {
             res.status(401).send();
         }
     });
+
     app.post('/logout', function (req, res) {
         req.logOut();
         res.send("logged out");

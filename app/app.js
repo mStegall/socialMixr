@@ -12,12 +12,12 @@ angular.module('app', [require('angular-resource'), require('angular-route'), re
 
 require('./drinkData/drinkData.service.js');
 require('./addItem/addComponent.controller.js');
-require('./common/percentage.filter.js');
 require('./login');
 require('./profile');
 require('./snoop');
 require('./viewDrinks');
 require('./admin');
 require('./auth');
+require('./common');
 
 require('./app.route.js');

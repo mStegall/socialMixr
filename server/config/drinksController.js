@@ -21,7 +21,7 @@ module.exports.drinksByCategory = function (req, res) {
         if (err) {
             console.log(err);
         }
-        res.send(results);
+        res.json(results);
     })
 };
 
