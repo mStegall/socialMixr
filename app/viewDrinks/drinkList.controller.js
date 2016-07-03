@@ -9,6 +9,7 @@ angular.module('app').controller('drinkListCtrl', function ($scope, drinkData, l
     }
 
     if ($routeParams.category){
+        $scope.category = $routeParams.category;
         $scope.drinks = drinkData.getDrinksByCategory($routeParams.category);
     } else {
         $scope.drinks = drinkData.getDrinks();

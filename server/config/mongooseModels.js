@@ -20,7 +20,10 @@ var drinkSchema = new Schema({
         userId: {type: String, ref: 'users'},
         rating: Number,
         text: String
-    }]
+    }],
+    creator: {type: String, ref: 'users'},
+    approved: {type: Boolean, default: false},
+    review: {type: Boolean, default: true}
 });
 
 var mixerSchema = new Schema({

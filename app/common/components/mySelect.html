@@ -1,0 +1,4 @@
+<label for="type">{{$ctrl.label}}</label>
+<select name="type" id="type" ng-model="$ctrl.value" class="form-control">
+    <option value="{{item}}" ng-repeat="item in $ctrl.array">{{item}}</option>
+</select>
