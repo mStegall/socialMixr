@@ -47,7 +47,7 @@ var config = {
     ]
 };
 
-if (process.env.NODE_ENV != "developement") {
+if (process.env.NODE_ENV != "development") {
     config.plugins.push(new webpack.optimize.UglifyJsPlugin());
 }
 
