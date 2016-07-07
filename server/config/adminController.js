@@ -7,7 +7,8 @@ module.exports = {
     rejectDrink: rejectDrink,
     getUsers: getUsers,
     getReviewDrinks: getReviewDrinks,
-    getUnapprovedDrinks: getUnapprovedDrinks
+    getUnapprovedDrinks: getUnapprovedDrinks,
+    flagDrink: flagDrink
 };
 
 
@@ -42,5 +43,11 @@ function getReviewDrinks(req, res) {
 function getUnapprovedDrinks(req, res) {
     drink.find({approved: false, review: false}, function (err, results) {
         res.json(results);
+    })
+}
+
+function flagDrink(req, res) {
+    drink.update({_id: req.body.id}, {approved: false, review: true}, function () {
+        res.sendStatus(200);
     })
 }
