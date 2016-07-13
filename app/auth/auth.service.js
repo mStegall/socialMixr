@@ -8,7 +8,7 @@ angular.module('app').factory('authService', function ($location) {
             roles = userRoles;
         },
         hasRole: function (role) {
-            return roles === undefined || roles.indexOf(role) !== -1;
+            return roles !== undefined && roles.indexOf(role) !== -1;
 
         },
         getRoles: function () {

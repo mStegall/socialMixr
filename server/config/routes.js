@@ -23,6 +23,7 @@ module.exports = function (app, config) {
     app.post('/data/approveDrink', auth.requiresRole('admin'), adminController.approveDrink);
     app.post('/data/rejectDrink', auth.requiresRole('admin'), adminController.rejectDrink);
     app.get('/data/drinksUnapproved', auth.requiresRole('admin'), adminController.getUnapprovedDrinks);
+    app.post('/data/flagDrink', auth.requiresRole('admin'), adminController.flagDrink);
 
     // Login Controls
     app.post('/login', function (req, res, next) {
