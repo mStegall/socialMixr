@@ -1,0 +1,11 @@
+<div class="form-group">
+    <div class="col-sm-9 ">
+        <input type="text" class="form-control" ng-model="$ctrl.ingredient" uib-typeahead="drink as drink.name for drink in $ctrl.drinks | filter: {name:$viewValue}" ng-blur="$ctrl.update()" placeholder="Ingredient">
+    </div>
+    <div class="col-sm-3">
+        <div class="input-group">
+            <input type="number" class="form-control" placeholder="Amount" ng-blur="$ctrl.update()" ng-model="$ctrl.amount" min="0" step=".5">
+            <span class="input-group-addon">oz</span>
+        </div>
+    </div>
+</div>

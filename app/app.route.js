@@ -16,12 +16,11 @@ angular.module('app').config(function ($routeProvider, $locationProvider) {
     $routeProvider.when('/mixedDrinks', {
         templateUrl: 'infoPages/mixedDrinks.html'
     });
+    $routeProvider.when('/addMixedDrink/:mode?/:opt?', {
+        template: '<add-edit-mixed-drink></add-edit-mixed-drink>'
+    })
     $routeProvider.when('/addComponent/:mode?/:opt?', {
         template: '<add-component></add-component>'
-    });
-    $routeProvider.when('/editDrink/:id', {
-        templateUrl: 'addItem/addComponent.html',
-        controller: 'addComponentCtrl'
     });
     $routeProvider.when('/drinkList/:category?/:opt?', {
         templateUrl: 'viewDrinks/drinkList.html',
