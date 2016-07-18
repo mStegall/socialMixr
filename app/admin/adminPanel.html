@@ -1,20 +1,20 @@
 <div class="row">
-    <div class="col-sm-3">
-        <ul class="list-group">
-            <li class="list-group-item"><a href="/admin/users">Users</a></li>
-            <li class="list-group-item"><a href="/admin/simpleDrinks">Approve Simple Drinks</a></li>
-            <li class="list-group-item"><a href="/admin/unapprovedDrinks">Unapproved Drinks</a></li>
-            <li class="list-group-item"><a href="/admin/mixedDrinks">Mixed Drinks</a></li>
-
-            <li class="list-group-item"><a href=""></a></li>
-            <li class="list-group-item"><a href=""></a></li>
-            <li class="list-group-item"><a href=""></a></li>
-            <li class="list-group-item"><a href=""></a></li>
-            <li class="list-group-item"><a href=""></a></li>
-            <li class="list-group-item"><a href=""></a></li>
+    <div class="col-xs-12 visible-xs" id="admin-dropdown" uib-dropdown>
+        <button id="single-button" type="button" class="btn btn-default" uib-dropdown-toggle>
+            {{pageTitle}}<span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+            <li ng-repeat="item in list" role="menuitem"><a ng-href="/admin/{{item.name}}">{{item.title}}</a></li>
         </ul>
     </div>
-    <div class="col-sm-9" ng-switch="page">
+    
+    <div class="col-sm-3 hidden-xs">
+        <ul class="list-group">
+            <li class="list-group-item" ng-repeat="item in list" role="menuitem"><a ng-href="/admin/{{item.name}}">{{item.title}}</a></li>
+
+        </ul>
+    </div>
+    <div class="col-xs-12 col-sm-9" ng-switch="page">
         <admin-users ng-switch-when="users"></admin-users>
         <admin-simple-drinks ng-switch-when="simpleDrinks"></admin-simple-drinks>
         <admin-unapproved-drinks ng-switch-when="unapprovedDrinks"></admin-unapproved-drinks>
