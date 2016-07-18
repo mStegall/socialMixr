@@ -1,7 +1,35 @@
 angular.module('app').controller('drinkListCtrl', function ($scope, drinkData, login, $routeParams) {
     "ngInclude";
+    $scope.columns = [
+        {
+            name: 'name',
+            title: 'Name'
+        },
+        {
+            name: 'type',
+            title: 'Type'
+        },
+        {
+            name: 'manufacturer',
+            title: 'Manufacturer',
+            hiddenXs: true
+        },
+        {
+            name: 'countryOfOrigin',
+            title: 'Country of Origin',
+            hiddenXs: true
+        },
+        {
+            name: 'abv',
+            title: 'ABV'
+        }
+    ]
+    
+
     $scope.sortOrder = 'name';
     $scope.filterCollapsed = true;
+
+    
 
     if ($routeParams.opt == 'type') {
         $scope.filterCollapsed = false;

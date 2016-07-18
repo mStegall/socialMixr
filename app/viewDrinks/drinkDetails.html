@@ -1,16 +1,13 @@
 <div class="row">
-    <h1 class="col-xs-9">{{drink.name}}</h1>
+    <h1 class="col-xs-9">{{$ctrl.drink.name}}</h1>
     <div class="col-xs-3">
         <button class="btn btn-danger pull-right" ng-show="admin" ng-click="flagDrink()">Flag Drink</button>
-        <a class="btn btn-info pull-right" href="/addComponent/edit/{{drink._id}}">Edit this drink</a>
+        <a class="btn btn-info pull-right" ng-href="/addComponent/edit/{{$ctrl.drink._id}}">Edit this drink</a>
     </div>
 </div>
-
 <ul>
-    <li><strong>Type: </strong>{{drink.type}}</li>
-    <li><strong>Manufacturer: </strong>{{drink.manufacturer}}</li>
-    <li><strong>Country of Origin:</strong>{{drink.countryOfOrigin}}</li>
-    <li><strong>ABV: </strong>{{drink.abv | percentage}}</li>
-    <li><strong>Blob: </strong>{{drink}}</li>
-    <li><strong>Admin: </strong>{{admin}}</li>
+    <li><strong>Type: </strong>{{$ctrl.drink.type}}</li>
+    <li><strong>Manufacturer: </strong>{{$ctrl.drink.manufacturer}}</li>
+    <li><strong>Country of Origin:</strong>{{$ctrl.drink.countryOfOrigin}}</li>
+    <li><strong>ABV: </strong>{{$ctrl.drink.abv | percentage}}</li>
 </ul>

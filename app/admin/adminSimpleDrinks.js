@@ -6,52 +6,52 @@ angular.module('app').component('adminSimpleDrinks', {
 function adminSimpleDrinksCtrl(adminData) {
     "ngInclude";
 
-    var mv = this;
+    var vm = this;
 
-    mv.$onInit = function () {
-        mv.sortOrder = 'name';
-        mv.toggle = true;
-        mv.drinks = adminData.getReviewDrinks();
+    vm.$onInit = function () {
+        vm.sortOrder = 'name';
+        vm.toggle = true;
+        vm.drinks = adminData.getReviewDrinks();
     };
 
-    mv.sortOrderSet = function (field) {
-        if (mv.sortOrder == field) {
-            mv.sortOrder = '-' + field;
+    vm.sortOrderSet = function (field) {
+        if (vm.sortOrder == field) {
+            vm.sortOrder = '-' + field;
         } else {
-            mv.sortOrder = field;
+            vm.sortOrder = field;
         }
     };
 
-    mv.sortArrows = function (field) {
+    vm.sortArrows = function (field) {
         return {
             'glyphicon': true,
-            'glyphicon-triangle-bottom': mv.sortOrder != '-' + field,
-            'glyphicon-triangle-top': mv.sortOrder == '-' + field
+            'glyphicon-triangle-bottom': vm.sortOrder != '-' + field,
+            'glyphicon-triangle-top': vm.sortOrder == '-' + field
         };
     };
 
-    mv.setArrowColor = function (field) {
-        if (mv.sortOrder.includes(field)) {
+    vm.setArrowColor = function (field) {
+        if (vm.sortOrder.includes(field)) {
             return {color: 'black'};
         } else {
             return {color: '#ccc'};
         }
     };
 
-    mv.approveDrink = function (id) {
+    vm.approveDrink = function (id) {
         var drink = adminData.approveDrink(id);
 
         drink.$promise.then(removeDrink(id))
 
     };
 
-    mv.rejectDrink = function (id) {
+    vm.rejectDrink = function (id) {
         var del = adminData.rejectDrink(id);
         del.$promise.then(removeDrink(id))
     };
 
     function removeDrink(id) {
-        mv.drinks = mv.drinks.filter(function(obj) {
+        vm.drinks = vm.drinks.filter(function(obj) {
             return obj._id != id;
         })
     }

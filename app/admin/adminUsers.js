@@ -1,5 +1,5 @@
 angular.module('app').component('adminUsers', {
-    templateUrl: '/admin/adminUsersTable.html',
+    templateUrl: '/admin/adminUsers.html',
     controller: adminUsersCtrl
 });
 

@@ -27,25 +27,20 @@ angular.module('app').config(function ($routeProvider, $locationProvider) {
         templateUrl: 'viewDrinks/drinkList.html',
         controller: 'drinkListCtrl'
     });
-    $routeProvider.when('/drinkDetails/:drinkNum', {
-        templateUrl: 'viewDrinks/drinkDetails.html',
-        controller: 'drinkDetailsCtrl'
+    $routeProvider.when('/drinkDetails/:id', {
+        template: function (params) {
+            return '<drink-details id="' + params.id + '"></drink-details>'
+        }
     });
     $routeProvider.when('/snoop', {
         templateUrl: 'snoop/snoop.html'
-    });
-
-    $routeProvider.when('/mixedDrink/:drinkId', {
-        templateUrl: 'viewDrinks/mixedDrinkDetails.html',
-        controller: 'mixedDrinkDetails'
     });
     $routeProvider.when('/admin/:page?', {
         templateUrl: 'admin/adminPanel.html',
         controller: 'adminPanelCtrl'
     });
     $routeProvider.when('/profile', {
-        templateUrl: 'profile/userProfile.html',
-        controller: 'userProfileCtrl'
+        template: '<user-profile></user-profile>'
     });
     $routeProvider.otherwise({redirectTo: '/'});
 

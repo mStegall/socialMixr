@@ -10,7 +10,7 @@ require('./common/style.scss');
 
 angular.module('app', [require('angular-resource'), require('angular-route'), require('angular-ui-bootstrap')]);
 
-require('./drinkData/drinkData.service.js');
+require('./drinkData');
 require('./addItem');
 require('./login');
 require('./profile');

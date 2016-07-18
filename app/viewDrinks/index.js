@@ -1,3 +1,2 @@
-require('./drinkDetails.controller');
-require('./mixedDrinkDetails.controller');
+require('./drinkDetails');
 require('./drinkList.controller')
