@@ -6,7 +6,7 @@ angular.module('app').component('adminUsers', {
 
 function adminUsersCtrl(adminData) {
     "ngInject"
-    var mv = this;
-    mv.toggle = true;
-    mv.users = adminData.getUsers();
+    var vm = this;
+    vm.toggle = true;
+    vm.users = adminData.getUsers();
 }
