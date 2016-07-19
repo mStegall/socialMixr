@@ -54,5 +54,9 @@
             }
             $window.history.back();
         }
+
+        vm.cancel = function () {
+            $window.history.back();
+        }
     }
 })();

@@ -1,14 +1,16 @@
-angular.module('app').component('userProfile', {
-    templateUrl: '/profile/userProfile.html',
-    controller: userProfileCtrl
-})
+(function () {
+    angular.module('app').component('userProfile', {
+        templateUrl: '/profile/userProfile.html',
+        controller: userProfileCtrl
+    })
 
-function userProfileCtrl(userInfo) {
-    "ngInclude";
-    
-    var vm = this;
+    function userProfileCtrl(userInfo) {
+        "ngInclude";
 
-    vm.$onInit = function () {
-        vm.user = userInfo.getUser();    
-    }    
-}
+        var vm = this;
+
+        vm.$onInit = function () {
+            vm.user = userInfo.getUser();
+        }
+    }
+})()

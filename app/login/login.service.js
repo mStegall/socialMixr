@@ -1,3 +1,4 @@
+(function(){
 angular.module('app').factory('login', function ($http, $q, userInfo, $rootScope, $uibModal) {
     "ngInclude";
 
@@ -72,4 +73,5 @@ angular.module('app').factory('login', function ($http, $q, userInfo, $rootScope
 
         return deferred.promise;
     }
-});
+})
+})()
