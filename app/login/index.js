@@ -1,4 +1,4 @@
 require('./login.service');
-require('./loginModal');
+require('./logInModal');
 require('./navbarLogin');
 require('./signUpModal');

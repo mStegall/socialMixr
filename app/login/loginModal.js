@@ -1,7 +1,7 @@
 (function () {
-    angular.module('app').controller('loginModalCtrl', loginModalCtrl)
+    angular.module('app').controller('logInModalCtrl', loginModalCtrl)
 
-    function loginModalCtrl(login, $uibModal, $uibModalInstance) {
+    function logInModalCtrl(login, $uibModal, $uibModalInstance) {
         "ngInclude";
 
         var vm = this;

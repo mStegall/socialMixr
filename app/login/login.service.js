@@ -17,8 +17,8 @@ angular.module('app').factory('login', function ($http, $q, userInfo, $rootScope
 
     function logInModal () {
          $uibModal.open({
-            templateUrl: '/login/loginModal.html',
-            controller: 'loginModalCtrl',
+            templateUrl: '/login/logInModal.html',
+            controller: 'logInModalCtrl',
             controllerAs: '$ctrl'
         });
     }
