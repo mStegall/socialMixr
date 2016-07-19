@@ -4,7 +4,7 @@ var mixedDrink = models.mixedDrink;
 
 
 
-// Deliver all simple drinks in database
+// Deliver all approved simple drinks in database
 module.exports.drinks = function (req, res) {
     res.setHeader('Content-Type', 'application/json');
     drink.find({approved: true}, function (err, results) {
@@ -15,7 +15,7 @@ module.exports.drinks = function (req, res) {
     });
 };
 
-// Retrieve all drinks in in a category
+// Retrieve all approved drinks in in a category
 module.exports.drinksByCategory = function (req, res) {
     drink.find({approved: true, category: req.params.category}, function (err, results) {
         if (err) {
@@ -50,6 +50,7 @@ module.exports.drink = function (req, res) {
     })
 };
 
+// Delete a drink from db
 module.exports.deleteDrink = function (req, res) {
     if (req.isAuthenticated()) {
         drink.findByIdAndRemove(req.body.id, function () {
@@ -60,6 +61,7 @@ module.exports.deleteDrink = function (req, res) {
     }
 };
 
+// Deliver mixed drink by ID
 module.exports.mixedDrink = function (req, res) {
     res.setHeader('Content-Type', 'application/json');
     mixedDrink.findOne({_id: req.params.id}, function (err, results) {

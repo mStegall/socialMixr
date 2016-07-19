@@ -1,2 +1,2 @@
 require('./userInfo.service');
-require('./userProfile.controller')
+require('./userProfile')

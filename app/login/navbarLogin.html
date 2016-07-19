@@ -1,0 +1,11 @@
+<ul class="nav navbar-nav navbar-right">
+    <li ng-hide="$ctrl.loggedIn"><a href="#" ng-click="$ctrl.logInModal()">Log In</a></li>
+    <li ng-show="$ctrl.loggedIn" class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">{{$ctrl.user.username}}<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+            <li><a href="/profile" class="collapser">User Profile</a></li>
+            <li><a href="/admin" class="collapser" ng-show="$ctrl.isAdmin">Admin Panel</a></li>
+            <li><a href="#" class="collapser" ng-click="$ctrl.logOut()">Log Out</a></li>
+        </ul>
+    </li>
+</ul>

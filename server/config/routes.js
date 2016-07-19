@@ -41,6 +41,8 @@ module.exports = function (app, config) {
                     console.log(err);
                     return next(err);
                 }
+                user.salt = undefined;
+                user.password = undefined;
                 return res.send(user);
             })
         })(req,res,next);
@@ -57,7 +59,7 @@ module.exports = function (app, config) {
 
     app.post('/logout', function (req, res) {
         req.logOut();
-        res.send("logged out");
+        res.sendStatus(200);
     });
 
     // Sign up new user

@@ -1,55 +1,77 @@
-angular.module('app').factory('login', function ($http, $q, userInfo, $rootScope) {
+(function(){
+angular.module('app').factory('login', function ($http, $q, userInfo, $rootScope, $uibModal) {
     "ngInclude";
-    
-    var loginState = false;
+
+    var loggedIn = false;
 
     return {
-        updateLoginState : function () {
-            var deferred = $q.defer();
-
-            $http.get('/loggedIn').then(function (response) {
-                loginState = true;
-                userInfo.setUser(response.data);
-                deferred.resolve(response);
-            },function (response) {
-                loginState = false;
-                deferred.reject(response);
-            });
-
-            return deferred.promise;
-        },
-        logIn : function (username, password) {
-            var deferred = $q.defer();
-
-            $http.post('/login', {username: username, password: password}).then(function (response) {
-                loginState = true;
-                user = response.data;
-                $rootScope.$broadcast('loginStateChanged');
-                deferred.resolve(response);
-            },function (response) {
-                loginState = false;
-                deferred.reject(response.data.reason);
-            });
-
-            return deferred.promise;
-        },
-        logOut : function () {
-            var deferred = $q.defer();
-
-            $http.post('/logout').then(function (response) {
-                loginState = false;
-                user = {};
-                $rootScope.$broadcast('loginStateChanged');
-                deferred.resolve(response);
-            });
-
-            return deferred.promise;
-        },
-        
+        updateLoginState: updateLoginState,
+        logIn: logIn,
+        logOut: logOut,
+        logInModal: logInModal,
+        logInSubscribe: logInSubscribe,
         logInState: function () {
-            return loginState;
-        },
-
-        loggedIn: false
+            return loggedIn;
+        }
     }
-});
+
+    function logInModal () {
+         $uibModal.open({
+            templateUrl: '/login/logInModal.html',
+            controller: 'logInModalCtrl',
+            controllerAs: '$ctrl'
+        });
+    }
+
+    function logInSubscribe(scope, cb) {
+        scope.$on('Log In State Changed', cb)
+        
+    }
+
+    function updateLoginState() {
+        var deferred = $q.defer();
+
+        $http.get('/loggedIn').then(function (response) {
+            loggedIn = true;
+            userInfo.setUser(response.data);
+            $rootScope.$broadcast('Log In State Changed');
+            deferred.resolve(response);
+        }, function (response) {
+            loggedIn = false;
+            $rootScope.$broadcast('Log In State Changed');
+            deferred.reject(response);
+        });
+
+        return deferred.promise;
+    }
+
+    function logIn(username, password) {
+        var deferred = $q.defer();
+
+        $http.post('/login', { username: username, password: password }).then(function (response) {
+            loggedIn = true;
+            userInfo.setUser(response.data);
+            $rootScope.$broadcast('Log In State Changed');
+            deferred.resolve(response);
+        }, function (response) {
+            loggedIn = false;
+            deferred.reject(response.data.reason);
+        });
+
+        return deferred.promise;
+    }
+
+    function logOut() {
+        var deferred = $q.defer();
+
+        $http.post('/logout').then(function (response) {
+            loggedIn = false;
+            user = {};
+            $rootScope.$broadcast('Log In State Changed');
+            deferred.resolve(response);
+        });
+
+        return deferred.promise;
+    }
+})
+})()
