@@ -1,5 +1,6 @@
 angular.module('app').controller('drinkListCtrl', function ($scope, drinkData, login, $routeParams) {
     "ngInclude";
+    
     $scope.columns = [
         {
             name: 'name',

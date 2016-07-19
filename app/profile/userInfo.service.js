@@ -1,7 +1,7 @@
 angular.module('app').factory('userInfo', function (authService) {
     "ngInclude";
     var user = undefined;
-    
+
     return {
         setUser: function (userInfo) {
             user = userInfo;
@@ -12,7 +12,10 @@ angular.module('app').factory('userInfo', function (authService) {
         },
         setUserProperty: function (property, value) {
             user[property] = value;
+        },
+        clearUser: function () {
+            user = undefined;
+            authService.clearRoles();
         }
     }
-
 });

@@ -30,18 +30,8 @@
                 <li><a href="/beer" class="collapser">Beer</a></li>
                 <li><a href="/wine" class="collapser">Wine</a></li>
             </ul>
-
-            <ul class="nav navbar-nav navbar-right" ng-controller="navbarLoginCtrl">
-                <li ng-hide="loggedIn"><a href="#" ng-click="logInModal()">Log In</a></li>
-                <li ng-show="loggedIn" class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">{{user.username}}<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/profile" class="collapser">User Profile</a></li>
-                        <li><a href="/admin" class="collapser" ng-show="isAdmin">Admin Panel</a></li>
-                        <li><a href="#" class="collapser" ng-click="logOut()">Log Out</a></li>
-                    </ul>
-                </li>
-            </ul>
+            <navbar-login></navbar-login>
+            
         </div>
     </div>
 </nav>
