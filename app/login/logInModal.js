@@ -1,5 +1,5 @@
 (function () {
-    angular.module('app').controller('logInModalCtrl', loginModalCtrl)
+    angular.module('app').controller('logInModalCtrl', logInModalCtrl)
 
     function logInModalCtrl(login, $uibModal, $uibModalInstance) {
         "ngInclude";
