@@ -16,7 +16,7 @@ angular.module('app').factory('login', function ($http, $q, userInfo, $rootScope
     }
 
     function logInModal () {
-         $uibModal.open({
+        return $uibModal.open({
             templateUrl: '/login/logInModal.html',
             controller: 'logInModalCtrl',
             controllerAs: '$ctrl'
@@ -66,7 +66,7 @@ angular.module('app').factory('login', function ($http, $q, userInfo, $rootScope
 
         $http.post('/logout').then(function (response) {
             loggedIn = false;
-            user = {};
+            userInfo.clearUser();
             $rootScope.$broadcast('Log In State Changed');
             deferred.resolve(response);
         });

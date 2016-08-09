@@ -3,7 +3,7 @@ angular.module('app').component('addEditMixedDrink', {
     controller: addEditMixedDrinkCtrl
 })
 
-function addEditMixedDrinkCtrl($routeParams, drinkData, userInfo, $uibModal) {
+function addEditMixedDrinkCtrl($routeParams, drinkData, userInfo, login, $uibModal, $scope) {
     "ngInclude";
     var vm = this;
 
@@ -14,6 +14,17 @@ function addEditMixedDrinkCtrl($routeParams, drinkData, userInfo, $uibModal) {
     vm.alerts = []
     vm.closeAlert = function (index) {
         vm.alerts.splice(index, 1);
+    }
+
+    // Get user state and set alerts
+    function updateUser() {
+        vm.user = userInfo.getUser();
+        // debugger;
+        if (!vm.user) {
+            vm.alerts = [{msg: "You won't be able to save while not logged in!"}]
+        } else {
+            vm.alerts = []
+        }
     }
 
     vm.$onInit = function () {
@@ -27,23 +38,10 @@ function addEditMixedDrinkCtrl($routeParams, drinkData, userInfo, $uibModal) {
             vm.title = "Create a Mixed Drink"
         }
 
-        // Check to see if user is logged in and attempt to have them log in if not
-        // TODO: Make update navbar display... probably after full component refactor
-        vm.user = userInfo.getUser();
-        if (!vm.user) {
-            var modal = $uibModal.open({
-                templateUrl:"login/logInModal.html",
-                controller: "loginModalCtrl"
-            });
+        updateUser();
 
-            // After modal is closed check login state
-            modal.closed.then(function () {
-                vm.user = userInfo.getUser();
-                if (!vm.user) {
-                    vm.alerts.push({msg: "You won't be able to save while not signed in!"})
-                }
-            })
-        }
+        // Listen for changes in login state
+        login.logInSubscribe($scope, updateUser);
     }
 
     // Process form data into final drink data
