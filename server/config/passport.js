@@ -1,8 +1,9 @@
-var User = require('./mongooseModels').user;
 var mongoose = require('mongoose');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var crypto = require('crypto')
+
+var User = require('../models/user');
 
 module.exports = function () {
     // Set up Local Strategy
