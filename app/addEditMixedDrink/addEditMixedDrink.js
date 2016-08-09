@@ -3,7 +3,7 @@ angular.module('app').component('addEditMixedDrink', {
     controller: addEditMixedDrinkCtrl
 })
 
-function addEditMixedDrinkCtrl($routeParams, drinkData, userInfo, login, $uibModal, $scope) {
+function addEditMixedDrinkCtrl($routeParams, drinkData, userInfo, login, $uibModal, $scope, mixedDrinkData) {
     "ngInclude";
     var vm = this;
 
@@ -47,12 +47,14 @@ function addEditMixedDrinkCtrl($routeParams, drinkData, userInfo, login, $uibMod
     // Process form data into final drink data
     // TODO: Actually submit to server
     vm.submit = function () {
-        vm.drink = {
+        drink = {
             name: vm.name,
+            creator: vm.user._id,
             description: vm.description,
             instructions: vm.instructions,
             dbIngredients: [],
-            userIngredients: []
+            userIngredients: [],
+            review: vm.public
         }
 
         // Iterate through raw ingredient array and sort into appropriate arrays
@@ -61,12 +63,16 @@ function addEditMixedDrinkCtrl($routeParams, drinkData, userInfo, login, $uibMod
 
             if (ingredient.type == "db") {
                 ingredient.type = undefined;
-                vm.drink.dbIngredients.push(ingredient)
+                drink.dbIngredients.push(ingredient);
             } else {
                 ingredient.type = undefined;
-                vm.drink.userIngredients.push(ingredient)
+                drink.userIngredients.push(ingredient);
             }
         }
+
+        mixedDrinkData.addMixedDrink(drink).$promise.then(function () {
+            alert('success');
+        })
     }
 
     // Update ingredient model from component data

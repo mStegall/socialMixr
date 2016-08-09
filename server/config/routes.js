@@ -28,6 +28,7 @@ module.exports = function (app, config) {
     app.get('/data/mixedDrink/:id', mixedDrinkController.mixedDrink);
 
     // Add/Modify mixed drinks
+    app.post('/data/addMixedDrink', mixedDrinkController.addMixedDrink);
 
 
     // Admin API
@@ -38,6 +39,8 @@ module.exports = function (app, config) {
     app.post('/data/rejectDrink', auth.requiresRole('admin'), adminController.rejectDrink);
     app.get('/data/drinksUnapproved', auth.requiresRole('admin'), adminController.getUnapprovedDrinks);
     app.post('/data/flagDrink', auth.requiresRole('admin'), adminController.flagDrink);
+    app.get('/data/mixedDrinksUnapproved', auth.requiresRole('admin'), adminController.getUnapprovedMixedDrinks);
+    app.get('/data/mixedDrinksReview', auth.requiresRole('admin'), adminController.getReviewMixedDrinks);
 
     // Login Controls
     // -------------------------------------------------

@@ -1,5 +1,6 @@
 var drink = require('../models/drink');
 var user = require('../models/user');
+var mixedDrinkModel = require('../models/mixedDrink');
 
 module.exports = {
     approveDrink,
@@ -7,7 +8,9 @@ module.exports = {
     getUsers,
     getReviewDrinks,
     getUnapprovedDrinks,
-    flagDrink
+    flagDrink,
+    getReviewMixedDrinks,
+    getUnapprovedMixedDrinks
 };
 
 // Removes drink from review list
@@ -51,6 +54,7 @@ function getUnapprovedDrinks(req, res) {
     drink.find({ approved: false, review: false }, function (err, results) {
         if (err) {
             console.log(err);
+            res.sendStatus(500);
         }
 
         res.json(results);
@@ -61,5 +65,29 @@ function getUnapprovedDrinks(req, res) {
 function flagDrink(req, res) {
     drink.update({ _id: req.body.id }, { approved: false, review: true }, function () {
         res.sendStatus(200);
+    })
+}
+
+// Return mixed drinks for review
+function getReviewMixedDrinks (req, res) {
+    mixedDrinkModel.find({approved: false, review: true}, function (err, results) {
+        if (err) {
+            console.log(err);
+            res.sendStatus(500);
+        }
+
+        res.json(results);
+    })
+}
+
+// Return all unapproved mixed drinks not up for review
+function getUnapprovedMixedDrinks(req, res) {
+    mixedDrinkModel.find({approved: false, review: false}, function (err, results) {
+        if (err) {
+            console.log(err);
+            res.sendStatus(500);
+        }
+
+        res.json(results);
     })
 }

@@ -47,6 +47,11 @@
         </div>
         <div class="form-group">
             <div class="col-xs-12">
+                <div class="checkbox pull-left">
+                    <label>
+                        <input type="checkbox" ng-model="$ctrl.public">Make public
+                    </label>
+                </div>
                 <button type="submit" class="btn btn-default pull-right" ng-click="$ctrl.submit()" ng-disabled="!$ctrl.user">
                     Save
                 </button>

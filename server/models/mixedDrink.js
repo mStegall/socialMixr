@@ -3,15 +3,24 @@ var Schema = mongoose.Schema;
 
 var mixedDrinkSchema = new Schema({
     name: String,
+    creator: {type: String, ref: 'users'},
     description: String,
-    simpleComponents: [{
-        id: {type: String, ref: 'drink'},
+    instructions: String,
+    dbIngredients: [{
+        drink: {type: String, ref: 'drink'},
         amount: Number
     }],
-    complexComponents: [{
-        id: {type: String, ref: 'mixedDrink'},
+    userIngredients: [{
+        drink: String,
         amount: Number
-    }]
+    }],
+    reviews: [{
+        userId: {type: String, ref: 'users'},
+        rating: Number,
+        text: String
+    }],    
+    approved: {type: Boolean, default: false},
+    review: {type: Boolean, default: false}
 });
 
 var autoPop = function (next) {
@@ -23,4 +32,4 @@ var autoPop = function (next) {
 mixedDrinkSchema.pre('findOne', autoPop);
 mixedDrinkSchema.pre('find', autoPop);
 
-module.exports.mixedDrink = mongoose.model('mixedDrink', mixedDrinkSchema, 'mixedDrinks');
+module.exports = mongoose.model('mixedDrink', mixedDrinkSchema, 'mixedDrinks');
