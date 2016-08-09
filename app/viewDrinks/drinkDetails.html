@@ -1,7 +1,7 @@
 <div class="row">
     <h1 class="col-xs-9">{{$ctrl.drink.name}}</h1>
     <div class="col-xs-3">
-        <button class="btn btn-danger pull-right" ng-show="admin" ng-click="flagDrink()">Flag Drink</button>
+        <button class="btn btn-danger pull-right" ng-show="$ctrl.admin" ng-click="$ctrl.flagDrink()">Flag Drink</button>
         <a class="btn btn-info pull-right" ng-href="/addComponent/edit/{{$ctrl.drink._id}}">Edit this drink</a>
     </div>
 </div>
