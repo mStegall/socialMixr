@@ -19,6 +19,8 @@ require('./viewDrinks');
 require('./admin');
 require('./auth');
 require('./common');
-require('./addEditMixedDrink')
+require('./addEditMixedDrink');
+
+require('./table');
 
 require('./app.route.js');
