@@ -1,4 +1,3 @@
-{{$ctrl.sortOrder}}
 <thead>
     <tr>
         <th ng-repeat="column in $ctrl.columns" ng-click="column.unsortable || $ctrl.sortOrderChange({field: column.name})" ng-class="{'hidden-xs': column.hiddenXs}">
