@@ -20,7 +20,7 @@ require('./admin');
 require('./auth');
 require('./common');
 require('./addEditMixedDrink');
-
+require('./viewMixedDrinks');
 require('./table');
 
 require('./app.route.js');

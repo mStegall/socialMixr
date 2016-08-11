@@ -31,6 +31,14 @@ angular.module('app').config(function ($routeProvider, $locationProvider) {
             return '<drink-details id="' + params.id + '"></drink-details>'
         }
     });
+    $routeProvider.when('/mixedDrinks', {
+        template: '<mixed-drink-list></mixed-drink-list>'
+    })
+    $routeProvider.when('/mixedDrinkDetails/:id', {
+        template: function (params) {
+            return '<mixed-drink-details id="' + params.id + '"></mixed-drink-details>'
+        }
+    });
     $routeProvider.when('/snoop', {
         templateUrl: 'snoop/snoop.html'
     });
