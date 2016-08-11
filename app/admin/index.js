@@ -1,5 +1,5 @@
-require('./adminPanel.controller');
-require('./adminData.service');
-require('./adminUsers');
-require('./adminSimpleDrinks');
-require('./adminUnapprovedDrinks');
+require('./adminPanel');
+
+require('./users');
+require('./mixedDrinks')
+require('./simpleDrinks');

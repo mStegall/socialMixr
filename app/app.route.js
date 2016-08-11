@@ -35,8 +35,7 @@ angular.module('app').config(function ($routeProvider, $locationProvider) {
         templateUrl: 'snoop/snoop.html'
     });
     $routeProvider.when('/admin/:page?', {
-        templateUrl: 'admin/adminPanel.html',
-        controller: 'adminPanelCtrl'
+        template: '<admin-panel></admin-panel>'
     });
     $routeProvider.when('/profile', {
         template: '<user-profile></user-profile>'
