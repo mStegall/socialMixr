@@ -7,6 +7,7 @@ var adminMixedController = require('../controllers/adminMixedController');
 var drinkData = require('../controllers/drinksController');
 var mixedDrinkController = require('../controllers/mixedDrinkController');
 var loginController = require('../controllers/loginController');
+var profileController = require('../controllers/profileController');
 
 module.exports = function (app, config) {
     
@@ -53,12 +54,18 @@ module.exports = function (app, config) {
     app.post('/data/admin/mixedDrink/reject', auth.requiresRole('admin'), adminMixedController.rejectDrink);
     app.post('/data/admin/mixedDrink/flag', auth.requiresRole('admin'), adminMixedController.flagDrink);
 
+    // Profile API
+    // -------------------------------------------------
+    app.get('/data/profile/mixedDrinks', auth.requiresLogin, profileController.userMixedDrinks);
+
     // Login Controls
     // -------------------------------------------------
     app.post('/login', loginController.login);
     app.get('/loggedin', loginController.loggedIn);
     app.post('/logout', loginController.logout);
     app.post('/signUp', loginController.signUp);
+
+    
 
     // Route all others to Angular app
     // -------------------------------------------------

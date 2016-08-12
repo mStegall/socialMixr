@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 var mixedDrinkSchema = new Schema({
     name: String,
-    creator: {type: String, ref: 'users'},
+    creator: {type: String, ref: 'user'},
     description: String,
     instructions: String,
     dbIngredients: [{
@@ -24,8 +24,12 @@ var mixedDrinkSchema = new Schema({
 });
 
 var autoPop = function (next) {
-    this.populate('simpleComponents.id');
-    this.populate('complexComponents.id');
+    this.populate('dbIngredients.drink');
+    this.populate({
+        path: 'creator',
+        select: 'firstName lastName'
+    })
+    // this.populate('complexComponents.id');
     next();
 };
 
