@@ -2,7 +2,7 @@
     <h1>Log In</h1>
 </div>
 <div class="modal-body clearfix">
-    <uib-alert ng-repeat="alert in $ctrl.alerts" type="danger" close="$ctrl.closeAlert($index)">{{$ctrl.alert.msg}}</uib-alert>
+    <uib-alert ng-repeat="alert in $ctrl.alerts" type="danger" close="$ctrl.closeAlert($index)">{{alert.msg}}</uib-alert>
     <form>
         <div class="form-group">
             <label for="username">Username: </label>
