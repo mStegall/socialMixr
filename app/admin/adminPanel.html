@@ -1,22 +1,23 @@
 <div class="row">
     <div class="col-xs-12 visible-xs" id="admin-dropdown" uib-dropdown>
         <button id="single-button" type="button" class="btn btn-default" uib-dropdown-toggle>
-            {{pageTitle}}<span class="caret"></span>
+            {{$ctrl.pageTitle}}<span class="caret"></span>
         </button>
         <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
-            <li ng-repeat="item in list" role="menuitem"><a ng-href="/admin/{{item.name}}">{{item.title}}</a></li>
+            <li ng-repeat="item in $ctrl.list" role="menuitem"><a ng-href="/admin/{{item.name}}">{{item.title}}</a></li>
         </ul>
     </div>
     
     <div class="col-sm-3 hidden-xs">
         <ul class="list-group">
-            <li class="list-group-item" ng-repeat="item in list" role="menuitem"><a ng-href="/admin/{{item.name}}">{{item.title}}</a></li>
+            <li class="list-group-item" ng-repeat="item in $ctrl.list" role="menuitem"><a ng-href="/admin/{{item.name}}">{{item.title}}</a></li>
 
         </ul>
     </div>
-    <div class="col-xs-12 col-sm-9" ng-switch="page">
+    <div class="col-xs-12 col-sm-9" ng-switch="$ctrl.page">
         <admin-users ng-switch-when="users"></admin-users>
-        <admin-simple-drinks ng-switch-when="simpleDrinks"></admin-simple-drinks>
+        <admin-approve-drinks ng-switch-when="approveDrinks"></admin-approve-drinks>
         <admin-unapproved-drinks ng-switch-when="unapprovedDrinks"></admin-unapproved-drinks>
+        <admin-approve-mixed-drinks ng-switch-when="approveMixedDrinks"></admin-approve-mixed-drinks>
     </div>
 </div>

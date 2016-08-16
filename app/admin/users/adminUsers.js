@@ -1,14 +1,14 @@
 (function () {
     angular.module('app').component('adminUsers', {
-        templateUrl: '/admin/adminUsers.html',
+        templateUrl: '/admin/users/adminUsers.html',
         controller: adminUsersCtrl
     });
 
 
-    function adminUsersCtrl(adminData) {
+    function adminUsersCtrl(adminUsers) {
         "ngInject"
         var vm = this;
         vm.toggle = true;
-        vm.users = adminData.getUsers();
+        vm.users = adminUsers.getUsers();
     }
 })()

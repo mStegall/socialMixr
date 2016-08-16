@@ -20,6 +20,8 @@
             }, {
                 name: 'abv',
                 title: 'ABV'
+            }, {
+                unsortable: true
             }
         ]
 
@@ -59,22 +61,6 @@
                 $scope.sortOrder = '-' + field;
             } else {
                 $scope.sortOrder = field;
-            }
-        }
-
-        $scope.sortArrows = function (field) {
-            return {
-                'glyphicon': true,
-                'glyphicon-triangle-bottom': $scope.sortOrder != '-' + field,
-                'glyphicon-triangle-top': $scope.sortOrder == '-' + field
-            };
-        }
-
-        $scope.setArrowColor = function (field) {
-            if ($scope.sortOrder.includes(field)) {
-                return { color: 'black' };
-            } else {
-                return { color: '#ccc' };
             }
         }
     })

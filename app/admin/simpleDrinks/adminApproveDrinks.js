@@ -1,10 +1,10 @@
 (function () {
-    angular.module('app').component('adminUnapprovedDrinks', {
-        templateUrl: '/admin/adminUnapprovedDrinks.html',
-        controller: adminUnapprovedDrinksCtrl
+    angular.module('app').component('adminApproveDrinks', {
+        templateUrl: '/admin/simpleDrinks/adminApproveDrinks.html',
+        controller: adminApproveDrinksCtrl
     });
 
-    function adminUnapprovedDrinksCtrl(adminData) {
+    function adminApproveDrinksCtrl(adminDrinks) {
         "ngInclude";
 
         var vm = this;
@@ -12,7 +12,7 @@
         vm.$onInit = function () {
             vm.sortOrder = 'name';
             vm.toggle = true;
-            vm.drinks = adminData.getUnapprovedDrinks();
+            vm.drinks = adminDrinks.getReviewDrinks();
         };
 
         vm.sortOrderSet = function (field) {
@@ -37,6 +37,18 @@
             } else {
                 return { color: '#ccc' };
             }
+        };
+
+        vm.approveDrink = function (id) {
+            var drink = adminDrinks.approveDrink(id);
+
+            drink.$promise.then(removeDrink(id))
+
+        };
+
+        vm.rejectDrink = function (id) {
+            var del = adminDrinks.rejectDrink(id);
+            del.$promise.then(removeDrink(id))
         };
 
         function removeDrink(id) {

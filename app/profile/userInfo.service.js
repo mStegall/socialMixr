@@ -1,5 +1,5 @@
 (function () {
-    angular.module('app').factory('userInfo', function (authService) {
+    angular.module('app').factory('userInfo', function (authService, $resource) {
         "ngInclude";
         var user = undefined;
 
@@ -17,7 +17,12 @@
             clearUser: function () {
                 user = undefined;
                 authService.clearRoles();
-            }
+            },
+            mixedDrinks:mixedDrinks
+        }
+
+        function mixedDrinks() {
+            return $resource('/data/profile/mixedDrinks').query();
         }
     })
 })()

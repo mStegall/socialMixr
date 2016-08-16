@@ -7,7 +7,7 @@
         }
     })
 
-    function drinkDetailsCtrl(drinkData, authService, adminData) {
+    function drinkDetailsCtrl(drinkData, authService, adminDrinks) {
         "ngInclude";
         var vm = this;
 
@@ -17,7 +17,8 @@
         }
 
         vm.flagDrink = function () {
-            var flag = adminData.flagDrink(vm.drink._id);
+            var flag = adminDrinks.flagDrink(vm.drink._id);
+            
             flag.$promise.then(function () {
                 alert('Drink flagged for review!');
             })

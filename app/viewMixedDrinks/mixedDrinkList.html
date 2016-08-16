@@ -1,0 +1,19 @@
+<div class="row">
+    <div class="col-xs-12">
+        <h1>Mixed Drinks</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+        <table class="table table-striped">
+            <thead table-head columns="$ctrl.columns" sort-order="$ctrl.sortOrder" sort-order-change="$ctrl.setSortOrder(field)"></thead>
+            <tbody>
+                <tr ng-repeat="drink in $ctrl.drinks | orderBy: $ctrl.sortOrder">
+                    <td><a ng-href="/mixedDrinkDetails/{{drink._id}}">{{drink.name}}</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+

@@ -1,10 +1,7 @@
 (function () {
-    angular.module('app').factory('adminData', function ($resource) {
+    angular.module('app').factory('adminDrinks', function ($resource) {
         "ngInclude";
         return {
-            getUsers: function () {
-                return $resource('/data/users').query()
-            },
             getReviewDrinks: function () {
                 return $resource('/data/drinksReview').query();
             },

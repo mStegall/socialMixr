@@ -16,12 +16,11 @@ angular.module('app').config(function ($routeProvider, $locationProvider) {
     $routeProvider.when('/mixedDrinks', {
         templateUrl: 'infoPages/mixedDrinks.html'
     });
+    $routeProvider.when('/addMixedDrink/:mode?/:opt?', {
+        template: '<add-edit-mixed-drink></add-edit-mixed-drink>'
+    })
     $routeProvider.when('/addComponent/:mode?/:opt?', {
         template: '<add-component></add-component>'
-    });
-    $routeProvider.when('/editDrink/:id', {
-        templateUrl: 'addItem/addComponent.html',
-        controller: 'addComponentCtrl'
     });
     $routeProvider.when('/drinkList/:category?/:opt?', {
         templateUrl: 'viewDrinks/drinkList.html',
@@ -32,12 +31,19 @@ angular.module('app').config(function ($routeProvider, $locationProvider) {
             return '<drink-details id="' + params.id + '"></drink-details>'
         }
     });
+    $routeProvider.when('/mixedDrinks', {
+        template: '<mixed-drink-list></mixed-drink-list>'
+    })
+    $routeProvider.when('/mixedDrinkDetails/:id', {
+        template: function (params) {
+            return '<mixed-drink-details id="' + params.id + '"></mixed-drink-details>'
+        }
+    });
     $routeProvider.when('/snoop', {
         templateUrl: 'snoop/snoop.html'
     });
     $routeProvider.when('/admin/:page?', {
-        templateUrl: 'admin/adminPanel.html',
-        controller: 'adminPanelCtrl'
+        template: '<admin-panel></admin-panel>'
     });
     $routeProvider.when('/profile', {
         template: '<user-profile></user-profile>'
