@@ -3,7 +3,7 @@
         templateUrl: '/viewDrinks/drinkDetails.html',
         controller: drinkDetailsCtrl,
         bindings: {
-            id: '@'
+            id: '<'
         }
     })
 

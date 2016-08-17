@@ -27,16 +27,22 @@ angular.module('app').config(function ($routeProvider, $locationProvider) {
         controller: 'drinkListCtrl'
     });
     $routeProvider.when('/drinkDetails/:id', {
-        template: function (params) {
-            return '<drink-details id="' + params.id + '"></drink-details>'
+        template: '<drink-details  id="$resolve.params.id"></drink-details>',
+        resolve: {
+            params: function($route) {
+                return $route.current.params
+            } 
         }
     });
     $routeProvider.when('/mixedDrinks', {
         template: '<mixed-drink-list></mixed-drink-list>'
     })
     $routeProvider.when('/mixedDrinkDetails/:id', {
-        template: function (params) {
-            return '<mixed-drink-details id="' + params.id + '"></mixed-drink-details>'
+        template: '<mixed-drink-details id="$resolve.params.id"></mixed-drink-details>',
+        resolve: {
+            params: function($route) {
+                return $route.current.params
+            } 
         }
     });
     $routeProvider.when('/snoop', {
