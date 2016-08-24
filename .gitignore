@@ -2,3 +2,5 @@
 /node_modules
 /.idea
 /app/dist
+/typings
+jsconfig.json
