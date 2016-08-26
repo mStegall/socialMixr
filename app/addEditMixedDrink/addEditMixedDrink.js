@@ -49,7 +49,7 @@ function addEditMixedDrinkCtrl($routeParams, drinkData, userInfo, login, $uibMod
     vm.submit = function () {
         drink = {
             name: vm.name,
-            creator: vm.user._id,
+            creator: vm.user.id,
             description: vm.description,
             instructions: vm.instructions,
             dbIngredients: [],

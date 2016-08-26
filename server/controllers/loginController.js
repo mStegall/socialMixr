@@ -7,7 +7,7 @@ module.exports = {
     loggedIn,
     logout,
     signUp
-}
+};
 
 function login(req, res, next) {
     passport.authenticate('local', function (err, user, info) {
@@ -24,8 +24,6 @@ function login(req, res, next) {
                 console.log(err);
                 return next(err);
             }
-            user.salt = undefined;
-            user.password = undefined;
             return res.send(user);
         })
     })(req, res, next);

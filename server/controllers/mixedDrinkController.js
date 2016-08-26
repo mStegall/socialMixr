@@ -18,7 +18,7 @@ function addMixedDrink(req, res) {
 
         res.sendStatus(200);
     })
-};
+}
 
 // Deliver all approved mixed drinks
 function mixedDrinks(req, res) {
@@ -30,7 +30,7 @@ function mixedDrinks(req, res) {
 
         res.json(results);
     });
-};
+}
 
 // Deliver specific mixed drink
 function mixedDrink(req, res) {
@@ -42,4 +42,4 @@ function mixedDrink(req, res) {
 
         res.json(results);
     })
-};
+}
