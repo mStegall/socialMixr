@@ -1,6 +1,7 @@
 var passport = require('passport');
+var bcrypt = require('bcryptjs');
 
-var User = require('../models/user');
+var knex = require('../config/knex');
 
 module.exports = {
     login,
@@ -43,19 +44,25 @@ function logout(req, res) {
 }
 
 function signUp(req, res) {
-    var salt = User.createSalt();
     var user = {
         username: req.body.username,
-        salt: salt,
-        password: User.hashPassword(salt, req.body.password),
         email: req.body.email
     };
 
-    User.create(user, function (err) {
+    bcrypt.hash(req.body.password, 10, function (err, hash) {
         if (err) {
             console.log(err);
-        } else {
-            res.send('success');
+            res.sendStatus(500);
         }
+
+        user['hashed_pass'] = hash;
+
+        knex('users').insert(user)
+            .then(function() {
+                res.sendStatus(201);
+            })
+            .catch(function(){
+                res.sendStatus(500);
+            })
     })
 }
