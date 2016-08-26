@@ -12,18 +12,6 @@ module.exports = function () {
     // Set up Local Strategy
     passport.use(new LocalStrategy(
         function (username, password, done) {
-            // User.findOne({username: username}, function (err, user) {
-            //     if (err) {
-            //         return done(err);
-            //     }
-            //     if (!user) {
-            //         return done(null, false, {message: 'Incorrect Username'});
-            //     }
-            //     if (!verifyPassword(user, password)) {
-            //         return done(null, false, {message: 'Incorrect Password'});
-            //     }
-            //     return done(null, user);
-            // });
             knex('users').where('username', username).select('hashed_pass as hashedPass')
                 .then(function (rows) {
                     if (rows.length != 1) {
@@ -68,11 +56,6 @@ module.exports = function () {
             return user;
         })
     }
-
-    // var verifyPassword = function (user, password) {
-    //     return User.hashPassword(user.salt, password) == user.password;
-    //     // return user.password == password;
-    // };
 
     // Configure session persistence
     passport.serializeUser(function (user, cb) {
