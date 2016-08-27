@@ -11,13 +11,19 @@ module.exports = {
 
 // Deliver all approved simple drinks in database
 function drinks(req, res) {
-    res.setHeader('Content-Type', 'application/json');
-    drinkModel.find({ approved: true }, function (err, results) {
-        if (err) {
-            console.log(err);
-        }
-        res.send(results);
-    });
+    // res.setHeader('Content-Type', 'application/json');
+    // drinkModel.find({ approved: true }, function (err, results) {
+    //     if (err) {
+    //         console.log(err);
+    //     }
+    //     res.send(results);
+    // });
+    var columns = ['drinks.id', 'name', 'category' , 'type', 'abv'];
+
+    knex('drinks').select(columns).where({ approved: true })
+        .leftJoin('types', 'drinks.type_id', 'types.id')
+        .leftJoin('categories', 'drinks.categoy_id', 'categories.id')
+        .leftJoin('subtypes', 'drinks.subtype_id', 'subtypes.id')
 };
 
 // Retrieve all approved drinks in in a category
