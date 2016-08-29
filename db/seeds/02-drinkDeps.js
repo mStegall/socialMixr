@@ -16,8 +16,8 @@ exports.seed = function (knex, Promise) {
             if (rows.length === 0) {
                 var types = [
                     { type: 'Vodka' },
-                    { type: 'Irish Cream' },
-                    { type: 'Pale Ale' }
+                    { type: 'Pale Ale' },
+                    { type: 'Liqueur' }
                 ]
 
                 return knex('types').insert(types).then()
@@ -26,6 +26,8 @@ exports.seed = function (knex, Promise) {
         knex('subtypes').then(function (rows) {
             if (rows.length === 0) {
                 var subtypes = [
+                    { subtype: 'Coffee' },
+                    { subtype: 'Cream' },
                     { subtype: 'American Pale Ale' },
                     { subtype: 'American Amber Ale' },
                     { subtype: 'Salted Carmel' }

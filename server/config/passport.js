@@ -1,12 +1,9 @@
-var mongoose = require('mongoose');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
 var Promise = require('bluebird');
 var bcrypt = require('bcryptjs');
 var knex = require('./knex');
-
-var User = require('../models/user');
 
 module.exports = function () {
     // Set up Local Strategy
