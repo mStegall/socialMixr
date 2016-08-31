@@ -5,6 +5,8 @@ var Promise = require('bluebird');
 var bcrypt = require('bcryptjs');
 var knex = require('./knex');
 
+var userModel = require('../models/users');
+
 module.exports = function () {
     // Set up Local Strategy
     passport.use(new LocalStrategy(
@@ -21,7 +23,7 @@ module.exports = function () {
                         }
 
                         if (result) {
-                            getUser({ username }).then(function (user) {
+                            userModel.getUser({ username }).then(function (user) {
                                 done(null, user);
                             })
                         } else {
@@ -35,32 +37,13 @@ module.exports = function () {
         }
     ));
 
-    function getUser(filter) {
-        var profileColumns = ['id', 'first_name as firstName', 'last_name as lastName', 'email', 'username']
-
-        return Promise.all([
-            knex('users').where(filter).select(profileColumns),
-            knex('users').where(filter).select('roles.role')
-                .innerJoin('users_roles', 'users.id', 'users_roles.user_id')
-                .innerJoin('roles', 'users_roles.role_id', 'roles.id')
-        ]).then(function ([users, roles]) {
-            var user = users[0];
-
-            roles = roles.map(el => el.role);
-
-            user.roles = roles;
-
-            return user;
-        })
-    }
-
     // Configure session persistence
     passport.serializeUser(function (user, cb) {
         cb(null, user.id);
     });
 
     passport.deserializeUser(function (id, cb) {
-        getUser({ 'users.id': id }).then(function (user) {
+        userModel.getUser({ 'users.id': id }).then(function (user) {
             cb(null, user);
         })
     });

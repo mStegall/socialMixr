@@ -1,4 +1,3 @@
-var knex = require('../config/knex')
 var Promise = require('bluebird')
 
 var drinkModel = require('../models/drink')
@@ -7,22 +6,14 @@ module.exports = {
   drinks,
   drinksByCategory,
   addDrink,
-  updateDrink,
   drink,
-deleteDrink}
-
-function baseDrink () {
-  var columns = ['drinks.id as id', 'name', 'category', 'type', 'subtype', 'abv']
-
-  return knex('drinks').select(columns)
-    .leftJoin('categories', 'drinks.category_id', 'categories.id')
-    .leftJoin('types', 'drinks.type_id', 'types.id')
-    .leftJoin('subtypes', 'drinks.subtype_id', 'subtypes.id')
+  addType,
+  addSubtype
 }
 
 // Deliver all approved simple drinks in database
-function drinks (req, res) {
-  baseDrink().where({ approved: true })
+function drinks(req, res) {
+  drinkModel.baseDrink().where({ approved: true })
     .then(function (rows) {
       res.json(rows)
     })
@@ -33,8 +24,8 @@ function drinks (req, res) {
 }
 
 // Retrieve all approved drinks in in a category
-function drinksByCategory (req, res) {
-  baseDrink().where({
+function drinksByCategory(req, res) {
+  drinkModel.baseDrink().where({
     approved: true,
     category: req.params.category
   })
@@ -47,18 +38,22 @@ function drinksByCategory (req, res) {
     })
 }
 
-function typeInsert (type) {
-  return knex.raw('insert into public.types ("type") (select ? where not exists (select * from public.types where LOWER(type) = LOWER(?))) returning ??', [type, type, 'types.id']).then(function (results) {
-    console.log(results)
-  }) 
+// Post handler for adding new type
+function addType(req, res) {
+  insertType(req.body.type).then(function (id) {
+    res.json(id)
+  })
 }
 
-function subtypeInsert (subtype) {
-  return knex('subtypes').insert({subtype}).then()
+// Post handler for adding new subtype
+function addSubtype(req, res) {
+  insertSubtype(req.body.subtype).then(function (id) {
+    res.json(id)
+  })
 }
 
 // Add simple drink to database
-function addDrink (req, res) {
+function addDrink(req, res) {
   var drink = {
     name: req.body.name,
     'category_id': req.body.categoryId,
@@ -66,61 +61,36 @@ function addDrink (req, res) {
     abv: req.body.abv
   }
 
-  var typeCheck = Promise.resolve(function () {
+  function typeCheck() {
     if (req.body.type) {
-      return 
-    }
-  })
-
-  var subtypeCheck = Promise.resolve(function () {
-    if (req.body.subtypeId) {
-      return drink['subtype_id'] = req.body.subtypeId
-    } else if (req.body.subtype) {
-      return subtypeInsert(req.body.subtype).then(function (){
-
+      return insertType(req.body.type).then(function (id) {
+        drink['type_id'] = id
       })
     }
-  })
+  }
 
+  function subtypeCheck() {
+    if (req.body.subtypeId) {
+      console.log(req.body.subtypeId)
+      return drink['subtype_id'] = req.body.subtypeId
+    } else if (req.body.subtype) {
+      console.log(req.body.subtype)
+      return insertSubtype(req.body.subtype).then(function (id) {
+        drink['subtype_id'] = id
+      })
+    }
+  }
 
-  Promise.join(typeCheck, subtypeCheck)
-
-
-
-  // var entry = new drinkModel(req.body)
-
-// entry.save(function () {
-//   res.send('Success!')
-// })
-}
-
-// Update existing simple drink
-function updateDrink (req, res) {
-  drinkModel.update({ _id: req.body._id }, { $set: req.body }, function () {
-    res.send('done')
+  Promise.all([typeCheck(), subtypeCheck()]).then(function () {
+    knex('drinks').insert(drink).returning('id').then(function (id) {
+      res.json(id)
+    })
   })
 }
 
 // Deliver simple drink details
-function drink (req, res) {
-  res.setHeader('Content-Type', 'application/json')
-  drinkModel.findById(req.params.id, function (err, results) {
-    if (err) {
-      console.log(err)
-      res.sendStatus(500)
-    }
-
-    res.send(results)
+function drink(req, res) {
+  drinkModel.drinkById(req.params.id).then(function (rows) {
+    res.json(rows[0])
   })
-}
-
-// Delete a drink from db
-function deleteDrink (req, res) {
-  if (req.isAuthenticated()) {
-    drinkModel.findByIdAndRemove(req.body.id, function () {
-      res.send('Success!')
-    })
-  } else {
-    res.status(401).send()
-  }
 }

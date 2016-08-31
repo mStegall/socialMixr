@@ -1,5 +1,3 @@
-var drink = require('../models/drink');
-var user = require('../models/user');
 var mixedDrinkModel = require('../models/mixedDrink');
 
 module.exports = {

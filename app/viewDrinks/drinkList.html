@@ -25,7 +25,7 @@
             <thead table-head columns="columns" sort-order="sortOrder" sort-order-change="sortOrderSet(field)"></thead>
             <tbody>
             <tr ng-repeat="drink in drinks  | filter: {name: search.name, type: search.type} | orderBy: sortOrder" ng-class="{success : drink.fav}">
-                <td><a href="/drinkDetails/{{drink._id}}">{{drink.name}}</a></td>
+                <td><a href="/drinkDetails/{{drink.id}}">{{drink.name}}</a></td>
                 <td>{{drink.type}}</td>
                 <td class="hidden-xs">{{drink.manufacturer}}</td>
                 <td class="hidden-xs">{{drink.countryOfOrigin}}</td>

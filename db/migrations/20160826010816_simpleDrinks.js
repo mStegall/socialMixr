@@ -28,7 +28,7 @@ exports.up = function (knex, Promise) {
                 t.integer('subtype_id').references('subtypes.id');
 
                 t.text('description');
-                t.decimal('abv').notNullable();
+                t.decimal('abv',8,3).notNullable();
 
                 t.boolean('approved').defaultTo(false);
                 t.boolean('review').defaultTo(false);

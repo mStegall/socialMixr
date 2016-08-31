@@ -17,11 +17,14 @@ module.exports = function (app, config) {
     app.get('/data/drinks', drinkData.drinks);
     app.get('/data/drinks/:category', drinkData.drinksByCategory);
     app.get('/data/drink/:id', drinkData.drink);
+    app.post('/data/drink', drinkData.addDrink)
+    app.post('/data/drink/type', drinkData.addType);
+    app.post('/data/drink/subtype', drinkData.addSubtype);
 
     // Add/Modify simple drinks
     app.post('/data/addDrink', drinkData.addDrink);
-    app.post('/data/deleteDrink', drinkData.deleteDrink);
-    app.post('/data/updateDrink', drinkData.updateDrink);
+    // app.post('/data/deleteDrink', drinkData.deleteDrink);
+    // app.post('/data/updateDrink', drinkData.updateDrink);
 
     // Mixed Drink API
     // -------------------------------------------------
@@ -42,9 +45,9 @@ module.exports = function (app, config) {
     app.get('/data/drinksUnapproved', auth.requiresRole('admin'), adminController.getUnapprovedDrinks);
     app.get('/data/drinksReview', auth.requiresRole('admin'), adminController.getReviewDrinks);
     
-    app.post('/data/approveDrink', auth.requiresRole('admin'), adminController.approveDrink);
-    app.post('/data/rejectDrink', auth.requiresRole('admin'), adminController.rejectDrink);
-    app.post('/data/flagDrink', auth.requiresRole('admin'), adminController.flagDrink);
+    app.post('/data/drink/:id/approve', auth.requiresRole('admin'), adminController.approveDrink);
+    app.post('/data/drink/:id/reject', auth.requiresRole('admin'), adminController.rejectDrink);
+    app.post('/data/drink/:id/flag', auth.requiresRole('admin'), adminController.flagDrink);
 
     // Mixed drinks
     app.get('/data/admin/mixedDrinks/unapproved', auth.requiresRole('admin'), adminMixedController.getUnapprovedDrinks);

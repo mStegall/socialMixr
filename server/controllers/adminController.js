@@ -1,6 +1,5 @@
-var drink = require('../models/drink');
-var user = require('../models/user');
-var mixedDrinkModel = require('../models/mixedDrink');
+var userModel = require('../models/users');
+var drinkModel = require('../models/drink');
 
 module.exports = {
     approveDrink,
@@ -13,55 +12,46 @@ module.exports = {
 
 // Returns all users
 function getUsers(req, res) {
-    user.find(function (err, results) {
-        if (err) {
-            console.log(err);
-        }
-
-        res.json(results);
+    userModel.userList().then(function(rows){
+        res.json(rows)
     })
 }
 
 // Removes drink from review list
 function rejectDrink(req, res) {
-    drink.update({ _id: req.body.id }, { review: false }, function () {
+    drinkModel.rejectDrink(req.params.id).then(function(){
         res.sendStatus(200);
+    }).catch(function(err){
+        console.error(err);
+        res.sendStatus(500);
     })
 }
 
 // Removes drink from review list and adds to public 
 function approveDrink(req, res) {
-    drink.update({ _id: req.body.id }, { approved: true, review: false }, function () {
+    drinkModel.approveDrink(req.params.id).then(function(){
         res.sendStatus(200);
     })
 }
 
 // Returns list of drinks for review
 function getReviewDrinks(req, res) {
-    drink.find({ review: true }, function (err, results) {
-        if (err) {
-            console.log(err);
-        }
-
-        res.json(results);
+    drinkModel.reviewDrinks().then(function(rows){
+        res.json(rows);
     })
 }
 
 //  Returns all Unapproved Drinks not up for review
 function getUnapprovedDrinks(req, res) {
-    drink.find({ approved: false, review: false }, function (err, results) {
-        if (err) {
-            console.log(err);
-            res.sendStatus(500);
-        }
-
-        res.json(results);
+    drinkModel.unapprovedDrinks().then(function(rows){
+        res.json(rows);
     })
 }
 
 // Flags a drink for review
 function flagDrink(req, res) {
-    drink.update({ _id: req.body.id }, { approved: false, review: true }, function () {
-        res.sendStatus(200);
+    drinkModel.flagDrink(req.params.id).then(function(){
+        res.sendStatus(200)
     })
+
 }
