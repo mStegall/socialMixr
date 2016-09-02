@@ -1,45 +1,65 @@
 var mixedDrinkModel = require('../models/mixedDrink');
 
+var Promise = require('bluebird');
+
 module.exports = {
-    addMixedDrink,
-    mixedDrink,
-    mixedDrinks
+  addMixedDrink,
+  mixedDrink,
+  mixedDrinks
 };
 
 // Add mixed drink to database
 function addMixedDrink(req, res) {
-    var entry = new mixedDrinkModel(req.body);
+  var drink = {
+    'user_id': req.user.id,
+    name: req.body.name,
+    description: req.body.description,
+    instructions: req.body.instructions,
+    review: req.body.review
+  }
 
-    entry.save(function(err) {
-        if (err) {
-            console.log(err);
-            res.sendStatus(500);
-        }
+  var drinkId
 
-        res.sendStatus(200);
+  mixedDrinkModel.addDrink(drink)
+    .then(function ([id]) {
+      drinkId = id
+      var inserts = []
+
+      if(req.body.customIngredients){
+        inserts.push(mixedDrinkModel.addCustomIngredients(req.body.customIngredients, id))
+      }
+
+      if(req.body.drinkIngredients){
+        inserts.push(mixedDrinkModel.addDrinkIngredients(req.body.drinkIngredients, id))
+      }
+
+      return Promise.all(inserts)
+    })
+    .then(function(){
+      res.json({id: drinkId});
+    })
+    .catch(function(err){
+      console.error(err);
+      res.sendStatus(500);
     })
 }
 
 // Deliver all approved mixed drinks
 function mixedDrinks(req, res) {
-    mixedDrinkModel.find({ approved: true }, function (err, results) {
-        if (err) {
-            console.log(err);
-            res.sendStatus(500);
-        }
-
-        res.json(results);
-    });
+  mixedDrinkModel.approvedDrinks().then(function (rows) {
+    res.json(rows);
+  }).catch(function (err) {
+    console.log(err);
+    res.sendStatus(500);
+  })
 }
 
 // Deliver specific mixed drink
 function mixedDrink(req, res) {
-    mixedDrinkModel.findById(req.params.id, function (err, results) {
-        if (err) {
-            console.log(err);
-            res.sendStatus(500);
-        }
-
-        res.json(results);
-    })
+  mixedDrinkModel.drink(req.params.id).then(function (drink) {
+    res.json(drink)
+  }).catch(function (err) {
+    console.log(err);
+    res.sendStatus(500);
+  })
 }

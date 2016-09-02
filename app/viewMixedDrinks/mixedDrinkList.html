@@ -10,7 +10,7 @@
             <thead table-head columns="$ctrl.columns" sort-order="$ctrl.sortOrder" sort-order-change="$ctrl.setSortOrder(field)"></thead>
             <tbody>
                 <tr ng-repeat="drink in $ctrl.drinks | orderBy: $ctrl.sortOrder">
-                    <td><a ng-href="/mixedDrinkDetails/{{drink._id}}">{{drink.name}}</a></td>
+                    <td><a ng-href="/mixedDrinkDetails/{{drink.id}}">{{drink.name}}</a></td>
                 </tr>
             </tbody>
         </table>

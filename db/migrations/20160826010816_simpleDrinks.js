@@ -20,7 +20,7 @@ exports.up = function (knex, Promise) {
         .then(function () {
             return knex.schema.createTable('drinks', function (t) {
                 t.increments();
-                t.integer('user_id').references('users.id');
+                t.integer('user_id').references('users.id').notNullable();
                 t.text('name').notNullable();
 
                 t.integer('category_id').references('categories.id').notNullable();

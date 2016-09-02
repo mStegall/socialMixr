@@ -5,11 +5,16 @@ var drinkModel = require('../models/drink')
 module.exports = {
   drinks,
   drinksByCategory,
-  addDrink,
   drink,
+  types,
+  subtypes,
+  addDrink,
   addType,
   addSubtype
 }
+
+// GETS
+// -----------------------------------------------------
 
 // Deliver all approved simple drinks in database
 function drinks(req, res) {
@@ -37,6 +42,36 @@ function drinksByCategory(req, res) {
       res.sendStatus(500)
     })
 }
+
+// Deliver simple drink details
+function drink(req, res) {
+  drinkModel.drinkById(req.params.id).then(function (rows) {
+    res.json(rows[0])
+  })
+}
+
+// Deliver types
+function types(req, res) {
+  drinkModel.types().then(function (rows) {
+    res.json(rows);
+  }).catch(function(err){
+    console.error(err);
+    res.sendStatus(500);
+  })
+}
+
+// Deliver subtypes
+function subtypes(req, res) {
+  drinkModel.subtypes().then(function (rows) {
+    res.json(rows);
+  }).catch(function(err){
+    console.error(err);
+    res.sendStatus(500);
+  })
+}
+
+// POSTS
+// -----------------------------------------------------
 
 // Post handler for adding new type
 function addType(req, res) {
@@ -88,9 +123,4 @@ function addDrink(req, res) {
   })
 }
 
-// Deliver simple drink details
-function drink(req, res) {
-  drinkModel.drinkById(req.params.id).then(function (rows) {
-    res.json(rows[0])
-  })
-}
+

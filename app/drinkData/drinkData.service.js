@@ -12,27 +12,27 @@
         };
 
         function getDrinks() {
-            return $resource('/data/drinks').query();
+            return $resource('/api/drinks').query();
         }
 
         function getDrinksByCategory(category) {
-            return $resource('/data/drinks/:category', { category: category }).query();
+            return $resource('/api/drinks/:category', { category: category }).query();
         }
 
         function addDrink(drink) {
-            return $resource('/data/addDrink').save(drink);
+            return $resource('/api/addDrink').save(drink);
         }
 
         function getDrink(id) {
-            return $resource('/data/drink/:id', { id: id }).get();
+            return $resource('/api/drink/:id', { id: id }).get();
         }
 
         function deleteDrink(drinkId) {
-            return $resource('/data/deleteDrink/').save({ id: drinkId });
+            return $resource('/api/deleteDrink/').save({ id: drinkId });
         }
 
         function updateDrink(drink) {
-            return $resource('/data/updateDrink').save(drink);
+            return $resource('/api/updateDrink').save(drink);
         }
     });
 })()

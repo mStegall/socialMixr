@@ -4,58 +4,62 @@ var auth = require('../middleware/auth');
 // Controllers
 var adminController = require('../controllers/adminController');
 var adminMixedController = require('../controllers/adminMixedController');
-var drinkData = require('../controllers/drinksController');
+var drinkController = require('../controllers/drinksController');
 var mixedDrinkController = require('../controllers/mixedDrinkController');
 var loginController = require('../controllers/loginController');
 var profileController = require('../controllers/profileController');
 
 module.exports = function (app, config) {
-    
+
     // Drink API
     // -------------------------------------------------    
     // Get simple drinks
-    app.get('/data/drinks', drinkData.drinks);
-    app.get('/data/drinks/:category', drinkData.drinksByCategory);
-    app.get('/data/drink/:id', drinkData.drink);
-    app.post('/data/drink', drinkData.addDrink)
-    app.post('/data/drink/type', drinkData.addType);
-    app.post('/data/drink/subtype', drinkData.addSubtype);
+    app.get('/api/drinks', drinkController.drinks);
+    
+    app.get('/api/drinks/:category', drinkController.drinksByCategory);
+    app.get('/api/drink/:id', drinkController.drink);
+    app.post('/api/drink', drinkController.addDrink)
+    app.post('/api/drink/type', drinkController.addType);
+    app.post('/api/drink/subtype', drinkController.addSubtype);
+
+    app.get('/api/drinkTypes', drinkController.types)
+    app.get('/api/drinkSubtypes', drinkController.subtypes)
 
     // Add/Modify simple drinks
-    app.post('/data/addDrink', drinkData.addDrink);
-    // app.post('/data/deleteDrink', drinkData.deleteDrink);
-    // app.post('/data/updateDrink', drinkData.updateDrink);
+    app.post('/api/addDrink', drinkController.addDrink);
+    // app.post('/api/deleteDrink', drinkController.deleteDrink);
+    // app.post('/api/updateDrink', drinkController.updateDrink);
 
     // Mixed Drink API
     // -------------------------------------------------
     // Get mixed drinks
-    app.get('/data/mixedDrinks', mixedDrinkController.mixedDrinks);
-    app.get('/data/mixedDrink/:id', mixedDrinkController.mixedDrink);
+    app.get('/api/mixedDrinks', mixedDrinkController.mixedDrinks);
+    app.get('/api/mixedDrink/:id', mixedDrinkController.mixedDrink);
 
-    // Add/Modify mixed drinks
-    app.post('/data/addMixedDrink', mixedDrinkController.addMixedDrink);
+    // // Add/Modify mixed drinks
+    app.post('/api/mixedDrink', auth.requiresLogin,  mixedDrinkController.addMixedDrink);
 
 
     // Admin API
     // -------------------------------------------------
     // Users
-    app.get('/data/users',auth.requiresRole('admin'), adminController.getUsers); 
+    app.get('/api/admin/users', auth.requiresRole('admin'), adminController.getUsers);
 
     // Simple drinks
-    app.get('/data/drinksUnapproved', auth.requiresRole('admin'), adminController.getUnapprovedDrinks);
-    app.get('/data/drinksReview', auth.requiresRole('admin'), adminController.getReviewDrinks);
-    
-    app.post('/data/drink/:id/approve', auth.requiresRole('admin'), adminController.approveDrink);
-    app.post('/data/drink/:id/reject', auth.requiresRole('admin'), adminController.rejectDrink);
-    app.post('/data/drink/:id/flag', auth.requiresRole('admin'), adminController.flagDrink);
+    app.get('/api/admin/drinks/unapproved', auth.requiresRole('admin'), adminController.getUnapprovedDrinks);
+    app.get('/api/admin/drinks/review', auth.requiresRole('admin'), adminController.getReviewDrinks);
 
-    // Mixed drinks
-    app.get('/data/admin/mixedDrinks/unapproved', auth.requiresRole('admin'), adminMixedController.getUnapprovedDrinks);
-    app.get('/data/admin/mixedDrinks/review', auth.requiresRole('admin'), adminMixedController.getReviewDrinks);
+    app.post('/api/admin/drink/:id/approve', auth.requiresRole('admin'), adminController.approveDrink);
+    app.post('/api/admin/drink/:id/reject', auth.requiresRole('admin'), adminController.rejectDrink);
+    app.post('/api/admin/drink/:id/flag', auth.requiresRole('admin'), adminController.flagDrink);
 
-    app.post('/data/admin/mixedDrinks/approve', auth.requiresRole('admin'), adminMixedController.approveDrink);
-    app.post('/data/admin/mixedDrink/reject', auth.requiresRole('admin'), adminMixedController.rejectDrink);
-    app.post('/data/admin/mixedDrink/flag', auth.requiresRole('admin'), adminMixedController.flagDrink);
+    // // Mixed drinks
+    app.get('/api/admin/mixedDrinks/unapproved', auth.requiresRole('admin'), adminMixedController.getUnapprovedDrinks);
+    app.get('/api/admin/mixedDrinks/review', auth.requiresRole('admin'), adminMixedController.getReviewDrinks);
+
+    app.post('/api/admin/mixedDrink/:id/approve', auth.requiresRole('admin'), adminMixedController.approveDrink);
+    app.post('/api/admin/mixedDrink/:id/reject', auth.requiresRole('admin'), adminMixedController.rejectDrink);
+    app.post('/api/admin/mixedDrink/:id/flag', auth.requiresRole('admin'), adminMixedController.flagDrink);
 
     // Profile API
     // -------------------------------------------------
@@ -68,7 +72,7 @@ module.exports = function (app, config) {
     app.post('/logout', loginController.logout);
     app.post('/signUp', loginController.signUp);
 
-    
+
 
     // Route all others to Angular app
     // -------------------------------------------------

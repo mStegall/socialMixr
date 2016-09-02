@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-xs-9">
         <h1>{{$ctrl.drink.name}}</h1>
-        <h4>By: {{$ctrl.drink.creator.firstName}} {{$ctrl.drink.creator.lastName}}</h4>
+        <h4>By: {{$ctrl.drink.firstName}} {{$ctrl.drink.lastName}}</h4>
     </div>
     <div class="col-xs-3">
         <button class="btn btn-danger pull-right" ng-show="$ctrl.admin" ng-click="$ctrl.flagDrink()">Flag Drink</button>

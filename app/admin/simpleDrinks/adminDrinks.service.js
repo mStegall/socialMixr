@@ -3,19 +3,19 @@
         "ngInclude";
         return {
             getReviewDrinks: function () {
-                return $resource('/data/drinksReview').query();
-            },
-            approveDrink: function (id) {
-                return $resource('/data/drink/:id/approve', { id: id }).save();
-            },
-            rejectDrink: function (id) {
-                return $resource('/data/drink/:id/reject', { id: id }).save();
+                return $resource('/api/admin/drinks/review').query();
             },
             getUnapprovedDrinks: function () {
-                return $resource('/data/drinksUnapproved').query();
+                return $resource('/api/admin/drinks/unapproved').query();
             },
+            approveDrink: function (id) {
+                return $resource('/api/admin/drink/:id/approve', { id: id }).save();
+            },
+            rejectDrink: function (id) {
+                return $resource('/api/admin/drink/:id/reject', { id: id }).save();
+            },            
             flagDrink: function (id) {
-                return $resource('/data/drink/:id/flag', { id: id }).save();
+                return $resource('/api/admin/drink/:id/flag', { id: id }).save();
             }
         }
     })

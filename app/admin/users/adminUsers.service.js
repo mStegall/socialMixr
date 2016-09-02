@@ -6,7 +6,7 @@
         }
 
         function getUsers() {
-            return $resource('/data/users').query()
+            return $resource('/api/admin/users').query()
         }
     })
 })()

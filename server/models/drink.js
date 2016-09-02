@@ -7,6 +7,8 @@ module.exports = {
   reviewDrinks,
   unapprovedDrinks,
   drinkById,
+  types,
+  subtypes,
   insertType,
   insertSubtype,
   addDrink,
@@ -51,6 +53,18 @@ function unapprovedDrinks() {
 function drinkById(id) {
   return baseDrink().where({ 'drinks.id': id })
 }
+
+// Get types
+function types() {
+  return knex('types').select('id', 'type')
+}
+
+// Get subtypes
+function subtypes(){
+  return knex('subtypes').select('id', 'subtype')
+}
+
+
 
 // Get type id - INTERNAL
 function typeId(type) {
@@ -153,7 +167,7 @@ function rejectDrink(id) {
 
 // Unapprove drink and place for review
 function flagDrink(id) {
-  return knew('drinks').update({
+  return knex('drinks').update({
     approved: false,
     review: true
   }).where({ id:id })

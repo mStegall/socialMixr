@@ -10,6 +10,22 @@
         var vm = this;
 
         vm.$onInit = function () {
+            vm.columns = [
+                {
+                    name: 'name',
+                    title: 'Name'
+                }, {
+                    name: 'type',
+                    title: 'Type'
+                }, {
+                    name: 'abv',
+                    title: 'ABV',
+                    hiddenXs: true
+                }, {
+                    unsortable: true
+                }
+            ]
+
             vm.sortOrder = 'name';
             vm.toggle = true;
             vm.drinks = adminDrinks.getReviewDrinks();
@@ -53,7 +69,7 @@
 
         function removeDrink(id) {
             vm.drinks = vm.drinks.filter(function (obj) {
-                return obj._id != id;
+                return obj.id != id;
             })
         }
     }

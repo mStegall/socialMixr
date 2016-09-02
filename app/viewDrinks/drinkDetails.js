@@ -17,7 +17,7 @@
         }
 
         vm.flagDrink = function () {
-            var flag = adminDrinks.flagDrink(vm.drink._id);
+            var flag = adminDrinks.flagDrink(vm.drink.id);
             
             flag.$promise.then(function () {
                 alert('Drink flagged for review!');

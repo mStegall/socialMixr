@@ -9,15 +9,15 @@
         }
 
         function addMixedDrink(drink) {
-            return $resource('/data/addMixedDrink').save(drink);
+            return $resource('/api/addMixedDrink').save(drink);
         }
 
         function getMixedDrinks() {
-            return $resource('/data/mixedDrinks').query();
+            return $resource('/api/mixedDrinks').query();
         }
 
         function getMixedDrink(id) {
-            return $resource('/data/mixedDrink/:id', {id: id}).get();
+            return $resource('/api/mixedDrink/:id', {id: id}).get();
         }
     })
 })();
