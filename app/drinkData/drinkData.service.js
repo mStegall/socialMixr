@@ -4,6 +4,8 @@
 
         return {
             getDrinks: getDrinks,
+            getTypes: getTypes,
+            getSubtypes: getSubtypes,
             getDrinksByCategory: getDrinksByCategory,
             addDrink: addDrink,
             getDrink: getDrink,
@@ -13,6 +15,14 @@
 
         function getDrinks() {
             return $resource('/api/drinks').query();
+        }
+
+        function getTypes() {
+            return $resource('/api/drinkTypes').query();
+        }
+
+        function getSubtypes() {
+            return $resource('/api/drinkSubtypes').query();
         }
 
         function getDrinksByCategory(category) {

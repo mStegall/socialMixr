@@ -1,6 +1,6 @@
 (function () {
     angular.module('app').component('addComponent', {
-        templateUrl: '/addItem/addComponent.html',
+        templateUrl: '/addEditDrink/addComponent.html',
         controller: addComponentCtrl
     })
 
@@ -11,6 +11,10 @@
         var vm = this;
 
         vm.$onInit = function () {
+            
+            vm.types = drinkData.getTypes();
+            // vm.subtypes = drinkData.getSubtypes();
+
             if ($routeParams.mode == 'edit') {
                 vm.edit = true;
                 vm.drink = drinkData.getDrink($routeParams.opt)
@@ -40,23 +44,21 @@
             };
         };
 
-        vm.saveDrink = function () {
-            if (abvMode = "proof") {
-                vm.drink.abv = vm.displayAbv / 200;
-            } else {
-                vm.drink.abv = vm.displayAbv / 100;
-            }
+        vm.saveDrink = function (drink) {
+            console.log(drink);
+            console.log(drink.type.id);
+            
+            // if (vm.edit) {
+            //     drinkData.saveDrink(vm.drink);
+            // } else {
+            //     drinkData.addDrink(vm.drink);
+            // }
 
-            if (vm.edit) {
-                drinkData.saveDrink(vm.drink);
-            } else {
-                drinkData.addDrink(vm.drink);
-            }
-            $window.history.back();
+            // $window.history.back();
         }
 
         vm.cancel = function () {
-            $window.history.back();
+            // $window.history.back();
         }
     }
 })();

@@ -22,6 +22,7 @@ module.exports = function (app, config) {
     app.post('/api/drink/type', drinkController.addType);
     app.post('/api/drink/subtype', drinkController.addSubtype);
 
+    app.get('/api/drinkCategories', drinkController.categories);
     app.get('/api/drinkTypes', drinkController.types)
     app.get('/api/drinkSubtypes', drinkController.subtypes)
 

@@ -6,6 +6,7 @@ module.exports = {
   drinks,
   drinksByCategory,
   drink,
+  categories,
   types,
   subtypes,
   addDrink,
@@ -50,6 +51,16 @@ function drink(req, res) {
   })
 }
 
+// Deliver categories
+function categories(req, res) {
+  drinkModel.categories().then(function(row){
+    res.json(rows);
+  }).catch(function(err){
+    console.error(err);
+    res.sendStatus(500);
+  })
+}
+
 // Deliver types
 function types(req, res) {
   drinkModel.types().then(function (rows) {
@@ -69,6 +80,8 @@ function subtypes(req, res) {
     res.sendStatus(500);
   })
 }
+
+
 
 // POSTS
 // -----------------------------------------------------

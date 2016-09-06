@@ -7,6 +7,7 @@ module.exports = {
   reviewDrinks,
   unapprovedDrinks,
   drinkById,
+  categories,
   types,
   subtypes,
   insertType,
@@ -52,6 +53,11 @@ function unapprovedDrinks() {
 // Get drink by id
 function drinkById(id) {
   return baseDrink().where({ 'drinks.id': id })
+}
+
+// Get categories
+function categories() {
+  return knex('categories').select('id', 'category')
 }
 
 // Get types
