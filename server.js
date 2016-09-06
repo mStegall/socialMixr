@@ -12,7 +12,7 @@ var config = {
 
 // Database Connection
 var db = mongoose.connection;
-db.open('mongodb://mstegall:9t5eV#zFn%bBYoj6%*hL@ds021671.mlab.com:21671/socialmixr');
+db.open(process.env.MLABS);
 db.once('open', function () {
     console.log("Connected to Database");
 });
