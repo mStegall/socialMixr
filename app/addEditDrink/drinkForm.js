@@ -1,4 +1,4 @@
-(function(){
+(function () {
     angular.module('app').component('drinkForm', {
         templateUrl: '/addEditDrink/drinkForm.html',
         controller: drinkFormCtrl,
@@ -9,17 +9,23 @@
         }
     })
 
-    function drinkFormCtrl(drinkData){
+    function drinkFormCtrl(drinkData) {
         "ngInclude";
 
         var vm = this;
 
-        vm.$onInit = function(){
+        vm.abvMode = "200";
+
+        vm.$onInit = function () {
             vm.types = drinkData.getTypes();
             vm.subtypes = drinkData.getSubtypes();
+        }
 
-
-            vm.abvMode = "200";
+        vm.$onChanges = function (changes) {
+            if (changes.drink) {
+                vm.drink = angular.copy(vm.drink);
+                vm.displayAbv = vm.drink.abv * vm.abvMode;
+            }
         }
 
         vm.numberChange = function () {

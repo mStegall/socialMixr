@@ -1,2 +1,3 @@
-require('./addComponent.js');
+require('./addDrink');
+require('./editDrink');
 require('./drinkForm');
