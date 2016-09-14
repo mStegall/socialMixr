@@ -3,7 +3,7 @@
     templateUrl: '/addEditDrink/addDrink.html',
     controller: addComponentCtrl,
     bindings: {
-      category: '<'
+      categoryId: '<'
     }
   })
 
@@ -13,18 +13,15 @@
 
     var vm = this;
 
-    vm.$onInit = function () {
-      vm.drink = { category: vm.category };
-      vm.abvMode = "200";
+    vm.$onChanges = function (changes){
+      if(changes.categoryId){
+        vm.categoryId = parseInt(vm.categoryId)
+      }
     }
 
-
     vm.saveDrink = function (drink) {
-      console.log(drink);
-      console.log(drink.type.id);
-
-      // drinkData.addDrink(vm.drink);
-      // $window.history.back();
+      drinkData.addDrink(drink);
+      $window.history.back();
     }
 
     vm.cancel = function () {

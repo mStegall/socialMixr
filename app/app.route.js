@@ -19,10 +19,11 @@ angular.module('app').config(function ($routeProvider, $locationProvider) {
     .when('/addMixedDrink/:mode?/:opt?', {
       template: '<add-edit-mixed-drink></add-edit-mixed-drink>'
     })
-    .when('/addDrink/:category?', {
-      template: '<add-drink category="$resolve.params.category"></add-drink>',
+    .when('/addDrink/:categoryId?', {
+      template: '<add-drink category-id="$resolve.params.categoryId"></add-drink>',
       resolve: {
         params: function ($route) {
+          console.log($route.current.params.categoryId)
           return $route.current.params
         }
       }
@@ -38,9 +39,16 @@ angular.module('app').config(function ($routeProvider, $locationProvider) {
         }
       }
     })
-    .when('/drinkList/:category?/:opt?', {
-      templateUrl: 'viewDrinks/drinkList.html',
-      controller: 'drinkListCtrl'
+    .when('/drinkListCategory/:category', {
+      template: '<drink-list-category category="$resolve.params.category"></drink-list-category>',
+      resolve: {
+        params: function ($route) {
+          return $route.current.params
+        }
+      }
+    })
+    .when('/drinkList', {
+      template: '<drink-list></drink-list>'
     })
     .when('/drinkDetails/:id', {
       template: '<drink-details id="$resolve.params.id"></drink-details>',
@@ -71,5 +79,4 @@ angular.module('app').config(function ($routeProvider, $locationProvider) {
       template: '<user-profile></user-profile>'
     })
     .otherwise({ redirectTo: '/' });
-
 });

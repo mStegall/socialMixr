@@ -1,0 +1,18 @@
+<table class="table table-striped">
+    <thead table-head columns="$ctrl.columns" sort-order="$ctrl.sortOrder" sort-order-change="$ctrl.sortOrderSet(field)"></thead>
+    <tbody>
+        <tr ng-repeat="drink in $ctrl.drinks  | filter: $ctrl.filter | orderBy: $ctrl.sortOrder" ng-class="{success : drink.fav}">
+            <td><a href="/drinkDetails/{{drink.id}}">{{drink.name}}</a></td>
+            <td>{{drink.type}}</td>
+            <td>{{drink.subtype}}</td>
+            <!--<td class="hidden-xs">{{drink.manufacturer}}</td>
+            <td class="hidden-xs">{{drink.countryOfOrigin}}</td>-->
+            <td>{{drink.abv | percentage}}</td>
+            <!--<td>
+                <button class="btn btn-default btn-sm pull-right" ng-click="toggleLiquorFavorite(drink)">
+                    {{drink.fav ? "Unfavorite" : "Favorite"}}
+                </button>
+            </td>-->
+        </tr>
+    </tbody>
+</table>

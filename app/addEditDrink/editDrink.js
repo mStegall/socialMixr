@@ -12,13 +12,6 @@
 
     var vm = this;
 
-    // vm.$onInit = function(){
-    //   vm.drink.$promise.then(function(){
-    //     vm.drinkCopy = angular.copy(vm.drink)
-    //   })
-    // }
-    
-
     vm.saveDrink = function (drink) {
       console.log(drink);
       console.log(drink.type.id);

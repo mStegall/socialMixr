@@ -6,6 +6,7 @@
             getDrinks: getDrinks,
             getTypes: getTypes,
             getSubtypes: getSubtypes,
+            getCategories: getCategories,
             getDrinksByCategory: getDrinksByCategory,
             addDrink: addDrink,
             getDrink: getDrink,
@@ -25,12 +26,16 @@
             return $resource('/api/drinkSubtypes').query();
         }
 
+        function getCategories(){
+            return $resource('/api/drinkCategories').query();
+        }
+
         function getDrinksByCategory(category) {
-            return $resource('/api/drinks/:category', { category: category }).query();
+            return $resource('/api/drinks/:category', { category: category }).get();
         }
 
         function addDrink(drink) {
-            return $resource('/api/addDrink').save(drink);
+            return $resource('/api/drink').save(drink);
         }
 
         function getDrink(id) {

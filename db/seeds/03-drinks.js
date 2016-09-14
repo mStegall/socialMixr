@@ -2,11 +2,12 @@
 exports.seed = function (knex, Promise) {
     return knex('drinks').then(function (rows) {
         if (rows.length === 0) {
-            Promise.all([
+            return Promise.all([
                 knex('categories').select('id', 'category'),
                 knex('types').select('id', 'type'),
                 knex('subtypes').select('id', 'subtype')
-            ]).then(function ([cats, types, subs]) {
+            ])
+            .then(function ([cats, types, subs]) {
                 categoryMap = cats.reduce(function (prev, {id, category}) {
                     prev[category] = id;
 
@@ -29,7 +30,7 @@ exports.seed = function (knex, Promise) {
                     {
                         'user_id': 1,
                         name: 'Kahlua',
-                        'category_id': categoryMap['spirit'],
+                        'category_id': categoryMap['Spirit'],
                         'type_id': typeMap['Liqueur'],
                         'subtype_id': subtypeMap['Coffee'],
                         abv: 0.2
@@ -37,7 +38,7 @@ exports.seed = function (knex, Promise) {
                     {
                         'user_id': 1,
                         name: "Bailey's Irish Creme",
-                        'category_id': categoryMap['spirit'],
+                        'category_id': categoryMap['Spirit'],
                         'type_id': typeMap['Liqueur'],
                         'subtype_id': subtypeMap['Cream'],
                         description: 'A Creme Liqueur made with Irish Dairy Cream and Irish Whiskey',
@@ -47,7 +48,7 @@ exports.seed = function (knex, Promise) {
                     {
                         'user_id': 1,
                         name: 'Smirnoff',
-                        'category_id': categoryMap['spirit'],
+                        'category_id': categoryMap['Spirit'],
                         'type_id': typeMap['Vodka'],
                         abv: 0.35,
                         review: true
@@ -55,7 +56,7 @@ exports.seed = function (knex, Promise) {
                     {
                         'user_id': 1,
                         name: 'Sierra Nevada Pale Ale',
-                        'category_id': categoryMap['beer'],
+                        'category_id': categoryMap['Beer'],
                         'type_id': typeMap['Pale Ale'],
                         'subtype_id': subtypeMap['American Pale Ale'],
                         abv: 0.056

@@ -1,6 +1,9 @@
-var Promise = require('bluebird')
+var Promise = require('bluebird');
 
-var drinkModel = require('../models/drink')
+var drinkModel = require('../models/drink');
+var categoryModel = require('../models/category');
+var typeModel = require('../models/type');
+var subtypeModel = require('../models/subtype');
 
 module.exports = {
   drinks,
@@ -31,12 +34,18 @@ function drinks(req, res) {
 
 // Retrieve all approved drinks in in a category
 function drinksByCategory(req, res) {
-  drinkModel.baseDrink().where({
-    approved: true,
-    category: req.params.category
-  })
-    .then(function (rows) {
-      res.json(rows)
+  Promise.join(
+    categoryModel.category(req.params.category),
+    drinkModel.baseDrink().where({
+      approved: true,
+      category: req.params.category
+    })
+  )
+    .then(function ([category, drinks]) {
+      res.json({
+        category,
+        drinks
+      })
     })
     .catch(function (err) {
       console.log(err)
@@ -53,9 +62,9 @@ function drink(req, res) {
 
 // Deliver categories
 function categories(req, res) {
-  drinkModel.categories().then(function(row){
+  categoryModel.categories().then(function (rows) {
     res.json(rows);
-  }).catch(function(err){
+  }).catch(function (err) {
     console.error(err);
     res.sendStatus(500);
   })
@@ -63,9 +72,9 @@ function categories(req, res) {
 
 // Deliver types
 function types(req, res) {
-  drinkModel.types().then(function (rows) {
+  typeModel.types().then(function (rows) {
     res.json(rows);
-  }).catch(function(err){
+  }).catch(function (err) {
     console.error(err);
     res.sendStatus(500);
   })
@@ -73,9 +82,9 @@ function types(req, res) {
 
 // Deliver subtypes
 function subtypes(req, res) {
-  drinkModel.subtypes().then(function (rows) {
+  subtypeModel.subtypes().then(function (rows) {
     res.json(rows);
-  }).catch(function(err){
+  }).catch(function (err) {
     console.error(err);
     res.sendStatus(500);
   })
@@ -88,14 +97,14 @@ function subtypes(req, res) {
 
 // Post handler for adding new type
 function addType(req, res) {
-  insertType(req.body.type).then(function (id) {
+  typeModel.insertType(req.body.type).then(function (id) {
     res.json(id)
   })
 }
 
 // Post handler for adding new subtype
 function addSubtype(req, res) {
-  insertSubtype(req.body.subtype).then(function (id) {
+  subtypeModel.insertSubtype(req.body.subtype).then(function (id) {
     res.json(id)
   })
 }
@@ -103,37 +112,52 @@ function addSubtype(req, res) {
 // Add simple drink to database
 function addDrink(req, res) {
   var drink = {
+    'user_id': req.user.id,
     name: req.body.name,
     'category_id': req.body.categoryId,
     'type_id': req.body.typeId,
     abv: req.body.abv
   }
 
+  // Insert type if neccessary
   function typeCheck() {
     if (req.body.type) {
-      return insertType(req.body.type).then(function (id) {
+
+      return typeModel.insertType(req.body.type).then(function (id) {
         drink['type_id'] = id
       })
+
     }
   }
 
+  // Add subtype ID or insert subtype if neccessary
   function subtypeCheck() {
     if (req.body.subtypeId) {
-      console.log(req.body.subtypeId)
+
       return drink['subtype_id'] = req.body.subtypeId
+
     } else if (req.body.subtype) {
-      console.log(req.body.subtype)
-      return insertSubtype(req.body.subtype).then(function (id) {
+
+      return subtypeModel.insertSubtype(req.body.subtype).then(function (id) {
         drink['subtype_id'] = id
       })
+
     }
   }
 
-  Promise.all([typeCheck(), subtypeCheck()]).then(function () {
-    knex('drinks').insert(drink).returning('id').then(function (id) {
-      res.json(id)
+  // Insert Drink
+  Promise.join(typeCheck(), subtypeCheck())
+    .then(function () {
+      return drinkModel.addDrink(drink)
     })
-  })
+    .then(ids => ids[0])
+    .then(function(id){
+      res.json(id);
+    })
+    .catch(function(err){
+      console.error(err);
+      res.sendStatus(500);
+    })
 }
 
 

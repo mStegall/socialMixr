@@ -4,9 +4,16 @@ exports.seed = function (knex, Promise) {
         knex('categories').then(function (rows) {
             if (rows.length === 0) {
                 var categories = [
-                    { category: 'beer' },
-                    { category: 'wine' },
-                    { category: 'spirit' }
+                    {
+                        category: 'Beer',
+                        plural: 'Beer'
+                    }, {
+                        category: 'Wine',
+                        plural: 'Wine'
+                    }, {
+                        category: 'Spirit',
+                        plural: 'Spirits'
+                    }
                 ]
 
                 return knex('categories').insert(categories).then()

@@ -5,6 +5,7 @@ exports.up = function (knex, Promise) {
         knex.schema.createTable('categories', function (t) {
             t.increments();
             t.text('category');
+            t.text('plural')
         }),
 
         knex.schema.createTable('types', function (t) {

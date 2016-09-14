@@ -1,2 +1,4 @@
 require('./drinkDetails');
-require('./drinkList.controller')
+require('./drinkList');
+require('./drinkTable');
+require('./drinkListCategory');

@@ -15,19 +15,21 @@ module.exports = function (app, config) {
     // -------------------------------------------------    
     // Get simple drinks
     app.get('/api/drinks', drinkController.drinks);
-    
     app.get('/api/drinks/:category', drinkController.drinksByCategory);
+    
     app.get('/api/drink/:id', drinkController.drink);
     app.post('/api/drink', drinkController.addDrink)
-    app.post('/api/drink/type', drinkController.addType);
-    app.post('/api/drink/subtype', drinkController.addSubtype);
-
+    
     app.get('/api/drinkCategories', drinkController.categories);
+    
     app.get('/api/drinkTypes', drinkController.types)
+    app.post('/api/drinkTypes', drinkController.addType);
+
     app.get('/api/drinkSubtypes', drinkController.subtypes)
+    app.post('/api/drinkSubtypes', drinkController.addSubtype);
 
     // Add/Modify simple drinks
-    app.post('/api/addDrink', drinkController.addDrink);
+    app.post('/api/drink', drinkController.addDrink);
     // app.post('/api/deleteDrink', drinkController.deleteDrink);
     // app.post('/api/updateDrink', drinkController.updateDrink);
 
