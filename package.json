@@ -19,6 +19,7 @@
     "bluebird": "^3.4.3",
     "body-parser": "^1.15.1",
     "bootstrap": "^3.3.6",
+    "bootstrap-sass": "^3.3.7",
     "bootswatch": "^3.3.6",
     "breakpoint-sass": "^2.7.0",
     "compression": "^1.6.2",
