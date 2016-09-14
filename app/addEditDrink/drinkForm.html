@@ -65,7 +65,7 @@
 
     <!-- Buttons -->
     <div class="col-sm-10 col-sm-offset-2">
-        <button class="btn btn-default" ng-disabled="componentInput.$invalid" ng-click="$ctrl.formSubmit({drink: $ctrl.drink})" type="submit">Save
+        <button class="btn btn-default" ng-disabled="componentInput.$invalid || !$ctrl.submitEnabled" ng-click="$ctrl.formSubmit({drink: $ctrl.drink})" type="submit">Save
                 </button>
         <button class="btn btn-danger" type="button" ng-click="$ctrl.cancel()">Cancel</button>
     </div>

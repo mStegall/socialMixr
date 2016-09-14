@@ -5,6 +5,7 @@
         bindings: {
             submit: '&',
             cancel: '&',
+            submitEnabled: '<',
             drink: '<'
         }
     })
@@ -24,15 +25,21 @@
 
         vm.$onChanges = function (changes) {
             if (changes.drink) {
-                vm.drink.$promise.then(function () {
-                    vm.drink = angular.copy(vm.drink);
-                    if (vm.drink.abv) {
-                        vm.displayAbv = vm.drink.abv * vm.abvMode;
-                    }
-                })
+                if (vm.drink.$promise) {
+                    vm.drink.$promise.then(drinkCopy);
+                } else {
+                    drinkCopy();
+                }
             }
         }
 
+
+        function drinkCopy() {
+            vm.drink = angular.copy(vm.drink);
+            if (vm.drink.abv) {
+                vm.displayAbv = vm.drink.abv * vm.abvMode;
+            }
+        }
         vm.formSubmit = function () {
             if (vm.drink.subtype.id) {
                 vm.drink.subtypeId = vm.drink.subtype.id

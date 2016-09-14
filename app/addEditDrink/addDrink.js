@@ -8,14 +8,39 @@
   })
 
 
-  function addComponentCtrl(drinkData, $log, $window, $routeParams) {
+  function addComponentCtrl(drinkData, userInfo, login, $scope) {
     "ngInclude";
 
     var vm = this;
 
-    vm.$onChanges = function (changes){
-      if(changes.categoryId){
+    vm.$onInit = function () {
+      vm.alerts = []
+    
+      updateUser();
+
+      // Listen for changes in login state
+      login.logInSubscribe($scope, updateUser);
+    }
+
+    vm.$onChanges = function (changes) {
+      if (changes.categoryId) {
         vm.categoryId = parseInt(vm.categoryId)
+      }
+    }
+
+    
+    vm.closeAlert = function (index) {
+      vm.alerts.splice(index, 1);
+    }
+
+    // Get user state and set alerts
+    function updateUser() {
+      vm.user = userInfo.getUser();
+      // debugger;
+      if (!vm.user) {
+        vm.alerts = [{ msg: "You won't be able to save while not logged in!" }]
+      } else {
+        vm.alerts = []
       }
     }
 

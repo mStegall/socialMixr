@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-xs-12">
-        <drink-form drink="{categoryId: $ctrl.categoryId}" submit="$ctrl.saveDrink(drink)" 
-        cancel="$ctrl.cancel()"></drink-form>
+        <uib-alert ng-repeat="alert in $ctrl.alerts" type="danger" close="$ctrl.closeAlert($index)">{{alert.msg}}</uib-alert>
+        <drink-form drink="{categoryId: $ctrl.categoryId}" submit="$ctrl.saveDrink(drink)" cancel="$ctrl.cancel()" submit-enabled="true"></drink-form>
     </div>
 </div>
