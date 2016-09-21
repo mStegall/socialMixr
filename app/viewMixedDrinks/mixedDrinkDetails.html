@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-xs-9">
         <h1>{{$ctrl.drink.name}}</h1>
-        <h4>By: {{$ctrl.drink.creator.firstName}} {{$ctrl.drink.creator.lastName}}</h4>
+        <h4>By: {{$ctrl.drink.firstName}} {{$ctrl.drink.lastName}}</h4>
     </div>
     <div class="col-xs-3">
         <button class="btn btn-danger pull-right" ng-show="$ctrl.admin" ng-click="$ctrl.flagDrink()">Flag Drink</button>
@@ -17,12 +17,12 @@
         <section>
             <h3>Ingredients</h3>
             <ul>
-                <li ng-repeat="item in $ctrl.drink.dbIngredients">
-                    <a ng-href="/drinkDetails/{{item.drink._id}}">
-                        {{item.drink.name}}, <em>{{item.amount}}oz.</em>
+                <li ng-repeat="item in $ctrl.drink.drinkIngredients">
+                    <a ng-href="/drinkDetails/{{item.id}}">
+                        {{item.name}}, <em>{{item.amount}}oz.</em>
                         </a>
                 </li>
-                <li ng-repeat="item in $ctrl.drink.userIngredients">{{item.drink}}, <em>{{item.amount}}oz.</em></li>
+                <li ng-repeat="item in $ctrl.drink.customIngredients">{{item.name}}, <em>{{item.amount}}oz.</em></li>
             </ul>
         </section>
         <section>

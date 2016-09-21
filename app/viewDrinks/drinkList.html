@@ -1,54 +1,44 @@
+<!--Header-->
 <div class="row" style="padding-top: 10px; padding-bottom: 10px">
     <div class="col-xs-12">
         <h1 style="display: inline">Drink List</h1>
-        <button class="btn btn-default pull-right" ng-click="filterCollapsed = !filterCollapsed">Filter</button>
+        <button class="btn btn-default pull-right" ng-click="$ctrl.filterCollapsed = !$ctrl.filterCollapsed">Filter</button>
     </div>
 </div>
+
+<!--Filter-->
 <div class="row">
-    <div uib-collapse="filterCollapsed" class="col-xs-12">
+    <div uib-collapse="$ctrl.filterCollapsed" class="col-xs-12">
         <div class="well" style="margin-top: 10px">
             <form class="form-inline">
                 <label for="name">Name</label>
-                <input id="name" class="form-control" type="text" ng-model="search.name" placeholder="Name">
+                <input id="name" class="form-control" type="text" ng-model="$ctrl.search.name" placeholder="Name">
                 <label for="type">Type</label>
-                <select name="type" id="type" ng-model="search.type" class="form-control">
-                    <option value="{{type}}" ng-repeat="type in types">{{type}}</option>
+                <select name="type" id="type" ng-model="$ctrl.search.type" class="form-control">
+                    <option value="{{type}}" ng-repeat="type in $ctrl.types">{{type}}</option>
                 </select>
             </form>
         </div>
     </div>
 </div>
 
+<!--Drink Table-->
 <div class="row">
     <div class="col-xs-12" ng-cloak>
-        <table class="table table-striped">
-            <thead table-head columns="columns" sort-order="sortOrder" sort-order-change="sortOrderSet(field)"></thead>
-            <tbody>
-            <tr ng-repeat="drink in drinks  | filter: {name: search.name, type: search.type} | orderBy: sortOrder" ng-class="{success : drink.fav}">
-                <td><a href="/drinkDetails/{{drink._id}}">{{drink.name}}</a></td>
-                <td>{{drink.type}}</td>
-                <td class="hidden-xs">{{drink.manufacturer}}</td>
-                <td class="hidden-xs">{{drink.countryOfOrigin}}</td>
-                <td>{{drink.abv | percentage}}</td>
-                <td><button class="btn btn-default btn-sm" ng-click="toggleLiquorFavorite(drink)">
-                    {{drink.fav ? "Unfavorite" : "Favorite"}}
-                </button></td>
-            </tr>
-            </tbody>
-        </table>
+        <drink-table drinks="$ctrl.drinks" filter="{name: $ctrl.search.name, type: $ctrl.search.type}"></drink-table>
     </div>
 </div>
 
+<!--Add New Drink-->
 <div class="row">
     <div class="col-xs-12">
         <div class="well hidden-xs">
-            <h3>Don't see something?<a ng-href="/addComponent/add/{{category}}" style="margin-left: 10px" class="btn btn-default">Add it here!</a></h3>
+            <h3>Don't see something?<a ng-href="/addDrink" style="margin-left: 10px" class="btn btn-default">Add it here!</a></h3>
         </div>
         <div class="well visible-xs">
             <h3 class="text-center">Don't see something?</h3>
             <br>
-            <a ng-href="/addComponent/add/{{category}}" class="btn btn-default btn-block">Add it here!</a>
+            <a ng-href="/addDrink" class="btn btn-default btn-block">Add it here!</a>
         </div>
     </div>
 </div>
-

@@ -1,2 +1,2 @@
-require('./addEditMixedDrink.js');
+require('./addMixedDrink.js');
 require('./ingredient.js')

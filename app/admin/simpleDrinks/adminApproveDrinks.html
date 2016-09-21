@@ -17,33 +17,19 @@
 <div class="row">
     <div class="col-xs-12" ng-cloak>
         <table class="table table-striped">
-            <thead>
-            <tr class="hidden-xs">
-                <th ng-repeat="(key, value) in {name:'Name', type: 'Type', manufacturer: 'Manufacturer', countryOfOrigin: 'Country of Origin', abv: 'ABV'}"
-                    ng-click="sortOrderSet(key)">
-                    {{value}} <span ng-class="sortArrows(key)" ng-style="setArrowColor(key)"></span>
-                </th>
-                <th></th>
-            </tr>
-            <tr class="visible-xs">
-                <th ng-repeat="(key, value) in {name:'Name', type: 'Type', abv: 'ABV'}"
-                    ng-click="sortOrderSet(key)">
-                    {{value}} <span ng-class="sortArrows(key)" ng-style="setArrowColor(key)"></span>
-                </th>
-                <th></th>
-            </tr>
+            <thead table-head columns="$ctrl.columns" sort-order="$ctrl.sortOrder" sort-order-change="$ctrl.sortOrderSet(field)">
             </thead>
             <tbody>
             <tr ng-repeat="drink in $ctrl.drinks  | filter: {name: $ctrl.name} | orderBy: $ctrl.sortOrder"
                 ng-class="{success : drink.fav}">
-                <td><a href="/drinkDetails/{{drink._id}}">{{drink.name}}</a></td>
+                <td><a href="/drinkDetails/{{drink.id}}">{{drink.name}}</a></td>
                 <td>{{drink.type}}</td>
-                <td class="hidden-xs">{{drink.manufacturer}}</td>
-                <td class="hidden-xs">{{drink.countryOfOrigin}}</td>
+                <!--<td class="hidden-xs">{{drink.manufacturer}}</td>
+                <td class="hidden-xs">{{drink.countryOfOrigin}}</td>-->
                 <td>{{drink.abv | percentage}}</td>
                 <td>
-                    <button class="btn btn-sm btn-success" ng-click="$ctrl.approveDrink(drink._id)">Approve</button>
-                    <button class="btn btn-sm btn-danger" ng-click="$ctrl.rejectDrink(drink._id)">Reject</button>
+                    <button class="btn btn-sm btn-success" ng-click="$ctrl.approveDrink(drink.id)">Approve</button>
+                    <button class="btn btn-sm btn-danger" ng-click="$ctrl.rejectDrink(drink.id)">Reject</button>
                 </td>
             </tr>
             </tbody>

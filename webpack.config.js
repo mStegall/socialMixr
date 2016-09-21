@@ -13,22 +13,23 @@ var config = {
         loaders: [
             {
                 test: /\.s?css$/,
-                loader: ExtractTextPlugin.extract('style', 'css!sass')
+                loader: ExtractTextPlugin.extract('style', 'css!sass?includePaths[]=./node_modules')
             }, {
-                test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/, 
+                test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
                 loader: 'url?limit=10000&mimetype=application/font-woff'
             }, {
-                test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, 
+                test: /\.jpg$/,
+                loader: "url-loader?limit=10000&mimetype=image/jpg"
+            },
+            {
+                test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
                 loader: 'url?limit=10000&mimetype=application/octet-stream'
             }, {
-                test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, 
-                loader: 'file'
+                test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+                loader: 'file-loader'
             }, {
-                test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, 
+                test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
                 loader: 'url?limit=10000&mimetype=image/svg+xml'
-            }, { 
-                test: /\.jpg$/,    
-                loader: "url-loader?limit=10000&mimetype=image/jpg"
             }
         ]
     },
@@ -41,13 +42,13 @@ var config = {
             add: true
             // other ng-annotate options here
         }),
-        new ExtractTextPlugin('style.css',{
+        new ExtractTextPlugin('style.css', {
             allChunks: true
-        })        
+        })
     ]
 };
 
-if (process.env.NODE_ENV != "development") {
+if (process.env.NODE_ENV == "production") {
     config.plugins.push(new webpack.optimize.UglifyJsPlugin());
 }
 

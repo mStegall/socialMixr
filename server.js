@@ -10,14 +10,6 @@ var config = {
     rootPath : __dirname
 };
 
-// Database Connection
-var db = mongoose.connection;
-db.open(process.env.MLABS);
-db.once('open', function () {
-    console.log("Connected to Database");
-});
-
-
 // Express App
 require('./server/config/express')(app, config);
 

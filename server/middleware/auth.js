@@ -8,7 +8,7 @@ function requiresLogin(req, res, next) {
     if (req.isAuthenticated()) {
         next();
     } else {
-        res.send(403);
+        res.sendStatus(403);
         res.end();
     }
 };

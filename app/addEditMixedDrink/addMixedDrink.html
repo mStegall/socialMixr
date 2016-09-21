@@ -15,9 +15,11 @@
             </div>
         </div>
 
+        {{$ctrl.ingredients}}
+
         <div ng-repeat="ingredient in $ctrl.ingredients">
             <ingredient drinks="$ctrl.drinks" 
-                        on-update="$ctrl.updateIngredient(ingredient, type, drink, amount)" >
+                        on-update="$ctrl.updateIngredient(ingredient, data)" >
             </ingredient>
         </div>
         <div class="form-group">
