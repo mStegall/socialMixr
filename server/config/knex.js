@@ -8,7 +8,7 @@ console.log('Starting Migrations')
 knex.migrate.latest()
     .then(function () {
         console.log('Migrations Finished');
-        if (process.env.SEEDING) {
+        if (process.env.SEEDING == "true") {
             console.log('Starting Seeds')
             knex.seed.run()
                 .then(function () {
