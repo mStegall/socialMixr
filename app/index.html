@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<!--suppress ALL -->
+
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,97 +9,41 @@
     <base href="/">
     <link rel="stylesheet" href="dist/style.css" type="text/css">
 </head>
+
 <body ng-app="app" ng-strict-di>
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="/" class="navbar-brand collapser">
-                <img class="hidden-xs" src="common/images/Logo-dark-small.png" alt="socialMixr">
-                <img class="visible-xs" id="smallBrand" src="common/images/Logo-dark-small.png" alt="socialMixr">
-            </a>
-        </div>
-        <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li><a href="/spirits" class="collapser">Spirits</a></li>
-                <li><a href="/mixedDrinks" class="collapser">Mixed Drinks</a></li>
-                <li><a href="/beer" class="collapser">Beer</a></li>
-                <li><a href="/wine" class="collapser">Wine</a></li>
-            </ul>
-            <navbar-login></navbar-login>
-            
-        </div>
-    </div>
-</nav>
+                <a href="/" class="navbar-brand collapser">
+                    <img class="hidden-xs" src="common/images/Logo-dark-small.png" alt="socialMixr">
+                    <img class="visible-xs" id="smallBrand" src="common/images/Logo-dark-small.png" alt="socialMixr">
+                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/spirits" class="collapser">Spirits</a></li>
+                    <li><a href="/mixedDrinks" class="collapser">Mixed Drinks</a></li>
+                    <li><a href="/beer" class="collapser">Beer</a></li>
+                    <li><a href="/wine" class="collapser">Wine</a></li>
+                </ul>
+                <navbar-login></navbar-login>
 
-<div class="container" ng-view>
-
-</div>
-
-<div class="container" ng-if="false">
-    <div class="jumbotron mainJumbo">
-        <div class="jumboText">
-            <h1>socialMixr</h1>
-            <h2>Where friends come to drink</h2>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-sm-6">
-            <div class="well homeWell">
-                <h2>Spirits</h2>
-                <p>Take a look at our collection of spirits and what others have to say about them!</p>
-                <div class="btn-group-vertical">
-                    <a href="/drinkList" class="btn btn-default">Browse All</a>
-                    <a href="" class="btn btn-default">Browse By Type</a>
-                    <a href="" class="btn btn-default">Browse By Flavor</a>
-                </div>
             </div>
         </div>
-        <div class="col-sm-6">
-            <div class="well homeWell">
-                <h2>Mixed Drinks</h2>
-                <p></p>
-                <div class="btn-group-vertical">
-                    <a href="" class="btn btn-default">Browse All</a>
-                    <a href="" class="btn btn-default">Browse By Type</a>
-                    <a href="" class="btn btn-default">Browse By Flavor</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-6">
-            <div class="well homeWell">
-                <h2>Beer</h2>
-                <p></p>
-                <div class="btn-group-vertical">
-                    <a href="" class="btn btn-default">Browse All</a>
-                    <a href="" class="btn btn-default">Browse By Type</a>
-                    <a href="" class="btn btn-default">Browse By Flavor</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6">
-            <div class="well homeWell">
-                <h2>Wine</h2>
-                <p></p>
-                <div class="btn-group-vertical">
-                    <a href="" class="btn btn-default">Browse All</a>
-                    <a href="" class="btn btn-default">Browse By Type</a>
-                    <a href="" class="btn btn-default">Browse By Flavor</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+    </nav>
 
-<script src="dist/app.bundle.js"></script>
+    <div class="container" ng-view>
+
+    </div>
+
+    <script src="dist/app.bundle.js"></script>
 
 </body>
+
 </html>
