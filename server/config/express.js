@@ -5,10 +5,13 @@ var passport = require('passport');
 var session = require('express-session');
 var compression = require('compression');
 
+var node_env = process.env.NODE_ENV || 'development';
 
 module.exports = function (app, config) {
     // Logging
-    app.use(morgan('dev'));
+    if(node_env == 'development') {
+        app.use(morgan('dev'));
+    }    
 
     app.use(compression());
 
