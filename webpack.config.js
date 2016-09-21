@@ -21,18 +21,16 @@ var config = {
                 test: /\.jpg$/,
                 loader: "url-loader?limit=10000&mimetype=image/jpg"
             },
-            // {
-            //     test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-            //     loader: 'url?limit=10000&mimetype=application/octet-stream'
-            // }, {
-            //     test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-            //     loader: 'file-loader'
-            // }, {
-            //     test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-            //     loader: 'url?limit=10000&mimetype=image/svg+xml'
-            // },
-            
-             { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file-loader" },
+            {
+                test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+                loader: 'url?limit=10000&mimetype=application/octet-stream'
+            }, {
+                test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+                loader: 'file-loader'
+            }, {
+                test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+                loader: 'url?limit=10000&mimetype=image/svg+xml'
+            }
         ]
     },
     plugins: [
@@ -50,7 +48,7 @@ var config = {
     ]
 };
 
-if (process.env.NODE_ENV != "development") {
+if (process.env.NODE_ENV == "production") {
     config.plugins.push(new webpack.optimize.UglifyJsPlugin());
 }
 
