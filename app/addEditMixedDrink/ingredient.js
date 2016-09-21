@@ -12,20 +12,21 @@ function ingredientCtrl() {
 
     vm.update = function () {
         if (vm.ingredient) {
-            if (vm.ingredient._id){
+            if (vm.ingredient.id){
                 var data = {
                     type: "db",
-                    drink: vm.ingredient._id,
-                    amount: vm.amount 
+                    drinkId: vm.ingredient.id,
+                    amount: vm.amount
                 }
             } else {
                 var data = {
                     type: "user",
-                    drink: vm.ingredient,
+                    name: vm.ingredient,
                     amount: vm.amount
                 }
             }
-            vm.onUpdate(data)
+
+            vm.onUpdate({data:data})
         }
     }
 }

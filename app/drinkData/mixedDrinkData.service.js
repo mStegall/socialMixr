@@ -9,7 +9,7 @@
         }
 
         function addMixedDrink(drink) {
-            return $resource('/api/addMixedDrink').save(drink);
+            return $resource('/api/mixedDrink').save(drink);
         }
 
         function getMixedDrinks() {

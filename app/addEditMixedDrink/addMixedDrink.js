@@ -1,9 +1,9 @@
-angular.module('app').component('addEditMixedDrink', {
-    templateUrl: '/addEditMixedDrink/addEditMixedDrink.html',
+angular.module('app').component('addMixedDrink', {
+    templateUrl: '/addEditMixedDrink/addMixedDrink.html',
     controller: addEditMixedDrinkCtrl
 })
 
-function addEditMixedDrinkCtrl($routeParams, drinkData, userInfo, login, $uibModal, $scope, mixedDrinkData) {
+function addEditMixedDrinkCtrl(drinkData, userInfo, login, $uibModal, $scope, mixedDrinkData) {
     "ngInclude";
     var vm = this;
 
@@ -31,12 +31,7 @@ function addEditMixedDrinkCtrl($routeParams, drinkData, userInfo, login, $uibMod
         // Load all drinks
         vm.drinks = drinkData.getDrinks();
         
-        // Setup edit vs add mode
-        if ($routeParams.mode == "edit") {
-
-        } else {
-            vm.title = "Create a Mixed Drink"
-        }
+        vm.title = "Create a Mixed Drink"
 
         updateUser();
 
@@ -47,28 +42,24 @@ function addEditMixedDrinkCtrl($routeParams, drinkData, userInfo, login, $uibMod
     // Process form data into final drink data
     // TODO: Actually submit to server
     vm.submit = function () {
-        drink = {
+        var drink = {
             name: vm.name,
             creator: vm.user.id,
             description: vm.description,
             instructions: vm.instructions,
-            dbIngredients: [],
-            userIngredients: [],
+            drinkIngredients: [],
+            customIngredients: [],
             review: vm.public
         }
 
         // Iterate through raw ingredient array and sort into appropriate arrays
-        for (var i = 0; i < vm.ingredients.length; i ++) {
-            var ingredient = vm.ingredients[i];
-
-            if (ingredient.type == "db") {
-                ingredient.type = undefined;
-                drink.dbIngredients.push(ingredient);
+        vm.ingredients.forEach(function(ingredient){
+            if (ingredient.drinkId) {
+                drink.drinkIngredients.push(ingredient);
             } else {
-                ingredient.type = undefined;
-                drink.userIngredients.push(ingredient);
+                drink.customIngredients.push(ingredient);
             }
-        }
+        })
 
         mixedDrinkData.addMixedDrink(drink).$promise.then(function () {
             alert('success');
@@ -76,10 +67,16 @@ function addEditMixedDrinkCtrl($routeParams, drinkData, userInfo, login, $uibMod
     }
 
     // Update ingredient model from component data
-    vm.updateIngredient = function (ingredient, type, drink, amount) {
-        ingredient.type = type;
-        ingredient.drink = drink;
-        ingredient.amount = amount;
+    vm.updateIngredient = function (ingredient, data) {
+        if(data.drinkId){
+            ingredient.drinkId = data.drinkId
+            delete ingredient.name
+        } else {
+            ingredient.name = data.name
+            delete ingredient.drinkId
+        }
+
+        ingredient.amount = data.amount
     }
 
     // Add ingredient input by adding new object to ingredients array

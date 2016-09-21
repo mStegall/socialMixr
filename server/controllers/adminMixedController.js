@@ -47,7 +47,7 @@ function getUnapprovedDrinks(req, res) {
 // Removes drink from review list
 function rejectDrink(req, res) {
   mixedDrinkModel.rejectDrink(req.params.id)
-    .then(sendOk())
+    .then(sendOk(res))
     .catch(error(res))
 }
 
@@ -57,13 +57,13 @@ function rejectDrink(req, res) {
 // Removes drink from review list and adds to public 
 function approveDrink(req, res) {
   mixedDrinkModel.approveDrink(req.params.id)
-    .then(sendOk())
+    .then(sendOk(res))
     .catch(error(res))
 }
 
 // Flags a drink for review
 function flagDrink(req, res) {
   mixedDrinkModel.flagDrink(req.params.id)
-    .then(sendOk())
+    .then(sendOk(res))
     .catch(error(res))
 }

@@ -16,8 +16,8 @@ angular.module('app').config(function ($routeProvider, $locationProvider) {
     .when('/mixedDrinks', {
       templateUrl: 'infoPages/mixedDrinks.html'
     })
-    .when('/addMixedDrink/:mode?/:opt?', {
-      template: '<add-edit-mixed-drink></add-edit-mixed-drink>'
+    .when('/addMixedDrink', {
+      template: '<add-mixed-drink></add-mixed-drink>'
     })
     .when('/addDrink/:categoryId?', {
       template: '<add-drink category-id="$resolve.params.categoryId"></add-drink>',
