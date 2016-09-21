@@ -6,6 +6,7 @@
             submit: '&',
             cancel: '&',
             submitEnabled: '<',
+            publicCheck: '<?',
             drink: '<'
         }
     })
@@ -41,15 +42,17 @@
             }
         }
         vm.formSubmit = function () {
-            if (vm.drink.subtype.id) {
+            if (vm.drink.subtype && vm.drink.subtype.id) {
                 vm.drink.subtypeId = vm.drink.subtype.id
                 delete vm.drink.subtype
             }
 
-            if (vm.drink.type.id) {
+            if (vm.drink.type && vm.drink.type.id) {
                 vm.drink.typeId = vm.drink.type.id
                 delete vm.drink.type
             }
+
+
 
             vm.submit({
                 drink: vm.drink

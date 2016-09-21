@@ -116,7 +116,8 @@ function addDrink(req, res) {
     name: req.body.name,
     'category_id': req.body.categoryId,
     'type_id': req.body.typeId,
-    abv: req.body.abv
+    abv: req.body.abv,
+    review: req.body.review
   }
 
   // Insert type if neccessary

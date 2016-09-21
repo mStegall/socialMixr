@@ -4,8 +4,8 @@
     <div class="form-group" ng-class="$ctrl.checkValid(componentInput.category)">
         <label for="category" class="col-sm-2 control-label">Category:</label>
         <div class="col-sm-10">
-            <select name="category" id="category" class="form-control" ng-model="$ctrl.drink.categoryId" 
-                 ng-options="category.id as category.category for category in $ctrl.categories" required>               
+            <select name="category" id="category" class="form-control" ng-model="$ctrl.drink.categoryId" ng-options="category.id as category.category for category in $ctrl.categories"
+                required>               
                 <!--<option ng-repeat="category in $ctrl.categories" ng-value="category.id">{{category.category}}</option>-->
             </select>
         </div>
@@ -54,7 +54,8 @@
         <label for="abv" class="col-sm-2 control-label">ABV:</label>
         <div class="col-sm-10">
             <div class="input-group" style="width: 100%">
-                <input type="number" id="abv" class="form-control" style="width: 80%" ng-model="$ctrl.displayAbv" ng-change="$ctrl.numberChange()" name="abv" min="0" max="{{$ctrl.abvMode == 200 ? 200 : 100}}" required>
+                <input type="number" id="abv" class="form-control" style="width: 80%" ng-model="$ctrl.displayAbv" ng-change="$ctrl.numberChange()"
+                    name="abv" min="0" max="{{$ctrl.abvMode == 200 ? 200 : 100}}" required>
                 <select class="form-control" style="width: 20%; margin-left: -1px" ng-change="$ctrl.modeChange()" ng-model="$ctrl.abvMode">
                     <option value="200">Proof</option>
                     <option value="100">%</option>
@@ -65,8 +66,17 @@
 
     <!-- Buttons -->
     <div class="col-sm-10 col-sm-offset-2">
-        <button class="btn btn-default" ng-disabled="componentInput.$invalid || !$ctrl.submitEnabled" ng-click="$ctrl.formSubmit({drink: $ctrl.drink})" type="submit">Save
+        <div class="checkbox pull-left" ng-if="$ctrl.publicCheck">
+            <label>
+                <input type="checkbox" ng-model="$ctrl.drink.review">Make public
+            </label>
+        </div>
+        <div class="btn-group pull-right">
+            <button class="btn btn-default" ng-disabled="componentInput.$invalid || !$ctrl.submitEnabled" ng-click="$ctrl.formSubmit({drink: $ctrl.drink})"
+                type="submit">Save
                 </button>
-        <button class="btn btn-danger" type="button" ng-click="$ctrl.cancel()">Cancel</button>
+            <button class="btn btn-danger" type="button" ng-click="$ctrl.cancel()">Cancel</button>
+        </div>
+
     </div>
 </form>

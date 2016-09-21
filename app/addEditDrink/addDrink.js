@@ -8,7 +8,7 @@
   })
 
 
-  function addComponentCtrl(drinkData, userInfo, login, $scope) {
+  function addComponentCtrl(drinkData, userInfo, login, $scope, $window) {
     "ngInclude";
 
     var vm = this;
