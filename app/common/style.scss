@@ -4,9 +4,6 @@ $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
 @import "bootstrap-sass/assets/stylesheets/bootstrap";
 @import "bootswatch/sandstone/bootswatch";
 
-
-
-
 $extraSmall: 350px;
 $small: 554px;
 $medium: 768px;
@@ -16,25 +13,25 @@ $large: 992px;
     @media screen and (min-width: #{$extraSmall}) {
         @content
     }
-}
+};
 
 @mixin small {
     @media screen and (min-width: #{$small}) {
         @content
     }
-}
+};
 
 @mixin medium {
     @media screen and (min-width: #{$medium}) {
         @content
     }
-}
+};
 
 @mixin large {
     @media screen and (min-width: #{$large}) {
         @content
     }
-}
+};
 
 
 .navbar {
