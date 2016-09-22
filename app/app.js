@@ -12,7 +12,6 @@ require('./drinkData');
 require('./addEditDrink');
 require('./login');
 require('./profile');
-require('./snoop');
 require('./viewDrinks');
 require('./admin');
 require('./auth');
