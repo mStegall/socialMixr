@@ -14,8 +14,7 @@ class signUpModalCtrl implements ng.IController {
         private $resource: ng.resource.IResourceService
     ){}
 
-    alerts = []
-
+    alerts = [];
     user: any;
 
     closeAlert (index) {

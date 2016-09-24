@@ -1,5 +1,5 @@
 var angular = require('angular');
-var _ = require('lodash');
+// var _ = require('lodash');
 
 require('bootstrap/dist/js/bootstrap.js');
 require('./common/site.js');
