@@ -1,11 +1,12 @@
 import * as angular from 'angular';
 import {authService} from '../auth'
+import {drinkService} from '../drinkData'
 
 class drinkDetailsCtrl {
     static $inject = ['drinkData', 'authService', 'adminDrinks']
 
     constructor(
-        private drinkData,
+        private drinkData: drinkService,
         private authService: authService,
         private adminDrinks
     ){}

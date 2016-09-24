@@ -1,2 +1,0 @@
-require('./mixedDrinkList');
-require('./mixedDrinkDetails');
