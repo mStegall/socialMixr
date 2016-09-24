@@ -1,4 +1,5 @@
 import * as angular from "angular";
+import * as angularResource from 'angular-resource'
 import {loginService} from './login.service'
 
 class signUpModalCtrl implements ng.IController {
