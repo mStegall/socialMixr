@@ -1,4 +1,5 @@
 import * as angular from 'angular';
+import * as uiBootstrap from 'angular-ui-bootstrap'
 
 export class loginService {
     $inject = ["$http", "$q", "userInfo", "$rootScope", "$uibModal"]
@@ -8,7 +9,7 @@ export class loginService {
         private $q: ng.IQService,
         private userInfo,
         private $rootScope: ng.IRootScopeService,
-        private $uibModal
+        private $uibModal: ng.ui.bootstrap.IModalService
     ) { }
 
     private loggedIn: boolean = false;

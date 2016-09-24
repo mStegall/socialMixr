@@ -1,6 +1,6 @@
 import * as angular from 'angular';
-import {loginService} from './login.service'
-
+import * as uiBootstrap from 'angular-ui-bootstrap'
+import { loginService } from './login.service'
 
 (function () {
     class logInModalCtrl implements ng.IController {
@@ -10,10 +10,9 @@ import {loginService} from './login.service'
 
         constructor(
             private loginService: loginService,
-            private $uibModal,
-            private $uibModalInstance) {
-
-        }
+            private $uibModal: ng.ui.bootstrap.IModalService,
+            private $uibModalInstance: ng.ui.bootstrap.IModalServiceInstance
+        ) { }
 
         alerts = [];
 

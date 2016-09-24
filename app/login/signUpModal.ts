@@ -1,6 +1,7 @@
 import * as angular from "angular";
-import * as angularResource from 'angular-resource'
-import {loginService} from './login.service'
+import * as angularResource from 'angular-resource';
+import * as uiBootstrap from 'angular-ui-bootstrap'
+import {loginService} from './login.service';
 
 class signUpModalCtrl implements ng.IController {
     "ngInclude";
@@ -9,7 +10,7 @@ class signUpModalCtrl implements ng.IController {
 
     constructor(
         private login: loginService,
-        private $uibModalInstance,
+        private $uibModalInstance: ng.ui.bootstrap.IModalServiceInstance,
         private $resource: ng.resource.IResourceService
     ){}
 
@@ -23,7 +24,7 @@ class signUpModalCtrl implements ng.IController {
 
     submit () {
         var req = this.$resource('/signUp').save(this.user)
-        req.$promise.then(this.$uibModalInstance.close("Signed Up"))
+        req.$promise.then(function(){this.$uibModalInstance.close("Signed Up")})
     }
 
     checkValid (comp) {
