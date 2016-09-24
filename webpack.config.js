@@ -5,6 +5,9 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var config = {
     entry: './app/app.js',
+    resolve: {
+        extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js']
+    },
     output: {
         path: path.resolve('app', 'dist'),
         filename: 'app.bundle.js'
@@ -30,6 +33,9 @@ var config = {
             }, {
                 test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
                 loader: 'url?limit=10000&mimetype=image/svg+xml'
+            }, { 
+                test: /\.tsx?$/, 
+                loader: 'ts-loader' 
             }
         ]
     },

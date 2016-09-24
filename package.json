@@ -16,6 +16,8 @@
   "author": "Matthew Stegall",
   "license": "ISC",
   "dependencies": {
+    "@types/angular": "^1.5.16",
+    "@types/angular-resource": "^1.5.6",
     "angular": "^1.5.7",
     "angular-resource": "^1.5.7",
     "angular-route": "^1.5.7",
@@ -45,6 +47,8 @@
     "pg": "^6.1.0",
     "sass-loader": "^4.0.0",
     "style-loader": "^0.13.1",
+    "ts-loader": "^0.8.2",
+    "typescript": "^2.0.3",
     "url-loader": "^0.5.5",
     "webpack": "^1.13.1"
   },
