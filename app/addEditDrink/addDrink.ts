@@ -23,13 +23,6 @@ class addComponentCtrl {
   user: any;
   drink: any;
 
-  $onInit() {
-    this.updateUser();
-
-    // Listen for changes in login state
-    this.login.logInSubscribe(this.$scope, this.updateUser.bind(this));
-  }
-
   $onChanges(changes) {
     if (changes.categoryId) {
       this.drink = {
@@ -38,19 +31,8 @@ class addComponentCtrl {
     }
   }
 
-  closeAlert(index) {
-    this.alerts.splice(index, 1);
-  }
-
-  // Get user state and set alerts
-  updateUser() {
-    this.user = this.userInfo.getUser();
-    // debugger;
-    if (!this.user) {
-      this.alerts = [{ msg: "You won't be able to save while not logged in!" }]
-    } else {
-      this.alerts = []
-    }
+  setUser(user){
+    this.user = user;
   }
 
   saveDrink(drink) {
