@@ -2,7 +2,7 @@ import * as angular from 'angular';
 import 'angular-resource';
 
 export class AdminDrinksService {
-    static $inject = ['$rsource'];
+    static $inject = ['$resource'];
 
     constructor(
         private $resource: ng.resource.IResourceService

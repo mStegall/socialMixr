@@ -3,7 +3,7 @@ import * as angular from 'angular';
 import { AuthService } from '../auth/auth.service';
 
 export class UserService {
-    static $inject = ['AuthService', '$resource'];
+    static $inject = ['authService', '$resource'];
 
     constructor(
         private AuthService: AuthService,

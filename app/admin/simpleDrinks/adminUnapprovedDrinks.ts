@@ -1,42 +1,50 @@
-(function () {
-  angular.module('app').component('adminUnapprovedDrinks', {
-    templateUrl: '/admin/simpleDrinks/adminUnapprovedDrinks.html',
-    controller: adminUnapprovedDrinksCtrl
-  });
+import * as angular from 'angular';
+import { AdminDrinksService } from './adminDrinks.service';
+import { Column } from '../../table'
 
-  function adminUnapprovedDrinksCtrl(adminDrinks) {
-    "ngInclude";
+class adminUnapprovedDrinksCtrl {
+  static $inject = ['adminDrinks'];
 
-    var vm = this;
+  constructor(
+    private adminDrinks: AdminDrinksService
+  ) { }
 
-    vm.$onInit = function () {
-      vm.columns = [
-        {
-          name: 'name',
-          title: 'Name'
-        },{
-          name: 'type',
-          title: 'Type'
-        },{
-          name: 'abv',
-          title: 'ABV',
-          hiddenXs:true
-        },{
-          unsortable: true
-        }
-      ];
+  columns: Column[] = [
+    {
+      name: 'name',
+      title: 'Name'
+    }, {
+      name: 'type',
+      title: 'Type'
+    }, {
+      name: 'abv',
+      title: 'ABV',
+      hiddenXs: true
+    }, {
+      name: '',
+      title: '',
+      unsortable: true
+    }
+  ];
 
-      vm.sortOrder = 'name';
-      vm.toggle = true;
-      vm.drinks = adminDrinks.getUnapprovedDrinks();
-    };
+  sortOrder = 'name';
+  toggle = true;
+  drinks: any[];
 
-    vm.sortOrderSet = function (field) {
-      if (vm.sortOrder === field) {
-        vm.sortOrder = '-' + field;
-      } else {
-        vm.sortOrder = field;
-      }
-    };
-  }
-})();
+  $onInit() {
+    this.drinks = this.adminDrinks.getUnapprovedDrinks();
+  };
+
+  sortOrderSet (field) {
+    if (this.sortOrder === field) {
+      this.sortOrder = '-' + field;
+    } else {
+      this.sortOrder = field;
+    }
+  };
+}
+
+angular.module('app').component('adminUnapprovedDrinks', {
+  templateUrl: '/admin/simpleDrinks/adminUnapprovedDrinks.html',
+  controller: adminUnapprovedDrinksCtrl
+});

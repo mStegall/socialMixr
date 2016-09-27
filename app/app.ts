@@ -23,3 +23,5 @@ import './viewMixedDrinks';
 import './table';
 
 import './app.route';
+
+angular.bootstrap(document.body, ['app'], {strictDi: true});
