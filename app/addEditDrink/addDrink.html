@@ -1,10 +1,10 @@
 <div class="row">
     <div class="col-xs-12">
-        <uib-alert ng-repeat="alert in $ctrl.alerts" type="danger" close="$ctrl.closeAlert($index)">{{alert.msg}}</uib-alert>
-        <drink-form drink="{categoryId: $ctrl.categoryId}" 
+        <log-in-req-alerts userChange="$ctrl.setUser(user)"></log-in-req-alerts>
+        <drink-form drink="$ctrl.drink" 
         submit="$ctrl.saveDrink(drink)" 
         cancel="$ctrl.cancel()" 
-        submit-enabled="true"
+        submit-enabled="$ctrl.user"
         public-check="true"/>
     </div>
 </div>
