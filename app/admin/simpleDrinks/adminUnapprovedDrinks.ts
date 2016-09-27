@@ -1,8 +1,8 @@
 import * as angular from 'angular';
 import { AdminDrinksService } from './adminDrinks.service';
-import { Column } from '../../table'
+import { Column } from '../../table';
 
-class adminUnapprovedDrinksCtrl {
+class AdminUnapprovedDrinksCtrl {
   static $inject = ['adminDrinks'];
 
   constructor(
@@ -46,5 +46,5 @@ class adminUnapprovedDrinksCtrl {
 
 angular.module('app').component('adminUnapprovedDrinks', {
   templateUrl: '/admin/simpleDrinks/adminUnapprovedDrinks.html',
-  controller: adminUnapprovedDrinksCtrl
+  controller: AdminUnapprovedDrinksCtrl
 });

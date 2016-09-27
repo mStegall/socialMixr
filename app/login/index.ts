@@ -1,6 +1,6 @@
 import './logInModal';
 import './navbarLogin';
 import './signUpModal';
-import './logInReqAlerts';
+import './loginReqAlerts';
 
 export * from './login.service'
