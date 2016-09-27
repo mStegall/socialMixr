@@ -1,5 +1,7 @@
-angular.module('app').config(function ($routeProvider, $locationProvider) {
-  "ngInclude";
+import * as angular from 'angular'
+import * as ngRoute from 'angular-route'
+
+function router($routeProvider: ng.route.IRouteProvider, $locationProvider: ng.ILocationProvider) {
   $locationProvider.html5Mode(true);
   $routeProvider.when('/', {
     templateUrl: 'home/home.html'
@@ -13,9 +15,9 @@ angular.module('app').config(function ($routeProvider, $locationProvider) {
     .when('/spirits', {
       templateUrl: 'infoPages/spirits.html'
     })
-    .when('/mixedDrinks', {
-      templateUrl: 'infoPages/mixedDrinks.html'
-    })
+    // .when('/mixedDrinks', {
+    //   templateUrl: 'infoPages/mixedDrinks.html'
+    // })
     .when('/addMixedDrink', {
       template: '<add-mixed-drink></add-mixed-drink>'
     })
@@ -79,4 +81,8 @@ angular.module('app').config(function ($routeProvider, $locationProvider) {
       template: '<user-profile></user-profile>'
     })
     .otherwise({ redirectTo: '/' });
-});
+}
+
+router.$inject = ['$routeProvider', '$locationProvider']
+
+angular.module('app').config(router);

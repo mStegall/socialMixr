@@ -1,7 +1,6 @@
 import * as angular from 'angular';
 import { drinkService } from '../drinkData'
 
-
 class drinkFormCtrl {
     static $inject = ['drinkData']
 

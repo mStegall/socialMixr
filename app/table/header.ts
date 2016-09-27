@@ -3,7 +3,8 @@ import * as angular from 'angular'
 export interface column {
     title: string,
     name: string,
-    hiddenXs?: boolean
+    hiddenXs?: boolean,
+    unsortable?: boolean
 }
 
 class tableHeadCtrl {

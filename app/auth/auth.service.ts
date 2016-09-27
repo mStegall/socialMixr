@@ -1,7 +1,7 @@
-import * as angular from 'angular'
+import * as angular from 'angular';
 
-export class authService {
-    static $inject = ['$location']
+export class AuthService {
+    static $inject = ['$location'];
 
     constructor(
         private $location: ng.ILocationService
@@ -35,4 +35,4 @@ export class authService {
 
 } 
 
-angular.module('app').service('authService', authService);
+angular.module('app').service('authService', AuthService);

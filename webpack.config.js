@@ -4,7 +4,7 @@ var ngAnnotate = require('ng-annotate-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var config = {
-    entry: './app/app.js',
+    entry: './app/app',
     resolve: {
         extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js']
     },

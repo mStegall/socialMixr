@@ -1,2 +1,0 @@
-require('./addMixedDrink');
-require('./ingredient')

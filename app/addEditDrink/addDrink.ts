@@ -3,8 +3,6 @@ import { drinkService } from '../drinkData'
 import { userService } from '../profile'
 import { loginService } from '../login'
 
-
-
 class addComponentCtrl {
   static $inject = ['drinkData', 'userInfo', 'login', '$scope', '$window']
 

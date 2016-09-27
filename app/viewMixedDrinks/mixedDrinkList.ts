@@ -2,13 +2,6 @@ import * as angular from 'angular';
 import { mixedDrinkService } from '../drinkData'
 import { column } from '../table/header'
 
-
-
-angular.module('app').component('mixedDrinkList', {
-    templateUrl: '/viewMixedDrinks/mixedDrinkList.html',
-    controller: mixedDrinksCtrl
-})
-
 class mixedDrinksCtrl {
     static $inject = ['mixedDrinkData']
 
@@ -26,6 +19,7 @@ class mixedDrinksCtrl {
     sortOrder: string = "name";
 
     $onInit() {
+        console.log('test')
         this.drinks = this.mixedDrinkData.getMixedDrinks();
     }
 
@@ -37,5 +31,9 @@ class mixedDrinksCtrl {
             this.sortOrder = field;
         }
     }
-
 }
+
+angular.module('app').component('mixedDrinkList', {
+    templateUrl: '/viewMixedDrinks/mixedDrinkList.html',
+    controller: mixedDrinksCtrl
+})
