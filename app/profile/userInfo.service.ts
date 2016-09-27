@@ -1,12 +1,12 @@
-import * as angular from 'angular'
+import * as angular from 'angular';
 
-import { authService } from '../auth/auth.service'
+import { AuthService } from '../auth/auth.service';
 
-export class userService {
-    static $inject = ['authService', '$resource']
+export class UserService {
+    static $inject = ['AuthService', '$resource'];
 
     constructor(
-        private authService: authService,
+        private AuthService: AuthService,
         private $resource: ng.resource.IResourceService
     ) { }
 
@@ -14,27 +14,27 @@ export class userService {
 
     set user(user: any) {
         this._user = user;
-        this.authService.setRoles(user.roles);
+        this.AuthService.setRoles(user.roles);
     }
 
     get user() {
-        return this._user
+        return this._user;
     }
 
     setUser(user: any) {
-        this.user = user
+        this.user = user;
     }
 
     getUser() {
-        return this.user
+        return this.user;
     }
 
     setUserProperty(property, value) {
-        this._user[property] = value
+        this._user[property] = value;
     }
 
     clearUser() {
-        this.user = {}
+        this.user = {};
     }
 
     mixedDrinks() {
@@ -42,4 +42,4 @@ export class userService {
     }
 }
 
-angular.module('app').service('userInfo', userService);
+angular.module('app').service('userInfo', UserService);

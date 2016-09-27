@@ -1,3 +1,3 @@
-import './header'
+import './header';
 
 export * from './header'

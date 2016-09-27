@@ -1,3 +1,3 @@
-import './addDrink'
-import './editDrink'
-import './drinkForm'
+import './addDrink';
+import './editDrink';
+import './drinkForm';

@@ -1,10 +1,8 @@
 import * as angular from 'angular';
 import * as _ from 'lodash';
 
-class drinkListCtrl {
-  static $inject = ['drinkData']
-
-  
+class DrinkListCtrl {
+  static $inject = ['drinkData'];
 
   constructor(
     private drinkData
@@ -27,5 +25,5 @@ class drinkListCtrl {
 
 angular.module('app').component('drinkList', {
   templateUrl: '/viewDrinks/drinkList.html',
-  controller: drinkListCtrl
-})
+  controller: DrinkListCtrl
+});

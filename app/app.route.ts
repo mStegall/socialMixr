@@ -1,5 +1,5 @@
-import * as angular from 'angular'
-import * as ngRoute from 'angular-route'
+import * as angular from 'angular';
+import 'angular-route';
 
 function router($routeProvider: ng.route.IRouteProvider, $locationProvider: ng.ILocationProvider) {
   $locationProvider.html5Mode(true);
@@ -15,9 +15,9 @@ function router($routeProvider: ng.route.IRouteProvider, $locationProvider: ng.I
     .when('/spirits', {
       templateUrl: 'infoPages/spirits.html'
     })
-    // .when('/mixedDrinks', {
-    //   templateUrl: 'infoPages/mixedDrinks.html'
-    // })
+    .when('/mixedDrinks', {
+      templateUrl: 'infoPages/mixedDrinks.html'
+    })
     .when('/addMixedDrink', {
       template: '<add-mixed-drink></add-mixed-drink>'
     })
@@ -25,8 +25,8 @@ function router($routeProvider: ng.route.IRouteProvider, $locationProvider: ng.I
       template: '<add-drink category-id="$resolve.params.categoryId"></add-drink>',
       resolve: {
         params: function ($route) {
-          console.log($route.current.params.categoryId)
-          return $route.current.params
+          console.log($route.current.params.categoryId);
+          return $route.current.params;
         }
       }
     })
@@ -37,7 +37,7 @@ function router($routeProvider: ng.route.IRouteProvider, $locationProvider: ng.I
           return drinkData.getDrink($route.current.params.id);
         },
         params: function ($route) {
-          return $route.current.params
+          return $route.current.params;
         }
       }
     })
@@ -45,7 +45,7 @@ function router($routeProvider: ng.route.IRouteProvider, $locationProvider: ng.I
       template: '<drink-list-category category="$resolve.params.category"></drink-list-category>',
       resolve: {
         params: function ($route) {
-          return $route.current.params
+          return $route.current.params;
         }
       }
     })
@@ -56,7 +56,7 @@ function router($routeProvider: ng.route.IRouteProvider, $locationProvider: ng.I
       template: '<drink-details id="$resolve.params.id"></drink-details>',
       resolve: {
         params: function ($route) {
-          return $route.current.params
+          return $route.current.params;
         }
       }
     })
@@ -67,7 +67,7 @@ function router($routeProvider: ng.route.IRouteProvider, $locationProvider: ng.I
       template: '<mixed-drink-details id="$resolve.params.id"></mixed-drink-details>',
       resolve: {
         params: function ($route) {
-          return $route.current.params
+          return $route.current.params;
         }
       }
     })
@@ -83,6 +83,6 @@ function router($routeProvider: ng.route.IRouteProvider, $locationProvider: ng.I
     .otherwise({ redirectTo: '/' });
 }
 
-router.$inject = ['$routeProvider', '$locationProvider']
+router.$inject = ['$routeProvider', '$locationProvider'];
 
 angular.module('app').config(router);

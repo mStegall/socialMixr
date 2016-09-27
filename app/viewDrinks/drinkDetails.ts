@@ -1,13 +1,13 @@
 import * as angular from 'angular';
-import {authService} from '../auth'
-import {drinkService} from '../drinkData'
+import {AuthService} from '../auth';
+import {DrinkService} from '../drinkData';
 
-class drinkDetailsCtrl {
-    static $inject = ['drinkData', 'authService', 'adminDrinks']
+class DrinkDetailsCtrl {
+    static $inject = ['drinkData', 'AuthService', 'adminDrinks'];
 
     constructor(
-        private drinkData: drinkService,
-        private authService: authService,
+        private drinkData: DrinkService,
+        private AuthService: AuthService,
         private adminDrinks
     ){}
 
@@ -19,7 +19,7 @@ class drinkDetailsCtrl {
 
     $onInit() {
         this.drink = this.drinkData.getDrink(this.id);
-        this.admin = this.authService.hasRole('admin')
+        this.admin = this.AuthService.hasRole('admin');
     }
 
     flagDrink () {
@@ -27,14 +27,14 @@ class drinkDetailsCtrl {
 
         flag.$promise.then(function () {
             alert('Drink flagged for review!');
-        })
+        });
     }
 }
 
 angular.module('app').component('drinkDetails', {
     templateUrl: '/viewDrinks/drinkDetails.html',
-    controller: drinkDetailsCtrl,
+    controller: DrinkDetailsCtrl,
     bindings: {
         id: '<'
     }
-})
+});

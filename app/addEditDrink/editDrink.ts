@@ -1,11 +1,11 @@
-import * as angular from 'angular'
-import { drinkService } from '../drinkData'
+import * as angular from 'angular';
+import { DrinkService } from '../drinkData';
 
-class editDrinkCtrl {
-  static $inject = ['drinkData', '$window']
+class EditDrinkCtrl {
+  static $inject = ['drinkData', '$window'];
 
   constructor(
-    private drinkData: drinkService,
+    private drinkData: DrinkService,
     private $window: ng.IWindowService
   ) { }
 
@@ -23,8 +23,8 @@ class editDrinkCtrl {
 
 angular.module('app').component('editDrink', {
   templateUrl: '/addEditDrink/editDrink.html',
-  controller: editDrinkCtrl,
+  controller: EditDrinkCtrl,
   bindings: {
     drink: '<'
   }
-})
+});

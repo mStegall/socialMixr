@@ -1,4 +1,4 @@
-import './userProfile'
-import './userMixedDrinks'
+import './userProfile';
+import './userMixedDrinks';
 
 export * from './userInfo.service'

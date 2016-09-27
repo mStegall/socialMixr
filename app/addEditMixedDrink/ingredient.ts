@@ -1,6 +1,6 @@
-import * as angular from 'angular'
+import * as angular from 'angular';
 
-class ingredientCtrl {
+class IngredientCtrl {
   // Inputs
   drinks: any;
 
@@ -20,25 +20,25 @@ class ingredientCtrl {
           type: "db",
           drinkId: this.ingredient.id,
           amount: this.amount
-        }
+        };
       } else {
         data = {
           type: "user",
           name: this.ingredient,
           amount: this.amount
-        }
+        };
       }
 
-      this.onUpdate({ data })
+      this.onUpdate({ data });
     }
   }
 }
 
 angular.module('app').component('ingredient', {
   templateUrl: '/addEditMixedDrink/ingredient.html',
-  controller: ingredientCtrl,
+  controller: IngredientCtrl,
   bindings: {
     drinks: '<',
     onUpdate: '&'
   }
-})
+});

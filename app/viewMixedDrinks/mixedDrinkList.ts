@@ -1,39 +1,39 @@
 import * as angular from 'angular';
-import { mixedDrinkService } from '../drinkData'
-import { column } from '../table/header'
+import { MixedDrinkService } from '../drinkData';
+import { Column } from '../table/header';
 
-class mixedDrinksCtrl {
-    static $inject = ['mixedDrinkData']
+class MixedDrinksCtrl {
+  static $inject = ['mixedDrinkData'];
 
-    constructor(
-        private mixedDrinkData: mixedDrinkService
-    ) { }
+  constructor(
+    private mixedDrinkData: MixedDrinkService
+  ) { }
 
-    columns: column[] = [{
-        name: 'name',
-        title: 'Name'
-    }]
+  columns: Column[] = [{
+    name: 'name',
+    title: 'Name'
+  }];
 
-    drinks: any;
+  drinks: any;
 
-    sortOrder: string = "name";
+  sortOrder: string = "name";
 
-    $onInit() {
-        console.log('test')
-        this.drinks = this.mixedDrinkData.getMixedDrinks();
+  $onInit() {
+    console.log('test');
+    this.drinks = this.mixedDrinkData.getMixedDrinks();
+  }
+
+
+  setSortOrder(field) {
+    if (this.sortOrder === field) {
+      this.sortOrder = '-' + field;
+    } else {
+      this.sortOrder = field;
     }
-
-
-    setSortOrder(field) {
-        if (this.sortOrder == field) {
-            this.sortOrder = '-' + field;
-        } else {
-            this.sortOrder = field;
-        }
-    }
+  }
 }
 
 angular.module('app').component('mixedDrinkList', {
-    templateUrl: '/viewMixedDrinks/mixedDrinkList.html',
-    controller: mixedDrinksCtrl
-})
+  templateUrl: '/viewMixedDrinks/mixedDrinkList.html',
+  controller: MixedDrinksCtrl
+});

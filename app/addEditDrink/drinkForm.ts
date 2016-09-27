@@ -1,11 +1,11 @@
 import * as angular from 'angular';
-import { drinkService } from '../drinkData'
+import { DrinkService } from '../drinkData';
 
-class drinkFormCtrl {
-    static $inject = ['drinkData']
+class DrinkFormCtrl {
+    static $inject = ['drinkData'];
 
     constructor(
-        private drinkData: drinkService
+        private drinkData: DrinkService
     ) { }
 
     // Inputs
@@ -51,20 +51,20 @@ class drinkFormCtrl {
 
     formSubmit() {
         if (this.drink.subtype && this.drink.subtype.id) {
-            this.drink.subtypeId = this.drink.subtype.id
-            delete this.drink.subtype
+            this.drink.subtypeId = this.drink.subtype.id;
+            delete this.drink.subtype;
         }
 
         if (this.drink.type && this.drink.type.id) {
-            this.drink.typeId = this.drink.type.id
-            delete this.drink.type
+            this.drink.typeId = this.drink.type.id;
+            delete this.drink.type;
         }
 
 
 
         this.submit({
             drink: this.drink
-        })
+        });
     }
 
     numberChange() {
@@ -85,7 +85,7 @@ class drinkFormCtrl {
 
 angular.module('app').component('drinkForm', {
     templateUrl: '/addEditDrink/drinkForm.html',
-    controller: drinkFormCtrl,
+    controller: DrinkFormCtrl,
     bindings: {
         submit: '&',
         cancel: '&',
@@ -93,4 +93,4 @@ angular.module('app').component('drinkForm', {
         publicCheck: '<?',
         drink: '<'
     }
-})
+});

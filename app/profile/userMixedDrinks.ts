@@ -1,11 +1,11 @@
 import * as angular from 'angular';
-import { userService } from './userInfo.service'
+import { UserService } from './userInfo.service';
 
-class userMixedDrinksCtrl implements ng.IController {
-    static $inject = ['userInfo']
+class UserMixedDrinksCtrl implements ng.IController {
+    static $inject = ['userInfo'];
 
     constructor (
-        private userInfo : userService
+        private userInfo : UserService
     ){}
 
     columns = [
@@ -21,11 +21,11 @@ class userMixedDrinksCtrl implements ng.IController {
     $onInit () {
         this.drinks = this.userInfo.mixedDrinks();
 
-        this.sortOrder = 'name'
+        this.sortOrder = 'name';
     }
 
     setSortOrder (field) {
-        if (this.sortOrder == field) {
+        if (this.sortOrder === field) {
             this.sortOrder = '-' + field;
         } else {
             this.sortOrder = field;
@@ -35,5 +35,5 @@ class userMixedDrinksCtrl implements ng.IController {
 
 angular.module('app').component('userMixedDrinks', {
     templateUrl: '/profile/userMixedDrinks.html',
-    controller: userMixedDrinksCtrl
-})
+    controller: UserMixedDrinksCtrl
+});

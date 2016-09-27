@@ -24,7 +24,7 @@
         },{
           unsortable: true
         }
-      ]
+      ];
 
       vm.sortOrder = 'name';
       vm.toggle = true;
@@ -32,11 +32,11 @@
     };
 
     vm.sortOrderSet = function (field) {
-      if (vm.sortOrder == field) {
+      if (vm.sortOrder === field) {
         vm.sortOrder = '-' + field;
       } else {
         vm.sortOrder = field;
       }
     };
   }
-})()
+})();

@@ -1,11 +1,11 @@
-import * as angular from 'angular'
-import {mixedDrinkService} from '../drinkData'
+import * as angular from 'angular';
+import {MixedDrinkService} from '../drinkData';
 
-class mixedDrinksCtrl implements ng.IController{
-    static $inject = ['mixedDrinkData']
+class MixedDrinksCtrl implements ng.IController{
+    static $inject = ['mixedDrinkData'];
 
     constructor(
-        private mixedDrinkData: mixedDrinkService
+        private mixedDrinkData: MixedDrinkService
     ){}
 
     id: number;
@@ -18,8 +18,8 @@ class mixedDrinksCtrl implements ng.IController{
 
 angular.module('app').component('mixedDrinkDetails', {
     templateUrl: '/viewMixedDrinks/mixedDrinkDetails.html',
-    controller: mixedDrinksCtrl,
+    controller: MixedDrinksCtrl,
     bindings: {
         id: '<'
     }
-})
+});

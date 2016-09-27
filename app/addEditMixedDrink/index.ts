@@ -1,2 +1,2 @@
-import './addMixedDrink'
-import './ingredient'
+import './addMixedDrink';
+import './ingredient';

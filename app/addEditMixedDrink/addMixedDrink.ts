@@ -1,17 +1,17 @@
-import * as angular from 'angular'
-import { drinkService, mixedDrinkService } from '../drinkData'
-import { userService } from '../profile'
-import { loginService } from '../login'
+import * as angular from 'angular';
+import { DrinkService, MixedDrinkService } from '../drinkData';
+import { UserService } from '../profile';
+import { LoginService } from '../login';
 
-class addEditMixedDrinkCtrl {
-  static $inject = ['drinkData', 'userInfo', 'login', '$scope', 'mixedDrinkData']
+class AddEditMixedDrinkCtrl {
+  static $inject = ['drinkData', 'userInfo', 'login', '$scope', 'mixedDrinkData'];
 
   constructor(
-    private drinkData: drinkService,
-    private userInfo: userService,
-    private login: loginService,
+    private drinkData: DrinkService,
+    private userInfo: UserService,
+    private login: LoginService,
     private $scope: ng.IScope,
-    private mixedDrinkData: mixedDrinkService
+    private mixedDrinkData: MixedDrinkService
   ) { }
 
   // Initialize with two ingredients 
@@ -25,7 +25,7 @@ class addEditMixedDrinkCtrl {
   name: string;
   description: string;
   instructions: string;
-  public: boolean
+  public: boolean;
 
 
   $onInit() {
@@ -48,7 +48,7 @@ class addEditMixedDrinkCtrl {
       drinkIngredients: [],
       customIngredients: [],
       review: this.public
-    }
+    };
 
     // Iterate through raw ingredient array and sort into appropriate arrays
     this.ingredients.forEach(function (ingredient) {
@@ -57,34 +57,34 @@ class addEditMixedDrinkCtrl {
       } else {
         drink.customIngredients.push(ingredient);
       }
-    })
+    });
 
     this.mixedDrinkData.addMixedDrink(drink).$promise
       .then(function () {
         alert('success');
-      })
+      });
   }
 
   // Update ingredient model from component data
   updateIngredient(ingredient, data) {
     if (data.drinkId) {
-      ingredient.drinkId = data.drinkId
-      delete ingredient.name
+      ingredient.drinkId = data.drinkId;
+      delete ingredient.name;
     } else {
-      ingredient.name = data.name
-      delete ingredient.drinkId
+      ingredient.name = data.name;
+      delete ingredient.drinkId;
     }
 
-    ingredient.amount = data.amount
+    ingredient.amount = data.amount;
   }
 
   // Add ingredient input by adding new object to ingredients array
   addIngredient() {
-    this.ingredients.push({})
+    this.ingredients.push({});
   }
 }
 
 angular.module('app').component('addMixedDrink', {
   templateUrl: '/addEditMixedDrink/addMixedDrink.html',
-  controller: addEditMixedDrinkCtrl
-})
+  controller: AddEditMixedDrinkCtrl
+});

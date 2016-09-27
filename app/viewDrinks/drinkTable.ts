@@ -1,8 +1,8 @@
 import * as angular from 'angular';
-import {column} from '../table/header'
+import {Column} from '../table/header';
 
-class drinkTableCtrl {
-    columns: column[] = [
+class DrinkTableCtrl {
+    columns: Column[] = [
         {
             name: 'name',
             title: 'Name'
@@ -16,12 +16,12 @@ class drinkTableCtrl {
             name: 'abv',
             title: 'ABV'
         }
-    ]
+    ];
 
     sortOrder: string = 'name';
 
     sortOrderSet (field: string) {
-        if (this.sortOrder == field) {
+        if (this.sortOrder === field) {
             this.sortOrder = '-' + field;
         } else {
             this.sortOrder = field;
@@ -32,9 +32,9 @@ class drinkTableCtrl {
 
 angular.module('app').component('drinkTable', {
     templateUrl: '/viewDrinks/drinkTable.html',
-    controller: drinkTableCtrl,
+    controller: DrinkTableCtrl,
     bindings: {
         drinks: '<',
         filter: '<'
     }
-})
+});

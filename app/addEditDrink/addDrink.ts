@@ -1,15 +1,15 @@
-import * as angular from 'angular'
-import { drinkService } from '../drinkData'
-import { userService } from '../profile'
-import { loginService } from '../login'
+import * as angular from 'angular';
+import { DrinkService } from '../drinkData';
+import { UserService } from '../profile';
+import { LoginService } from '../login';
 
-class addComponentCtrl {
-  static $inject = ['drinkData', 'userInfo', 'login', '$scope', '$window']
+class AddComponentCtrl {
+  static $inject = ['drinkData', 'userInfo', 'login', '$scope', '$window'];
 
   constructor(
-    private drinkData: drinkService,
-    private userInfo: userService,
-    private login: loginService,
+    private drinkData: DrinkService,
+    private userInfo: UserService,
+    private login: LoginService,
     private $scope: ng.IScope,
     private $window: ng.IWindowService
   ) { }
@@ -25,7 +25,7 @@ class addComponentCtrl {
     if (changes.categoryId) {
       this.drink = {
         categoryId: parseInt(this.categoryId)
-      }
+      };
     }
   }
 
@@ -45,8 +45,8 @@ class addComponentCtrl {
 
 angular.module('app').component('addDrink', {
   templateUrl: '/addEditDrink/addDrink.html',
-  controller: addComponentCtrl,
+  controller: AddComponentCtrl,
   bindings: {
     categoryId: '<'
   }
-})
+});

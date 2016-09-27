@@ -1,8 +1,8 @@
 import * as angular from 'angular';
-import * as uiBootstrap from 'angular-ui-bootstrap'
+import 'angular-ui-bootstrap';
 
-export class loginService {
-    $inject = ["$http", "$q", "userInfo", "$rootScope", "$uibModal"]
+export class LoginService {
+    $inject = ["$http", "$q", "userInfo", "$rootScope", "$uibModal"];
 
     constructor(
         private $http: ng.IHttpService,
@@ -27,7 +27,7 @@ export class loginService {
     }
 
     logInSubscribe(scope: ng.IScope, cb) {
-        scope.$on('Log In State Changed', cb)
+        scope.$on('Log In State Changed', cb);
     }
 
     logIn(username: string, password: string) {
@@ -66,4 +66,4 @@ export class loginService {
 
 }
 
-angular.module('app').service('login', loginService);
+angular.module('app').service('login', LoginService);

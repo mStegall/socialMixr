@@ -1,14 +1,15 @@
 import * as angular from 'angular';
-import * as uiBootstrap from 'angular-ui-bootstrap'
-import { loginService } from './login.service'
+import 'angular-ui-bootstrap';
 
-class logInModalCtrl implements ng.IController {
+import { LoginService } from './login.service';
+
+class LogInModalCtrl implements ng.IController {
     "ngInclude";
 
-    static $inject = ["login", "$uibModal", "$uibModalInstance"]
+    static $inject = ["login", "$uibModal", "$uibModalInstance"];
 
     constructor(
-        private loginService: loginService,
+        private LoginService: LoginService,
         private $uibModal: ng.ui.bootstrap.IModalService,
         private $uibModalInstance: ng.ui.bootstrap.IModalServiceInstance
     ) { }
@@ -23,13 +24,13 @@ class logInModalCtrl implements ng.IController {
     };
 
     login() {
-        this.loginService.logIn(this.username, this.password)
+        this.LoginService.logIn(this.username, this.password)
             .then(() => {
-                this.$uibModalInstance.close("logged In")
+                this.$uibModalInstance.close("logged In");
             })
             .catch((response) => {
-                this.alerts = [{ msg: response }]
-            })
+                this.alerts = [{ msg: response }];
+            });
     };
 
     signUp() {
@@ -37,8 +38,8 @@ class logInModalCtrl implements ng.IController {
             templateUrl: '/login/signUpModal.html',
             controller: 'signUpModalCtrl',
             controllerAs: '$ctrl'
-        })
+        });
     }
 }
 
-angular.module('app').controller('logInModalCtrl', logInModalCtrl)
+angular.module('app').controller('logInModalCtrl', LogInModalCtrl);

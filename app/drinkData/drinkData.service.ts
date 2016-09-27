@@ -1,8 +1,8 @@
-import * as angular from 'angular'
-import 'angular-resource'
+import * as angular from 'angular';
+import 'angular-resource';
 
-export class drinkService {
-    static $inject = ['$resource']
+export class DrinkService {
+    static $inject = ['$resource'];
 
     constructor(
         private $resource: ng.resource.IResourceService
@@ -45,4 +45,4 @@ export class drinkService {
     }
 }
 
-angular.module('app').service('drinkData', drinkService);
+angular.module('app').service('drinkData', DrinkService);

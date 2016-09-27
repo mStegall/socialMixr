@@ -1,11 +1,11 @@
 import * as angular from 'angular';
-import { userService } from './userInfo.service'
+import { UserService } from './userInfo.service';
 
-class userProfileCtrl implements ng.IController {
-    static $inject = ['userInfo']
+class UserProfileCtrl implements ng.IController {
+    static $inject = ['userInfo'];
 
     constructor(
-        private userInfo: userService
+        private userInfo: UserService
     ) { }
 
     user: any;
@@ -17,5 +17,5 @@ class userProfileCtrl implements ng.IController {
 
 angular.module('app').component('userProfile', {
     templateUrl: '/profile/userProfile.html',
-    controller: userProfileCtrl
-})
+    controller: UserProfileCtrl
+});

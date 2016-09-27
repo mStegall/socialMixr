@@ -1,6 +1,6 @@
 import * as angular from 'angular';
 import { AdminMixedDrinksService } from './adminMixedDrinks.service';
-import { column } from '../../table';
+import { Column } from '../../table';
 
 class AdminApproveMixedDrinksCtrl {
   static $inject = ['adminMixedDrinks'];
@@ -9,7 +9,7 @@ class AdminApproveMixedDrinksCtrl {
     private adminMixedDrinks: AdminMixedDrinksService
   ) { }
 
-  columns: column[] = [
+  columns: Column[] = [
     {
       name: 'name',
       title: 'Name'

@@ -1,12 +1,12 @@
 import * as angular from "angular";
-import { loginService } from './login.service'
+import { LoginService } from './login.service';
 
-class navbarLoginCtrl implements angular.IComponentController {
+class NavbarLoginCtrl implements angular.IComponentController {
     static $inject = ["$scope", "login", "$uibModal", "userInfo", "$location", "authService"];
 
     constructor(
         private $scope: ng.IScope,
-        private login: loginService,
+        private login: LoginService,
         private $uibModal,
         private userInfo,
         private $location: ng.ILocationService,
@@ -19,7 +19,7 @@ class navbarLoginCtrl implements angular.IComponentController {
 
     $onInit() {
         this.login.updateLoginState();
-        this.login.logInSubscribe(this.$scope, this.loginUpdate)
+        this.login.logInSubscribe(this.$scope, this.loginUpdate);
     }
 
     private loginUpdate = () => {
@@ -34,12 +34,12 @@ class navbarLoginCtrl implements angular.IComponentController {
 
     logOut() {
         this.login.logOut().then(() => {
-            this.$location.url('/')
+            this.$location.url('/');
         });
     };
 }
 
 angular.module('app').component('navbarLogin', {
     templateUrl: 'login/navbarLogin.html',
-    controller: navbarLoginCtrl
-})
+    controller: NavbarLoginCtrl
+});
