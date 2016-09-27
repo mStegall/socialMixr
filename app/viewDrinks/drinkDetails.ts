@@ -3,7 +3,7 @@ import {AuthService} from '../auth';
 import {DrinkService} from '../drinkData';
 
 class DrinkDetailsCtrl {
-    static $inject = ['drinkData', 'AuthService', 'adminDrinks'];
+    static $inject = ['drinkData', 'authService', 'adminDrinks'];
 
     constructor(
         private drinkData: DrinkService,
