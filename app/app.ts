@@ -3,6 +3,10 @@ import 'angular-resource';
 import 'angular-route';
 import 'angular-ui-bootstrap';
 
+import './pollyfill';
+
+
+
 import 'bootstrap/dist/js/bootstrap.js';
 import './common/site.js';
 
@@ -24,4 +28,5 @@ import './table';
 
 import './app.route';
 
-angular.bootstrap(document.body, ['app'], {strictDi: true});
+// angular.bootstrap(document.body, ['app'], {strictDi: true});
+import './upgradeAdapter';
