@@ -33,7 +33,7 @@ class AdminPanelCtrl {
   ];
 
   $onInit(){
-    this.authService.roleRouter('admin');
+    // this.authService.roleRouter('admin');
 
     let page = this.$routeParams['page'];
     if (page) {

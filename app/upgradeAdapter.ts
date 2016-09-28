@@ -1,6 +1,13 @@
 import { UpgradeAdapter } from '@angular/upgrade';
-import {AppModule} from './app.module';
+import { AppModule } from './app.module';
+
+import { AuthService } from './auth';
+
+import * as angular from 'angular';
 
 export const upgradeAdapter = new UpgradeAdapter(AppModule);
 
-upgradeAdapter.bootstrap(document.body, ['app'], {strictDi: true});
+// Declare adapted components
+angular.module('app').factory('authService', upgradeAdapter.downgradeNg2Provider(AuthService));
+
+// Bootstrap application

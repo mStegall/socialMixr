@@ -1,10 +1,12 @@
-import * as angular from 'angular';
+import {Injectable} from '@angular/core';
+import {Location} from '@angular/common';
 
+@Injectable()
 export class AuthService {
-    static $inject = ['$location'];
+    // static $inject = ['$location'];
 
     constructor(
-        private $location: ng.ILocationService
+        private $location: Location
     ) { }
 
     roles: string[] = [];
@@ -25,14 +27,10 @@ export class AuthService {
         return this.roles.indexOf(role) !== -1;
     }
 
-    roleRouter(role: string) {
-        if(this.hasRole(role)){
-            return true;
-        }
-        this.$location.path('/');
-        return true;
-    }
-
+    // roleRouter(role: string, route: string) {
+    //     if(this.hasRole(role)){
+    //         return route;
+    //     }
+    //     return '/';
+    // }
 } 
-
-angular.module('app').service('authService', AuthService);

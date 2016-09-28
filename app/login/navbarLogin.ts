@@ -10,8 +10,8 @@ class NavbarLoginCtrl implements angular.IComponentController {
         private $uibModal,
         private userInfo,
         private $location: ng.ILocationService,
-        private authService) {
-    }
+        private authService
+    ) { }
 
     loggedIn: boolean;
     user: any;
