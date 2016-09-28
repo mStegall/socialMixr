@@ -20,6 +20,7 @@ class AddComponentCtrl {
   alerts: any[] = [];
   user: any;
   drink: any;
+  loggedIn: boolean;
 
   $onChanges(changes) {
     if (changes.categoryId) {
@@ -30,6 +31,9 @@ class AddComponentCtrl {
   }
 
   setUser(user){
+    console.log(user)
+    if(user){this.loggedIn = true}
+    else {this.loggedIn = false}
     this.user = user;
   }
 
