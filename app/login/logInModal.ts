@@ -4,8 +4,6 @@ import 'angular-ui-bootstrap';
 import { LoginService } from './login.service';
 
 class LogInModalCtrl implements ng.IController {
-    "ngInclude";
-
     static $inject = ["login", "$uibModal", "$uibModalInstance"];
 
     constructor(

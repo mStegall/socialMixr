@@ -2,7 +2,7 @@ import * as angular from 'angular';
 import 'angular-ui-bootstrap';
 
 export class LoginService {
-    $inject = ["$http", "$q", "userInfo", "$rootScope", "$uibModal"];
+    static $inject = ["$http", "$q", "userInfo", "$rootScope", "$uibModal"];
 
     constructor(
         private $http: ng.IHttpService,
