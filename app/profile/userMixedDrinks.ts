@@ -4,9 +4,9 @@ import { UserService } from './userInfo.service';
 class UserMixedDrinksCtrl implements ng.IController {
     static $inject = ['userInfo'];
 
-    constructor (
-        private userInfo : UserService
-    ){}
+    constructor(
+        private userInfo: UserService
+    ) { }
 
     columns = [
         {
@@ -15,16 +15,15 @@ class UserMixedDrinksCtrl implements ng.IController {
         }
     ];
 
-    drinks: any[];
-    sortOrder: string;
+    drinks: any[] ;
+    sortOrder = 'name';
 
-    $onInit () {
-        this.drinks = this.userInfo.mixedDrinks();
-
-        this.sortOrder = 'name';
+    $onInit() {
+        this.userInfo.mixedDrinks()
+            .subscribe(data => { this.drinks = data; });
     }
 
-    setSortOrder (field) {
+    setSortOrder(field) {
         if (this.sortOrder === field) {
             this.sortOrder = '-' + field;
         } else {

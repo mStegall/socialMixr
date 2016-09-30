@@ -1,6 +1,6 @@
 import * as angular from 'angular';
-import {AuthService} from '../auth';
-import {DrinkService} from '../drinkData';
+import { AuthService } from '../auth';
+import { DrinkService } from '../drinkData';
 
 class DrinkDetailsCtrl {
     static $inject = ['drinkData', 'authService', 'adminDrinks'];
@@ -9,7 +9,7 @@ class DrinkDetailsCtrl {
         private drinkData: DrinkService,
         private AuthService: AuthService,
         private adminDrinks
-    ){}
+    ) { }
 
     // Inputs
     id: number;
@@ -18,11 +18,13 @@ class DrinkDetailsCtrl {
     admin: boolean;
 
     $onInit() {
-        this.drink = this.drinkData.getDrink(this.id);
+        this.drinkData.getDrink(this.id).subscribe((data) => {
+            this.drink = data;
+        });
         this.admin = this.AuthService.hasRole('admin');
     }
 
-    flagDrink () {
+    flagDrink() {
         var flag = this.adminDrinks.flagDrink(this.drink.id);
 
         flag.$promise.then(function () {

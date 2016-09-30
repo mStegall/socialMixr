@@ -31,9 +31,9 @@ class AddComponentCtrl {
   }
 
   setUser(user){
-    console.log(user)
-    if(user){this.loggedIn = true}
-    else {this.loggedIn = false}
+    console.log(user);
+    if(user){this.loggedIn = true;}
+    else {this.loggedIn = false;}
     this.user = user;
   }
 

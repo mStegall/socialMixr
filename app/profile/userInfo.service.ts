@@ -1,13 +1,18 @@
-import * as angular from 'angular';
+import { Injectable } from '@angular/core';
+import { Http, Response } from '@angular/http';
+import { Observable } from 'rxjs/Rx';
+
+import 'rxjs/add/operator/map';
 
 import { AuthService } from '../auth/auth.service';
 
+@Injectable()
 export class UserService {
-    static $inject = ['authService', '$resource'];
+    // static $inject = ['authService', '$resource'];
 
     constructor(
         private AuthService: AuthService,
-        private $resource: ng.resource.IResourceService
+        private http: Http
     ) { }
 
     _user: any;
@@ -37,9 +42,9 @@ export class UserService {
         this.user = {};
     }
 
-    mixedDrinks() {
-        return this.$resource('/data/profile/mixedDrinks').query();
+    mixedDrinks(): Observable<any> {
+        return this.http.get('/data/profile/mixedDrinks')
+            .map((res: Response) => res.json());
     }
 }
 
-angular.module('app').service('userInfo', UserService);

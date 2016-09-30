@@ -1,11 +1,12 @@
 import * as angular from 'angular';
 import * as _ from 'lodash';
+import { DrinkService } from '../drinkData';
 
 class DrinkListCategoryCtrl {
   static $inject = ['drinkData'];
 
   constructor(
-    private drinkData
+    private drinkData: DrinkService
   ) { }
 
   // Inputs
@@ -17,15 +18,12 @@ class DrinkListCategoryCtrl {
   drinks: any[];
 
   $onInit() {
-    let data = this.drinkData.getDrinksByCategory(this.category);
-    data.$promise
-      .then(() => {
+    this.drinkData.getDrinksByCategory(this.category)
+      .subscribe((data) => {
         this.drinks = data.drinks;
         this.category = data.category;
-      })
-      .then(() => {
-        var types = this.drinks.map(drink => drink.type);
 
+        var types = this.drinks.map(drink => drink.type);
         this.types = _.uniq(types);
       });
   }

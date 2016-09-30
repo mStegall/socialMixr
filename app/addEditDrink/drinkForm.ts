@@ -16,9 +16,9 @@ class DrinkFormCtrl {
     cancel: any;
 
     // Declarations
-    categories: any;
-    types: any;
-    subtypes: any;
+    categories: any[];
+    types: any[];
+    subtypes: any[];
     displayAbv: number;
 
     // Initialization
@@ -26,9 +26,18 @@ class DrinkFormCtrl {
 
 
     $onInit() {
-        this.categories = this.drinkData.getCategories();
-        this.types = this.drinkData.getTypes();
-        this.subtypes = this.drinkData.getSubtypes();
+        this.drinkData.getCategories()
+            .subscribe(data => {
+                this.categories = data;
+            });
+        this.drinkData.getTypes()
+            .subscribe(data => {
+                this.types = data;
+            });
+        this.drinkData.getSubtypes()
+            .subscribe(data => {
+                this.subtypes = data;
+            });
     }
 
     $onChanges(changes) {

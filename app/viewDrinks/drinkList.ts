@@ -1,11 +1,13 @@
 import * as angular from 'angular';
 import * as _ from 'lodash';
 
+import { DrinkService } from '../drinkData';
+
 class DrinkListCtrl {
   static $inject = ['drinkData'];
 
   constructor(
-    private drinkData
+    private drinkService: DrinkService
   ) { }
 
   filterCollapsed: boolean = true;
@@ -13,10 +15,10 @@ class DrinkListCtrl {
   types: any[];
 
   $onInit() {
-    this.drinks = this.drinkData.getDrinks();
+    this.drinkService.getDrinks()
+      .subscribe(data => {
+        this.drinks = data;
 
-    this.drinks.$promise
-      .then(() => {
         var types = this.drinks.map(drink => drink.type);
         this.types = _.uniq(types);
       });

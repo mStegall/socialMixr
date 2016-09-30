@@ -14,13 +14,16 @@ class MixedDrinksCtrl {
     title: 'Name'
   }];
 
-  drinks: any;
+  drinks: any[];
 
   sortOrder: string = "name";
 
   $onInit() {
     console.log('test');
-    this.drinks = this.mixedDrinkData.getMixedDrinks();
+    this.mixedDrinkData.getMixedDrinks()
+      .subscribe(data => {
+        this.drinks = data;
+      });
   }
 
 

@@ -30,7 +30,10 @@ class AddEditMixedDrinkCtrl {
 
   $onInit() {
     // Load all drinks
-    this.drinks = this.drinkData.getDrinks();
+    this.drinkData.getDrinks()
+      .subscribe(data => {
+        this.drinks = data;
+      });
   }
 
   setUser(user) {
@@ -59,10 +62,9 @@ class AddEditMixedDrinkCtrl {
       }
     });
 
-    this.mixedDrinkData.addMixedDrink(drink).$promise
-      .then(function () {
-        alert('success');
-      });
+    this.mixedDrinkData.addMixedDrink(drink).subscribe(data => {
+      alert('Created');
+    });
   }
 
   // Update ingredient model from component data

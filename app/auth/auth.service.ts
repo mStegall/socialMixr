@@ -1,12 +1,12 @@
 import {Injectable} from '@angular/core';
-import {Location} from '@angular/common';
+// import {Location} from '@angular/common';
 
 @Injectable()
 export class AuthService {
     // static $inject = ['$location'];
 
     constructor(
-        private $location: Location
+        // private $location: Location
     ) { }
 
     roles: string[] = [];

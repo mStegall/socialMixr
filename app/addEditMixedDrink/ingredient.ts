@@ -2,7 +2,7 @@ import * as angular from 'angular';
 
 class IngredientCtrl {
   // Inputs
-  drinks: any;
+  drinks: any[];
 
   // Outputs
   onUpdate: any;

@@ -1,24 +1,28 @@
-import * as angular from 'angular';
-import 'angular-resource';
+import { Injectable } from '@angular/core';
+import { Http, Response } from '@angular/http';
+import { Observable } from 'rxjs/Rx';
 
+import 'rxjs/add/operator/map';
+
+@Injectable()
 export class MixedDrinkService {
-    static $inject = ['$resource'];
-
     constructor(
-        private $resource: ng.resource.IResourceService
-    ){}
+        private http: Http
+    ) { }
 
-    addMixedDrink(drink){
-        return this.$resource('/api/mixedDrink').save(drink);
+    addMixedDrink(drink): Observable<any> {
+        return this.http.post('api/mixedDrink', {drink})
+            .map((res: Response) => res.json());
     }
 
-    getMixedDrinks() {
-        return this.$resource('/api/mixedDrinks').query();
+    getMixedDrinks(): Observable<any> {
+        return this.http.get('api/mixedDrinks')
+            .map((res: Response) => res.json());
     }
 
-    getMixedDrink(id) {
-        return this.$resource('/api/mixedDrink/:id', {id}).get();
+    getMixedDrink(id): Observable<any> {
+        return this.http.get(`api/mixedDrink/${id}`)
+            .map((res: Response) => res.json());
     }
+
 }
-
-angular.module('app').service('mixedDrinkData', MixedDrinkService);

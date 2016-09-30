@@ -2,11 +2,10 @@ import * as angular from 'angular';
 import 'angular-ui-bootstrap';
 
 export class LoginService {
-    static $inject = ["$http", "$q", "userInfo", "$rootScope", "$uibModal"];
+    static $inject = ["$http", "userInfo", "$rootScope", "$uibModal"];
 
     constructor(
         private $http: ng.IHttpService,
-        private $q: ng.IQService,
         private userInfo,
         private $rootScope: ng.IRootScopeService,
         private $uibModal: ng.ui.bootstrap.IModalService
