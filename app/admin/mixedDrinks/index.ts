@@ -1,3 +1,3 @@
 import './adminApproveMixedDrinks';
 
-export {AdminMixedDrinksService} from './adminMixedDrinks.service';
+export * from './adminMixedDrinks.service';

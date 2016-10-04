@@ -1,6 +1,8 @@
 import * as angular from 'angular';
-import {AuthService} from '../auth';
-import {DrinkService} from '../drinkData';
+import { AuthService } from '../auth';
+import { DrinkService } from '../drinkData';
+import { AdminDrinksService } from '../admin';
+
 
 class DrinkDetailsCtrl {
     static $inject = ['drinkData', 'authService', 'adminDrinks'];
@@ -8,8 +10,8 @@ class DrinkDetailsCtrl {
     constructor(
         private drinkData: DrinkService,
         private AuthService: AuthService,
-        private adminDrinks
-    ){}
+        private adminDrinks: AdminDrinksService
+    ) { }
 
     // Inputs
     id: number;
@@ -22,7 +24,7 @@ class DrinkDetailsCtrl {
         this.admin = this.AuthService.hasRole('admin');
     }
 
-    flagDrink () {
+    flagDrink() {
         var flag = this.adminDrinks.flagDrink(this.drink.id);
 
         flag.$promise.then(function () {
